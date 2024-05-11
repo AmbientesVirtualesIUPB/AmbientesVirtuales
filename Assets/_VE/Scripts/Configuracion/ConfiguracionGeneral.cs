@@ -12,8 +12,8 @@ using UnityEditor;
 /// <summary>
 /// Clase que representa la configuración de gráficos como un ScriptableObject.
 /// </summary>
-[CreateAssetMenu(menuName = "Configuracion/Configuracion de graficos")]
-public class GraficsConfig : ScriptableObject
+[CreateAssetMenu(menuName = "Configuracion/Configuracion general", fileName = "ConfiguracionGeneral")]
+public class ConfiguracionGeneral : ScriptableObject
 {
     /// <summary>
     /// Tipo de gráficos seleccionados (bajos, medios, altos).
@@ -56,11 +56,11 @@ public class GraficsConfig : ScriptableObject
     /// </summary>
 
 
-    public static GraficsConfig configuracionDefault
+    public static ConfiguracionGeneral configuracionDefault
     {
         get
         {
-            return Resources.Load<GraficsConfig>("ConfiguracionGraficosGeneral");
+            return Resources.Load<ConfiguracionGeneral>("ConfiguracionGeneral");
         }
 
         set
