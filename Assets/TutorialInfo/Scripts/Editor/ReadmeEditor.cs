@@ -23,29 +23,30 @@ public class ReadmeEditor : Editor
 
     static void RemoveTutorial()
     {
-        if (EditorUtility.DisplayDialog("Remove Readme Assets",
+        if (EditorUtility.DisplayDialog("Boton que algún día pensaré para qué usar",
             
-            $"All contents under {s_ReadmeSourceDirectory} will be removed, are you sure you want to proceed?",
-            "Proceed",
-            "Cancel"))
+            $"Morion es genial...",
+            "Aceptar",
+            "Confirmar"))
         {
-            if (Directory.Exists(s_ReadmeSourceDirectory))
-            {
-                FileUtil.DeleteFileOrDirectory(s_ReadmeSourceDirectory);
-                FileUtil.DeleteFileOrDirectory(s_ReadmeSourceDirectory + ".meta");
-            }
-            else
-            {
-                Debug.Log($"Could not find the Readme folder at {s_ReadmeSourceDirectory}");
-            }
+            Debug.Log("Bien hecho!");
+            //if (Directory.Exists(s_ReadmeSourceDirectory))
+            //{
+            //    FileUtil.DeleteFileOrDirectory(s_ReadmeSourceDirectory);
+            //    FileUtil.DeleteFileOrDirectory(s_ReadmeSourceDirectory + ".meta");
+            //}
+            //else
+            //{
+            //    Debug.Log($"Could not find the Readme folder at {s_ReadmeSourceDirectory}");
+            //}
 
-            var readmeAsset = SelectReadme();
-            if (readmeAsset != null)
-            {
-                var path = AssetDatabase.GetAssetPath(readmeAsset);
-                FileUtil.DeleteFileOrDirectory(path + ".meta");
-                FileUtil.DeleteFileOrDirectory(path);
-            }
+            //var readmeAsset = SelectReadme();
+            //if (readmeAsset != null)
+            //{
+            //    var path = AssetDatabase.GetAssetPath(readmeAsset);
+            //    FileUtil.DeleteFileOrDirectory(path + ".meta");
+            //    FileUtil.DeleteFileOrDirectory(path);
+            //}
 
             AssetDatabase.Refresh();
         }
@@ -148,7 +149,7 @@ public class ReadmeEditor : Editor
             GUILayout.Space(k_Space);
         }
 
-        if (GUILayout.Button("Remove Readme Assets", ButtonStyle))
+        if (GUILayout.Button("Boton que algún día pensaré para qué usar", ButtonStyle))
         {
             RemoveTutorial();
         }
