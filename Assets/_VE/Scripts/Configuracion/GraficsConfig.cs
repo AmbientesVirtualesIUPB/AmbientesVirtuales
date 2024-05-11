@@ -26,6 +26,15 @@ public class GraficsConfig : ScriptableObject
     public Plataforma plataformaObjetivo;
 
     /// <summary>
+    /// Ip del servidor al que se va a conectar.
+    /// </summary>
+    public string ip = "127.0.0.1";
+    /// <summary>
+    /// Puerto por el cuál está escuchando el Socket.
+    /// </summary>
+    public string puerto = "8080";
+
+    /// <summary>
     /// Obtiene un prefijo basado en el tipo de gráficos seleccionado.
     /// </summary>
     /// <returns>El prefijo correspondiente al tipo de gráficos.</returns>
