@@ -3,13 +3,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Best.WebSockets;
+[RequireComponent(typeof(GestionMensajesServidor))]
 public class Servidor : MonoBehaviour
 {
     public delegate void Evento();
 
     public string url = "ws://127.0.0.1:8080";
-    public UnityEngine.UI.Text txt;
+    public bool debugEnPantalla = false;
+    [ConditionalHide("debugEnPantalla", true)]
+    public UnityEngine.UI.Text txtDebug;
     WebSocket ws;
+    [HideInInspector]
     public GestionMensajesServidor gestorMensajes;
     public Evento EventoConectado;
     public static Servidor singleton;
@@ -19,8 +23,11 @@ public class Servidor : MonoBehaviour
     private void Awake()
     {
         singleton = this;
+        gestorMensajes = GetComponent<GestionMensajesServidor>();
+        EventoConectado += Vacio;
     }
 
+    
     public void Conectar()
     {
         var webSocket = new WebSocket(new Uri(url));
@@ -34,26 +41,35 @@ public class Servidor : MonoBehaviour
     private void OnWebSocketOpen(WebSocket webSocket)
     {
         Debug.Log("Websocket abierto!");
-        txt.text += "\n" + ("Websocket abierto!");
+        Debug.Log("0");
+        if (txtDebug != null) {
+            txtDebug.text += "\n" + ("Websocket abierto!");
+        }
 
-        EventoConectado();
+        Debug.Log("1");
+        if(EventoConectado != null) 
+            EventoConectado();
+        Debug.Log("2");
         Presentacion p = ControlUsuario.singleton.GetPresentacion();
+        Debug.Log("3");
         string pJson = JsonUtility.ToJson(p);
+        Debug.Log("4");
 
         webSocket.Send("PR00" + pJson);
+        Debug.Log("--->Anciado el PR00");
         webSocket.Send("AC00 ");
-
+        Debug.Log("--->Anciado el AC00");
     }
 
     private void OnMessageReceived(WebSocket webSocket, string message)
     {
         Debug.Log("Mensaje recibido: " + message);
-        txt.text += "\n" + ("Mensaje recibido: " + message);
-        if (txt.text.Length > 500)
-        {
-            txt.text = txt.text.Substring(txt.text.Length - 455);
-
-        }
+        if (txtDebug != null) txtDebug.text += "\n" + ("Mensaje recibido: " + message);
+        if (txtDebug != null)
+            if (txtDebug.text.Length > 500)
+            {
+                txtDebug.text = txtDebug.text.Substring(txtDebug.text.Length - 455);
+            }
         if (gestorMensajes != null)
         {
             gestorMensajes.RecibirMensaje(message.Substring(2));
@@ -66,7 +82,7 @@ public class Servidor : MonoBehaviour
 
         if (code == WebSocketStatusCodes.NormalClosure)
         {
-            // Closed by request
+            // Cerrado normalmente
         }
         else
         {
@@ -85,4 +101,9 @@ public class Servidor : MonoBehaviour
         //          ws.Send("Aiya-> " + UnityEngine.Random.Range(0, 1895));
         //      }
     }
+
+    void Vacio()
+	{
+        return;
+	}
 }

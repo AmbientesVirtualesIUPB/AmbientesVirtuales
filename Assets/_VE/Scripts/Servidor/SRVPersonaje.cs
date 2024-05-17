@@ -18,11 +18,11 @@ public class SRVPersonaje : MonoBehaviour
 	}
 	public void Inicializar(string _id_con, string _id_uss, bool _isOwner)
 	{
+		print("---> Inicializar SRVPersonaje");
 		if (identificador == null) 
 			identificador = GetComponent<MORIdentificador>();
-		identificador.id_con = _id_con;
 		id_uss = _id_uss;
-		identificador.isOwner = _isOwner;
+		identificador.Inicializar(_isOwner, _id_con);
 	}
 
     void Start()
@@ -34,7 +34,7 @@ public class SRVPersonaje : MonoBehaviour
 		else
 		{
 			int k = int.Parse(id_uss.Substring(0, 1));
-			GetComponent<MeshRenderer>().material.SetColor("_BaseColor", colores[k]);
+			//GetComponent<MeshRenderer>().material.SetColor("_BaseColor", colores[k]);
 		}
     }
 
@@ -44,7 +44,7 @@ public class SRVPersonaje : MonoBehaviour
 		//id_con = ControlUsuario.singleton.id_con;
 		//id_uss = ControlUsuario.singleton.id_uss;
 		int k = int.Parse(id_uss.Substring(0, 1));
-		GetComponent<MeshRenderer>().material.SetColor("_BaseColor", colores[k]);
+		//GetComponent<MeshRenderer>().material.SetColor("_BaseColor", colores[k]);
 	}
 
 	private void OnDestroy()

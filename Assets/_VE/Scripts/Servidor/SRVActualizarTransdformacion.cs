@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SRVPersonaje))]
 public class SRVActualizarTransdformacion : MonoBehaviour
 {
-    public float toleranciaPosicion;
+    public float toleranciaPosicion = 0.2f;
 
-    public float periodoEsperas = 0.5f;
+    public float periodoEsperas = 0.2f;
 
     private float _toleranciaPosicion;
     public string id_conn;
@@ -16,13 +17,36 @@ public class SRVActualizarTransdformacion : MonoBehaviour
     public Vector3 posicionObjetivo;
     public Vector3 rotacionObjetivo;
     public bool isOwner;
+    public Plataformas plataforma;
+    SRVPersonaje srvPersonaje;
 
-    void Start()
+    private void Awake()
+    {
+        srvPersonaje = GetComponent<SRVPersonaje>();
+    }
+    IEnumerator Start()
     {
         posAnterior = transform.position;
         rotAnterior = transform.eulerAngles;
         _toleranciaPosicion = toleranciaPosicion * toleranciaPosicion;
         StartCoroutine(UpdateLento());
+        yield return new WaitUntil(() => srvPersonaje.conectado);
+        yield return new WaitForSeconds(0.2f);
+        id_conn = srvPersonaje.identificador.id_con;
+        isOwner = srvPersonaje.identificador.isOwner;
+    }
+
+    public void Inicializar(Vector3 posicion, Vector3 rotacion)
+    {
+        transform.position = posicion;
+        transform.eulerAngles = rotacion;
+        posAnterior = transform.position;
+        rotAnterior = transform.eulerAngles;
+    }
+    public void Inicializar(Vector3 _posicion, Vector3 _rotacion, Plataformas _plataforma)
+    {
+        Inicializar(_posicion, _rotacion);
+        plataforma = _plataforma;
     }
 
     IEnumerator UpdateLento()

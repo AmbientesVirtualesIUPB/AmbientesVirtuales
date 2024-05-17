@@ -7,6 +7,7 @@ public class ControlUsuario : MonoBehaviour
     public static ControlUsuario singleton;
 	public string	id_con;
 	public string	id_uss;
+	[Tooltip("Esto sirve para que cree un ID falso porque no hay login con SICAU")]
 	public bool		fakeInicio = true;
 	public GameObject gmJugador;
 
@@ -38,6 +39,7 @@ public class ControlUsuario : MonoBehaviour
 
 	public void CrearJugador()
 	{
+		print("---> Crear usuario");
 		GameObject jugador = Instantiate(GestionMensajesServidor.singeton.prJugador);
 		SRVPersonaje personaje = jugador.GetComponent<SRVPersonaje>();
 		personaje.Inicializar(id_con, id_uss, true);

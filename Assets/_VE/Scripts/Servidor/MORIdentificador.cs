@@ -12,6 +12,7 @@ public class MORIdentificador : MonoBehaviour
 
     public string Inicializar(bool _isOwner,  string _id_con)
     {
+        print("---> Inicializar MORIdentificador " + _isOwner + " - " + _id_con);
         isOwner = _isOwner;
 		if (isOwner)
 		{

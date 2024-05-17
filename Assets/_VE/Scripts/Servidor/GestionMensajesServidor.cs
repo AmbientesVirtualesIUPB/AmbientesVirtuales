@@ -52,8 +52,8 @@ public class GestionMensajesServidor : MonoBehaviour
 			ControlUsuario.singleton.AgregarUsuario(p.id_con, go);
 			SRVPersonaje sp = go.GetComponent<SRVPersonaje>();
 			SRVActualizarTransdformacion sATra = go.GetComponent<SRVActualizarTransdformacion>();
-			sATra.posicionObjetivo = p.posicion;
-			sATra.rotacionObjetivo = p.rotacion;
+			
+			sATra.Inicializar(p.posicion, p.rotacion, (Plataformas)p.plataforma);
 			sp.Inicializar(p.id_con, p.id_uss, false);
 			go.name = p.id_uss;
 			sp.conectado = true;
