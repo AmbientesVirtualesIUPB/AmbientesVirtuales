@@ -1,0 +1,22 @@
+Códigos de respuesta
+    200 : Conexion Exitosa
+    201 : Usuario creado exitosamente
+    202 : Usuario ya existe
+    203 : Usuario no existe
+    204 : Usuario o password son incorrectos
+    205 : Inicio de sesion correcto
+    206 : Usuario actualizado con exito
+
+    400 : Conexión Fallida
+    401 : Error al crear usuario
+    402 : Faltan datos
+    403 : Ya existe un usuario con ese nombre
+    404 : Error
+
+Uso de las funcionalidades
+
+    check()
+    registrarUsuario(nombre,pass,jugador,nivel)
+    verificarUsuario(nombre)
+    login(nombre,pass)
+    editarUsuario(nombre,pass,pass2,jugador,nivel)
