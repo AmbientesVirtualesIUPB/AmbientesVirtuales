@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6492624628743467508}
   - component: {fileID: 7905422796593561169}
   - component: {fileID: 5355135580171340443}
+  - component: {fileID: 6624332061167867259}
   m_Layer: 0
   m_Name: CALIFICADOR
   m_TagString: Untagged
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5859674733448309582}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07727167, y: 0.060925696, z: 0.08386272}
+  m_LocalScale: {x: 0.06019695, y: 0.047462948, z: 0.06533158}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,3 +86,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6624332061167867259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859674733448309582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5483594, y: 5.614106, z: 6.437574}
+  m_Center: {x: -0.122458346, y: 3.1094532, z: 0.9591814}
