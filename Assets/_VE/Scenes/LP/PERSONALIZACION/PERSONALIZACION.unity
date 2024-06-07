@@ -257,14 +257,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Sombrero
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteOtro
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -511,16 +511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &165921699
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -533,21 +523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &165921700
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -722,14 +697,14 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 179835707}
+  m_TargetGraphic: {fileID: 674054489}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Maleta
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -966,7 +941,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 298013219, guid: 869ed7ebbabee39499ca980247625d27, type: 3}
+    m_PressedSprite: {fileID: -1033090185, guid: 869ed7ebbabee39499ca980247625d27,
+      type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -976,18 +952,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 211611423}
+  m_TargetGraphic: {fileID: 1437091798}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Cabeza
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1629,14 +1605,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Ropa
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1913,18 +1889,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 514421475}
+  m_TargetGraphic: {fileID: 1285510590}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Cejas
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2378,10 +2354,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Maleta
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2520,18 +2496,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 729480351}
+  m_TargetGraphic: {fileID: 1437091798}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Zapatos
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteOtro
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3182,18 +3158,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 929281174}
+  m_TargetGraphic: {fileID: 419612321}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Ropa
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3539,7 +3515,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 852921732, guid: 869ed7ebbabee39499ca980247625d27, type: 3}
+    m_PressedSprite: {fileID: -366358561, guid: 869ed7ebbabee39499ca980247625d27,
+      type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -3549,18 +3526,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1003542554}
+  m_TargetGraphic: {fileID: 1658029031}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Pelos
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4217,16 +4194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &1204599480
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -4239,21 +4206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &1204599481
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -4438,14 +4390,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Cejas
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4620,14 +4572,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Zapatos
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteOtro
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4805,16 +4757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &1501285587
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -4827,21 +4769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &1501285588
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -5106,12 +5033,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576545702}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65dadfdbce0c22c4c8e547725c52db97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pos: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  textoCargado: 
   SaveManagers: {fileID: 826943520}
   genero: 0
   genNum: 0
@@ -5353,16 +5281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 1.4899902, y: 1.138794, z: 1.97}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &1594671448
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -5375,21 +5293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &1594671449
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -5768,14 +5671,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Pelos
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6366,10 +6269,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Reloj
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteOtro
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6552,18 +6455,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1922901223}
+  m_TargetGraphic: {fileID: 67571585}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Sombrero
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteOtro
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6821,14 +6724,14 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1958449767}
+  m_TargetGraphic: {fileID: 1838886140}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Reloj
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteOtro
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7100,10 +7003,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Femenino
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: TransicionDeGenero
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7241,14 +7144,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Masculino
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: TransicionDeGenero
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7360,7 +7263,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 298013219, guid: 869ed7ebbabee39499ca980247625d27, type: 3}
+    m_PressedSprite: {fileID: -1033090185, guid: 869ed7ebbabee39499ca980247625d27,
+      type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -7370,18 +7274,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 0
-  m_TargetGraphic: {fileID: 2002349882}
+  m_TargetGraphic: {fileID: 1437091798}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576545703}
-        m_TargetAssemblyTypeName: Split, Assembly-CSharp
-        m_MethodName: Cabeza
-        m_Mode: 1
+      - m_Target: {fileID: 2126161627}
+        m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
+        m_MethodName: SiguienteParteGay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7482,16 +7386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &2029996946
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -7504,21 +7398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &2029996947
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -8026,16 +7905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1.5390015, z: 0.439}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &2103918020
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -8048,21 +7917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &2103918021
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -8087,6 +7941,222 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7255248093947067840}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2126161624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7525154758866420068, guid: f7049d1bd08befd499853a3147e331f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7255248093947067840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2126161627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126161624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986d6ce16ce120344983528cfd108f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partesHombre:
+  - nombre: Maleta
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 2119226748}
+    - {fileID: 341429166}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Cuerpo
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1915196362}
+    - {fileID: 172349105}
+    - {fileID: 1981561859}
+    - {fileID: 2000742255}
+    - {fileID: 891922045}
+    - {fileID: 984142240}
+    - {fileID: 1251567756}
+    - {fileID: 797816027}
+    - {fileID: 1711099510}
+    - {fileID: 474841486}
+    - {fileID: 1806817294}
+    - {fileID: 198716494}
+    - {fileID: 1214653940}
+    - {fileID: 1127647161}
+    - {fileID: 984302663}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Cabeza
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 258663957}
+    - {fileID: 1819675646}
+    - {fileID: 1887742733}
+    - {fileID: 972502558}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Cejas
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1651735530}
+    - {fileID: 345063877}
+    - {fileID: 727048164}
+    - {fileID: 497773010}
+    - {fileID: 2008036481}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Pelos
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 247467188}
+    - {fileID: 1317150892}
+    - {fileID: 1812860278}
+    - {fileID: 253390564}
+    - {fileID: 184110975}
+    - {fileID: 1193059925}
+    - {fileID: 47986020}
+    - {fileID: 861328898}
+    - {fileID: 1877232000}
+    - {fileID: 1379067628}
+    - {fileID: 2068405826}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  partesMujer:
+  - nombre: Maleta
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 2119226748}
+    - {fileID: 1907622091}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Cuerpo
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1394877568}
+    - {fileID: 685420757}
+    - {fileID: 907142788}
+    - {fileID: 325402227}
+    - {fileID: 1629701338}
+    - {fileID: 1467557254}
+    - {fileID: 1234013072}
+    - {fileID: 1139157599}
+    - {fileID: 534062900}
+    - {fileID: 906300922}
+    - {fileID: 509771883}
+    - {fileID: 2145673584}
+    - {fileID: 831724875}
+    - {fileID: 365404444}
+    - {fileID: 36465022}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Cabeza
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1590932955}
+    - {fileID: 114401626}
+    - {fileID: 1512335387}
+    - {fileID: 263022112}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Cejas
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1627410426}
+    - {fileID: 1177245859}
+    - {fileID: 1065273485}
+    - {fileID: 570370590}
+    - {fileID: 609250191}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Pelos
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1790617659}
+    - {fileID: 237444590}
+    - {fileID: 1713478151}
+    - {fileID: 467717883}
+    - {fileID: 1561800156}
+    - {fileID: 1296348504}
+    - {fileID: 1151804283}
+    - {fileID: 536557916}
+    - {fileID: 290468462}
+    - {fileID: 1309207619}
+    - {fileID: 1383149254}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  partesOtros:
+  - nombre: Reloj
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1246061200}
+    - {fileID: 616498215}
+    - {fileID: 1415437699}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Sombrero
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 2071255364}
+    - {fileID: 185265282}
+    - {fileID: 2123918948}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  - nombre: Zapatos
+    color1: {r: 0, g: 0, b: 0, a: 0}
+    color2: {r: 0, g: 0, b: 0, a: 0}
+    elementos:
+    - {fileID: 1576337999}
+    - {fileID: 1255691895}
+    - {fileID: 1496146503}
+    - {fileID: 990135259}
+    - {fileID: 25351956}
+    - {fileID: 1386752476}
+    - {fileID: 1508341121}
+    - {fileID: 1253970007}
+    - {fileID: 1527844112}
+    - {fileID: 2002748274}
+    - {fileID: 1807687335}
+    - {fileID: 1740558365}
+    - {fileID: 623979131}
+    - {fileID: 1218088158}
+    - {fileID: 1649713384}
+    activo: 0
+    paleta: []
+    materialPiel: {fileID: 0}
+  genero: 0
+  paletaPiel: []
+  paletaCabello: []
+  paletaOjos: []
+  paletaRopa: []
+  materialInicialPielHombre: {fileID: 2100000, guid: 86b5902a18cce294b8231c02b6e0dbb4,
+    type: 2}
+  materialInicialPielMujer: {fileID: 2100000, guid: 03adec1f8846e5040a564f3c217a5978,
+    type: 2}
 --- !u!1001 &2127907305
 PrefabInstance:
   m_ObjectHideFlags: 0

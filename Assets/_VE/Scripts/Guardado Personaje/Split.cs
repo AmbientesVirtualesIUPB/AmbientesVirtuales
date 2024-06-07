@@ -11,6 +11,7 @@ public class Split : MonoBehaviour
 
     //Variable para las posiciones de guardado
     public int[] pos;
+    public string textoCargado;
     //Referencia al objeto de guardado
     public GameObject SaveManagers;
 
@@ -483,5 +484,43 @@ public class Split : MonoBehaviour
                 maleta_M[i].SetActive(false);
             }
         }
+    }
+
+    public string ConvertirATexto()
+    {
+        string texto = "";
+        for (int i = 0;i < pos.Length;i++)
+        {
+            texto += (texto.Length > 0) ? "|" : "";
+            texto += pos[i].ToString();
+        }
+        return texto;
+
+    }
+
+    public void ConvertirDesdeTexto(string texto)
+    {
+        string[] nombre = texto.Split("|");
+
+        for (int i = 0; i < nombre.Length; i++)
+        {
+            pos[i] = int.Parse(nombre[i]);
+        }
+        TomarDatos();
+    }
+
+    [ContextMenu("Generar")]
+    public void Generar()
+    {
+
+        print(ConvertirATexto());
+    }
+
+    [ContextMenu("Cargar")]
+    public void Cargar()
+    {
+
+        ConvertirDesdeTexto(textoCargado);
+
     }
 }

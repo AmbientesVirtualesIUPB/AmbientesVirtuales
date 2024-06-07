@@ -21,7 +21,6 @@ public class SaveManager : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, "splitData.data");
         //Guardamos el archibo json
         File.WriteAllText(path, splitJson);
-        
     }
 
     [ContextMenu("Load")]
@@ -39,7 +38,6 @@ public class SaveManager : MonoBehaviour
         {
             split.pos[i] = splitLoad.pos[i];
         }
-        Debug.Log(path);
     }
 
 
