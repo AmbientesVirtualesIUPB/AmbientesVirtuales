@@ -262,18 +262,12 @@ namespace AmplifyShaderEditor
 		public override string GetPropertyValue()
 		{
 			if( m_createToggle )
-			{
-				string value = UIUtils.PropertyFloatToString( m_defaultValue );
-				if ( m_keywordModeType == KeywordModeType.KeywordEnum && m_keywordEnumAmount > 0 )
-				{
-					return PropertyAttributes + "[" + m_keywordModeType.ToString() + "(" + GetKeywordEnumPropertyList() + ")] " + m_propertyName + "(\"" + m_propertyInspectorName + "\", Float) = " + value;
-				}
+				if( m_keywordModeType == KeywordModeType.KeywordEnum && m_keywordEnumAmount > 0 )
+					return PropertyAttributes + "[" + m_keywordModeType.ToString() + "(" + GetKeywordEnumPropertyList() + ")] " + m_propertyName + "(\"" + m_propertyInspectorName + "\", Float) = " + m_defaultValue;
 				else
-				{
-					return PropertyAttributes + "[" + m_keywordModeType.ToString() + "(" + GetPropertyValStr() + ")] " + m_propertyName + "(\"" + m_propertyInspectorName + "\", Float) = " + value;
-				}
-			}
-			return string.Empty;
+					return PropertyAttributes + "[" + m_keywordModeType.ToString() + "(" + GetPropertyValStr() + ")] " + m_propertyName + "(\"" + m_propertyInspectorName + "\", Float) = " + m_defaultValue;
+			else
+				return string.Empty;
 		}
 
 		public string KeywordEnum( int index )

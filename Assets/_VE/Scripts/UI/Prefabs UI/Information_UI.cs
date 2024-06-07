@@ -20,5 +20,4 @@ public class Information_UI : MonoBehaviour
 
         print("si");
     }
-
 }

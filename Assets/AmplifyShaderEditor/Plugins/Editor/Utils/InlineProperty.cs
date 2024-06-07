@@ -22,17 +22,14 @@ namespace AmplifyShaderEditor
 		[SerializeField]
 		private bool m_inlineButtonVisible = true;
 
-		public InlineProperty()
-		{
-			InlinePropertyTable.Register( this );
-		}
+		public InlineProperty() { }
 
-		public InlineProperty( float val ) : base()
+		public InlineProperty( float val )
 		{
 			m_value = val;
 		}
 
-		public InlineProperty( int val ) : base()
+		public InlineProperty( int val )
 		{
 			m_value = val;
 		}
@@ -266,14 +263,6 @@ namespace AmplifyShaderEditor
 			else
 			{
 				return defaultValue;
-			}
-		}
-
-		public void TryResolveDependency()
-		{
-			if ( m_active && !string.IsNullOrEmpty( m_nodePropertyName ) )
-			{
-				m_nodeId = UIUtils.GetFloatIntNodeIdByName( m_nodePropertyName );
 			}
 		}
 

@@ -41,6 +41,6 @@ public class PruebasX : MonoBehaviour
 
     public void Cargar()
 	{
-        Escenas.CargarEscena("CIS");
+        //Escenas.CargarEscena("CIS");
     }
 }

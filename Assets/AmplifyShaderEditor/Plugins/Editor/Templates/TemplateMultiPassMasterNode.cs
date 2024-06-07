@@ -416,7 +416,7 @@ namespace AmplifyShaderEditor
 				m_isMainOutputNode = m_templateMultiPass.SubShaders[ m_subShaderIdx ].Passes[ m_passIdx ].IsMainPass;
 				if( m_isMainOutputNode )
 				{
-					// We cannot use UIUtils.MasterNodeOnTexture.height since this method can be
+					// We cannot use UIUtils.MasterNodeOnTexture.height since this method can be 
 					// called before UIUtils is initialized
 					m_insideSize.y = 55;
 				}
@@ -433,7 +433,7 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					// On hot code reload we only need to verify if template pass visibility data changes
+					// On hot code reload we only need to verify if template pass visibility data changes 
 					// and change accordingly
 					if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Passes[ m_passIdx ].IsInvisible )
 					{
@@ -1401,7 +1401,7 @@ namespace AmplifyShaderEditor
 			if( m_templateMultiPass.CustomTemplatePropertyUI == CustomTemplatePropertyUIEnum.None )
 				return;
 
-			if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType != TemplateSRPType.HDRP ||
+			if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType != TemplateSRPType.HD ||
 				!m_templateMultiPass.SubShaders[ m_subShaderIdx ].Passes[ m_passIdx ].Modules.SRPIsPBR )
 				return;
 
@@ -1482,7 +1482,7 @@ namespace AmplifyShaderEditor
 			if( m_templateMultiPass.CustomTemplatePropertyUI == CustomTemplatePropertyUIEnum.None )
 				return;
 
-			if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType != TemplateSRPType.HDRP ||
+			if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType != TemplateSRPType.HD ||
 				!m_templateMultiPass.SubShaders[ m_subShaderIdx ].Passes[ m_passIdx ].Modules.SRPIsPBR )
 				return;
 
@@ -1840,7 +1840,7 @@ namespace AmplifyShaderEditor
 
 				m_drawInstancedHelper.Draw( this );
 				m_fallbackHelper.Draw( this );
-				DrawCustomInspector( m_templateMultiPass.SRPtype != TemplateSRPType.BiRP );
+				DrawCustomInspector( m_templateMultiPass.SRPtype != TemplateSRPType.BuiltIn );
 				m_subShaderOptions.DrawCustomOptions( this );
 				m_dependenciesHelper.Draw( this , true );
 			}
@@ -1946,7 +1946,7 @@ namespace AmplifyShaderEditor
 				TemplateInputData inputData = templateData.InputDataFromId( ports[ i ].PortId );
 				if( ports[ i ].HasOwnOrLinkConnection )
 				{
-					//if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType == TemplateSRPType.URP )
+					//if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType == TemplateSRPType.Lightweight )
 					//{
 					//	if( ports[ i ].Name.Contains( "Normal" ) )
 					//	{
@@ -1963,7 +1963,7 @@ namespace AmplifyShaderEditor
 					//		m_currentDataCollector.AddToDirectives( SRPLWMaterialSpecularKeyword, -1, AdditionalLineType.Define );
 					//	}
 					//}
-					//else if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType == TemplateSRPType.HDRP )
+					//else if( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules.SRPType == TemplateSRPType.HD )
 					//{
 					//	if( ports[ i ].Name.Contains( "Normal" ) )
 					//	{
@@ -1997,7 +1997,7 @@ namespace AmplifyShaderEditor
 						m_currentDataCollector.ClearVertexLocalVariables();
 					}
 
-					// fill functions
+					// fill functions 
 					for( int j = 0 ; j < m_currentDataCollector.InstructionsList.Count ; j++ )
 					{
 						fragmentInstructions.Add( m_currentDataCollector.InstructionsList[ j ].PropertyName );
@@ -2251,13 +2251,13 @@ namespace AmplifyShaderEditor
 
 
 			//Set SRP info
-			if( m_templateMultiPass.SRPtype != TemplateSRPType.BiRP )
+			if( m_templateMultiPass.SRPtype != TemplateSRPType.BuiltIn )
 				ASEPackageManagerHelper.SetSRPInfoOnDataCollector( ref m_currentDataCollector );
 
 			RegisterStandaloneFuntions();
 			m_containerGraph.CheckPropertiesAutoRegister( ref m_currentDataCollector );
 
-			//Sort ports by both
+			//Sort ports by both 
 			List<InputPort> fragmentPorts = new List<InputPort>();
 			List<InputPort> vertexPorts = new List<InputPort>();
 
@@ -2352,7 +2352,7 @@ namespace AmplifyShaderEditor
 			}
 			else
 			{
-				shaderModel = ( m_templateMultiPass.SRPtype == TemplateSRPType.HDRP ) ? "4.5" : "3.0";
+				shaderModel = ( m_templateMultiPass.SRPtype == TemplateSRPType.HD ) ? "4.5" : "3.0";
 			}
 
 			m_currentDataCollector.TemplateDataCollectorInstance.CheckInterpolatorOverflow( shaderModel , m_passName );
@@ -2460,7 +2460,7 @@ namespace AmplifyShaderEditor
 			MasterNodeDataCollector currDataCollector = ( dataCollector == null ) ? m_currentDataCollector : dataCollector;
 
 			// Temporary hack
-			if( m_templateMultiPass.SRPtype != TemplateSRPType.BiRP )
+			if( m_templateMultiPass.SRPtype != TemplateSRPType.BuiltIn )
 			{
 				if( m_templateMultiPass.AvailableShaderProperties.Find( x => x.PropertyName.Equals( "_AlphaCutoff" ) ) == null )
 				{
@@ -2480,7 +2480,7 @@ namespace AmplifyShaderEditor
 			}
 
 			// here we add ASE attributes to the material properties that allows materials to communicate with ASE
-			//if( m_templateMultiPass.SRPtype != TemplateSRPType.BiRP )
+			//if( m_templateMultiPass.SRPtype != TemplateSRPType.BuiltIn )
 			{
 				string currentInspector = IsLODMainMasterNode ? m_customInspectorName : ContainerGraph.GetMainMasterNodeOfLOD( -1 ).CurrentInspector;
 				bool isASENativeInspector = Constants.DefaultCustomInspector.Equals( currentInspector );
@@ -2588,7 +2588,7 @@ namespace AmplifyShaderEditor
 
 				m_templateMultiPass.SetPassData( TemplateModuleDataType.PassVertexData , m_subShaderIdx , m_passIdx , inputArray );
 				m_templateMultiPass.SetPassData( TemplateModuleDataType.PassInterpolatorData , m_subShaderIdx , m_passIdx , m_currentDataCollector.InterpolatorList.ToArray() );
-
+				
 				List<PropertyDataCollector> afterNativesIncludePragmaDefineList = new List<PropertyDataCollector>();
 				afterNativesIncludePragmaDefineList.AddRange( m_currentDataCollector.IncludesList );
 				afterNativesIncludePragmaDefineList.AddRange( m_currentDataCollector.DefinesList );
@@ -3090,7 +3090,7 @@ namespace AmplifyShaderEditor
 
 				m_passName = GetCurrentParam( ref nodeParams );
 				SetTemplate( null , false , true , m_subShaderIdx , m_passIdx , SetTemplateSource.ShaderLoad );
-				////If value gotten from template is > -1 then it contains the LOD field
+				////If value gotten from template is > -1 then it contains the LOD field 
 				////and we can properly write the value
 				//if( m_subShaderLOD > -1 )
 				//{
@@ -3100,7 +3100,7 @@ namespace AmplifyShaderEditor
 				// only in here, after SetTemplate, we know if shader name is to be used as title or not
 				ShaderName = currShaderName;
 				m_visiblePorts = Convert.ToInt32( GetCurrentParam( ref nodeParams ) );
-
+				
 				m_subShaderModule.ReadFromString( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Modules, ref m_currentReadParamIdx , ref nodeParams );
 				m_passModule.ReadFromString( m_templateMultiPass.SubShaders[ m_subShaderIdx ].Passes[m_passIdx].Modules, ref m_currentReadParamIdx , ref nodeParams );
 				if( UIUtils.CurrentShaderVersion() > 15308 )
@@ -3129,13 +3129,7 @@ namespace AmplifyShaderEditor
 
 				if( m_isMainOutputNode && UIUtils.CurrentShaderVersion() > PASS_SELECTOR_VERSION )
 				{
-					m_passSelector.ReadFromString( ref m_currentReadParamIdx, ref nodeParams );
-
-					// @diogo: reset pass selector for any shader below version 19000 (when pass number was changed)
-					if ( UIUtils.CurrentShaderVersion() < 19000 )
-					{
-						m_passSelector.Reset();
-					}
+					m_passSelector.ReadFromString( ref m_currentReadParamIdx , ref nodeParams );
 				}
 
 				if( m_isMainOutputNode && UIUtils.CurrentShaderVersion() > 16203 )
@@ -3169,17 +3163,14 @@ namespace AmplifyShaderEditor
 			}
 
 			m_containerGraph.CurrentCanvasMode = NodeAvailability.TemplateShader;
-			if ( m_isMainOutputNode )
-			{
-				m_containerGraph.CurrentPrecision = m_currentPrecisionType;
-			}
+			m_containerGraph.CurrentPrecision = m_currentPrecisionType;
 			CheckLegacyCustomInspectors();
 		}
 
 		void CheckLegacyCustomInspectors()
 		{
 #if UNITY_2021_2_OR_NEWER
-			if( m_templateMultiPass.SubShaders[ 0 ].Modules.SRPType == TemplateSRPType.HDRP && ASEPackageManagerHelper.CurrentHDRPBaseline >= ASESRPBaseline.ASE_SRP_11 )
+			if( m_templateMultiPass.SubShaders[ 0 ].Modules.SRPType == TemplateSRPType.HD && ASEPackageManagerHelper.CurrentHDVersion >= ASESRPVersions.ASE_SRP_11_0_0 )
 			{
 				if( Constants.CustomInspectorHDLegacyTo11.ContainsKey( m_customInspectorName ) )
 				{
@@ -3188,7 +3179,7 @@ namespace AmplifyShaderEditor
 				}
 			}
 
-			if( m_templateMultiPass.SubShaders[ 0 ].Modules.SRPType == TemplateSRPType.URP && ASEPackageManagerHelper.CurrentURPBaseline>= ASESRPBaseline.ASE_SRP_12 )
+			if( m_templateMultiPass.SubShaders[ 0 ].Modules.SRPType == TemplateSRPType.Lightweight && ASEPackageManagerHelper.CurrentLWVersion>= ASESRPVersions.ASE_SRP_12_0_0 )
 			{
 				if( Constants.CustomInspectorURP10To12.ContainsKey( m_customInspectorName ) )
 				{
@@ -3212,7 +3203,7 @@ namespace AmplifyShaderEditor
 			}
 
 #elif UNITY_2021_1_OR_NEWER
-			if( m_templateMultiPass.SubShaders[ 0 ].Modules.SRPType == TemplateSRPType.HDRP && ASEPackageManagerHelper.CurrentHDRPBaseline >= ASESRPBaseline.ASE_SRP_11 )
+			if( m_templateMultiPass.SubShaders[ 0 ].Modules.SRPType == TemplateSRPType.HD && ASEPackageManagerHelper.CurrentHDVersion >= ASESRPVersions.ASE_SRP_11_0_0 )
 			{
 				if( Constants.CustomInspectorHDLegacyTo11.ContainsKey( m_customInspectorName ) )
 				{
@@ -3221,7 +3212,7 @@ namespace AmplifyShaderEditor
 				}
 			}
 #elif UNITY_2020_2_OR_NEWER
-			if(  m_templateMultiPass.SubShaders[0].Modules.SRPType == TemplateSRPType.HDRP && ASEPackageManagerHelper.CurrentHDRPBaseline >= ASESRPBaseline.ASE_SRP_10 )
+			if(  m_templateMultiPass.SubShaders[0].Modules.SRPType == TemplateSRPType.HD && ASEPackageManagerHelper.CurrentHDVersion >= ASESRPVersions.ASE_SRP_10_0_0 )
 			{
 				if( Constants.CustomInspectorHD7To10.ContainsKey( m_customInspectorName ) )
 				{

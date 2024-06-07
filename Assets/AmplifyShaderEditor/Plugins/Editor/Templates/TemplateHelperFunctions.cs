@@ -42,7 +42,7 @@ namespace AmplifyShaderEditor
 		TEXCOORD15,
 		NORMAL,
 		TANGENT,
-		SV_IsFrontFacing,
+		VFACE,
 		SV_VertexID,
 		SV_PrimitiveID,
 		SV_InstanceID,
@@ -292,7 +292,7 @@ namespace AmplifyShaderEditor
 
 			StencilBufferId = string.Empty;
 
-			Reference = 0;
+			Reference = 255;
 			ReferenceInline = string.Empty;
 
 			ReadMask = 255;
@@ -301,29 +301,29 @@ namespace AmplifyShaderEditor
 			WriteMask = 255;
 			WriteMaskInline = string.Empty;
 
-			ComparisonFront = string.Empty;
+			ComparisonFront = "always";
 			ComparisonFrontInline = string.Empty;
 
-			PassFront = string.Empty;
+			PassFront = "keep";
 			PassFrontInline = string.Empty;
 
-			FailFront = string.Empty;
+			FailFront = "keep";
 			FailFrontInline = string.Empty;
 
-			ZFailFront = string.Empty;
+			ZFailFront = "keep";
 			ZFailFrontInline = string.Empty;
 
 
-			ComparisonBack = string.Empty;
+			ComparisonBack = "always";
 			ComparisonBackInline = string.Empty;
 
-			PassBack = string.Empty;
+			PassBack = "keep";
 			PassBackInline = string.Empty;
 
-			FailBack = string.Empty;
+			FailBack = "keep";
 			FailBackInline = string.Empty;
 
-			ZFailBack = string.Empty;
+			ZFailBack = "keep";
 			ZFailBackInline = string.Empty;
 		}
 
@@ -582,7 +582,7 @@ namespace AmplifyShaderEditor
 			{TemplateSemantics.POSITION			,"ase_position"},
 			{TemplateSemantics.SV_POSITION		,"ase_sv_position"},
 			{TemplateSemantics.TANGENT			,"ase_tangent"},
-			{TemplateSemantics.SV_IsFrontFacing			,"ase_vface"},
+			{TemplateSemantics.VFACE			,"ase_vface"},
 			{TemplateSemantics.SV_VertexID		,"ase_vertexId"},
 			{TemplateSemantics.SV_InstanceID    ,"ase_instanceId"},
 			{TemplateSemantics.SV_PrimitiveID   ,"ase_primitiveId"},
@@ -882,9 +882,9 @@ namespace AmplifyShaderEditor
 		public static readonly string HDPBRTag = "UNITY_MATERIAL_LIT";
 		public static readonly Dictionary<string, TemplateSRPType> TagToRenderPipeline = new Dictionary<string, TemplateSRPType>()
 		{
-			{ "UniversalPipeline",TemplateSRPType.URP },
-			{ "LightweightPipeline",TemplateSRPType.URP },
-			{ "HDRenderPipeline",TemplateSRPType.HDRP }
+			{ "UniversalPipeline",TemplateSRPType.Lightweight },
+			{ "LightweightPipeline",TemplateSRPType.Lightweight },
+			{ "HDRenderPipeline",TemplateSRPType.HD }
 		};
 		public static string CoreColorLib = "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl";
 		public static string CoreCommonLib = "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl";
@@ -1721,7 +1721,7 @@ namespace AmplifyShaderEditor
 
 		public static string ProcessSRPConditionals( string body )
 		{
-			int srpVersion = ASEPackageManagerHelper.PackageSRPVersion;
+			int srpVersion = ASEPackageManagerHelper.CurrentSRPVersion();
 			var processedSignatures = new HashSet<string>();
 
 			foreach ( Match match in Regex.Matches( body, SRPConditionPattern ) )
@@ -1834,7 +1834,7 @@ namespace AmplifyShaderEditor
 
 		public static TemplateSRPType CreateTags( ref TemplateTagsModuleData tagsObj, bool isSubShader )
 		{
-			TemplateSRPType srpType = TemplateSRPType.BiRP;
+			TemplateSRPType srpType = TemplateSRPType.BuiltIn;
 			MatchCollection matchColl = Regex.Matches( tagsObj.TagsId, TagsPattern, RegexOptions.IgnorePatternWhitespace );
 			int count = matchColl.Count;
 			if( count > 0 )
@@ -2481,7 +2481,7 @@ namespace AmplifyShaderEditor
 			string screenDepthInstruction = string.Empty;
 			if( dataCollector.IsTemplate && dataCollector.IsSRP )
 			{
-				if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.URP )
+				if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.Lightweight )
 				{
 					if( dataCollector.PortCategory == MasterNodePortCategory.Vertex )
 					{
@@ -2493,7 +2493,7 @@ namespace AmplifyShaderEditor
 					else
 						screenDepthInstruction = string.Format( FetchLWDepthFormat, screenPos );
 				}
-				else if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP )
+				else if( dataCollector.TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD )
 					screenDepthInstruction = string.Format( FetchHDDepthFormat, screenPos );
 			}
 			else

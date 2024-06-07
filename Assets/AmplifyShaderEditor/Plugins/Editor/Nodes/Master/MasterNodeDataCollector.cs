@@ -946,6 +946,13 @@ namespace AmplifyShaderEditor
 				m_dirtyUniforms = true;
 			}
 		}
+		public void AddFaceMacros()
+		{
+			for( int i = 0 ; i < Constants.FaceMacros.Length; i++ )
+			{
+				AddToDirectives( Constants.FaceMacros[ i ] );
+			}
+		}
 
 		public void AddASEMacros()
 		{
@@ -2041,7 +2048,7 @@ namespace AmplifyShaderEditor
 
 		public bool IsTemplate { get { return m_masterNodeCategory == AvailableShaderTypes.Template; } }
 
-		public bool IsSRP { get { return ( TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.URP || TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP ); } }
+		public bool IsSRP { get { return ( TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.Lightweight || TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HD ); } }
 
 		public AvailableShaderTypes MasterNodeCategory
 		{
@@ -2297,7 +2304,7 @@ namespace AmplifyShaderEditor
 				if( IsTemplate )
 					return m_templateDataCollector.CurrentSRPType;
 
-				return TemplateSRPType.BiRP;
+				return TemplateSRPType.BuiltIn;
 			}
 		}
 

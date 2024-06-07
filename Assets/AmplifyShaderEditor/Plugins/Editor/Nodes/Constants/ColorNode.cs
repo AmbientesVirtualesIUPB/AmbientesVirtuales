@@ -373,11 +373,7 @@ namespace AmplifyShaderEditor
 
 		public override string GetPropertyValue()
 		{
-			string r = UIUtils.PropertyFloatToString( m_defaultValue.r );
-			string g = UIUtils.PropertyFloatToString( m_defaultValue.g );
-			string b = UIUtils.PropertyFloatToString( m_defaultValue.b );
-			string a = UIUtils.PropertyFloatToString( m_defaultValue.a );
-			return PropertyAttributes + m_propertyName + "(\"" + m_propertyInspectorName + "\", Color) = (" + r + "," + g + "," + b + "," + a + ")";
+			return PropertyAttributes + m_propertyName + "(\"" + m_propertyInspectorName + "\", Color) = (" + m_defaultValue.r + "," + m_defaultValue.g + "," + m_defaultValue.b + "," + m_defaultValue.a + ")";
 		}
 
 		public override void UpdateMaterial( Material mat )

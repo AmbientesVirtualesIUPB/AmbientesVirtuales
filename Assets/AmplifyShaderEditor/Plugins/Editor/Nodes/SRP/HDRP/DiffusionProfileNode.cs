@@ -184,7 +184,7 @@ namespace AmplifyShaderEditor
 		{
 			base.OnNodeLogicUpdate( drawInfo );
 			m_showErrorMessage = ( ContainerGraph.CurrentCanvasMode == NodeAvailability.SurfaceShader ) ||
-								 ( ContainerGraph.CurrentCanvasMode == NodeAvailability.TemplateShader && ContainerGraph.CurrentSRPType != TemplateSRPType.HDRP );
+								 ( ContainerGraph.CurrentCanvasMode == NodeAvailability.TemplateShader && ContainerGraph.CurrentSRPType != TemplateSRPType.HD );
 		}
 
 		public override void DrawProperties()

@@ -91,7 +91,7 @@ internal class ASEMaterialInspector : ShaderGUI
 
 	~ASEMaterialInspector()
 	{
-		UndoUtils.UnregisterUndoRedoCallback( UndoRedoPerformed );
+		Undo.undoRedoPerformed -= UndoRedoPerformed;
 		CleanUp();
 	}
 	public override void OnGUI( MaterialEditor materialEditor, MaterialProperty[] properties )
@@ -108,7 +108,7 @@ internal class ASEMaterialInspector : ShaderGUI
 		{
 			Init();
 			m_initialized = true;
-			UndoUtils.RegisterUndoRedoCallback( UndoRedoPerformed );
+			Undo.undoRedoPerformed += UndoRedoPerformed;
 		}
 
 		if( Event.current.type == EventType.Repaint &&

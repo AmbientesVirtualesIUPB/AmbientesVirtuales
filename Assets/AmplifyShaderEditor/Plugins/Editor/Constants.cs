@@ -9,6 +9,17 @@ namespace AmplifyShaderEditor
 
 	public struct Constants
 	{
+		public readonly static string[] FaceMacros =
+		{
+			"#if defined(SHADER_API_GLCORE) || defined(SHADER_API_GLES) || defined(SHADER_API_GLES3) || defined(SHADER_API_D3D9)",
+			"#define FRONT_FACE_SEMANTIC VFACE",
+			"#define FRONT_FACE_TYPE float",
+			"#else",
+			"#define FRONT_FACE_SEMANTIC SV_IsFrontFace",
+			"#define FRONT_FACE_TYPE bool",
+			"#endif"
+		};
+
 		/*public readonly static string[] CustomASEStandardArgsMacros =
 		{
 			"#if defined(SHADER_API_D3D11) || defined(SHADER_API_XBOXONE) || defined(UNITY_COMPILER_HLSLCC)//ASE Args Macros",
@@ -560,9 +571,8 @@ namespace AmplifyShaderEditor
 		public readonly static string IncidentVecVertStr = VertexShaderOutputStr + "." + IncidentVecNameStr;
 		public readonly static string WorldNormalLocalDecStr = "WorldNormalVector( " + Constants.InputVarStr + " , {0}( 0,0,1 ))";
 		
-		public readonly static string IsFrontFacingVariable = "ASEIsFrontFacing";
-		public readonly static string IsFrontFacingInput = "half ASEIsFrontFacing : SV_IsFrontFacing";
-		public readonly static string IsFrontFacingInputVFACE = "half ASEIsFrontFacing : VFACE";
+		public readonly static string VFaceVariable = "ASEVFace";
+		public readonly static string VFaceInput = "half ASEVFace : VFACE";
 
 		public readonly static string ColorVariable = "vertexColor";
 		public readonly static string ColorInput = "float4 vertexColor : COLOR";
@@ -639,7 +649,7 @@ namespace AmplifyShaderEditor
 		public readonly static string AvailableUVChannelLabel = "UV Channel";
 
 		public readonly static int[] AvailableUVSets = { 0, 1, 2, 3, 4, 5, 6, 7 };
-		public readonly static string[] AvailableUVSetsStr = { "0", "1", "2", "3","4", "5", "6", "7" };
+		public readonly static string[] AvailableUVSetsStr = { "1", "2", "3", "4","5", "6", "7", "8" };
 		public readonly static string AvailableUVSetsLabel = "UV Set";
 
 		public readonly static int[] AvailableUVSizes = { 2, 3, 4 };
