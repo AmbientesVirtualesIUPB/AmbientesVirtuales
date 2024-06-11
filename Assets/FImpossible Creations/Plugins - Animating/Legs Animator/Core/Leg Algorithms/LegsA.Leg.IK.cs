@@ -8,9 +8,11 @@ namespace FIMSpace.FProceduralAnimation
         public partial class Leg
         {
             public FimpIK_Limb IKProcessor { get; private set; }
-            public void IK_Initialize()
+
+            public void IK_Initialize(bool generateNew = true)
             {
-                IKProcessor = new FimpIK_Limb();
+                if (generateNew) IKProcessor = new FimpIK_Limb();
+
                 if (BoneFeet) IKProcessor.SetLegWithFeet(BoneStart, BoneMid, BoneEnd, BoneFeet);
                 else IKProcessor.SetBones(BoneStart, BoneMid, BoneEnd);
 
@@ -24,12 +26,21 @@ namespace FIMSpace.FProceduralAnimation
                 IKProcessor.FeetFadeQuicker = 1.1f;
                 IKProcessor.FeetStretchLimit = 0.8f;
 
+                IKProcessor.HumanoidAnimator = Owner.Mecanim;
+                IKProcessor.IsRight = (Side == ELegSide.Right);
+
                 _FinalIKPos = IKProcessor.EndIKBone.transform.position;
                 _PreviousFinalIKPos = _FinalIKPos;
                 _PreviousFinalIKPosForStability = _FinalIKPos;
 
                 IKProcessor.IKTargetPosition = _FinalIKPos;
                 IKProcessor.IKTargetRotation = _FinalIKRot;
+            }
+
+            public void AssignCustomIKProcessor(FimpIK_Limb ik)
+            {
+                IKProcessor = ik;
+                IK_Initialize(false);
             }
 
             /// <summary> If not using IK multiplicator it's simply _SourceIKPos </summary>
@@ -192,6 +203,7 @@ namespace FIMSpace.FProceduralAnimation
             {
                 IKProcessor.IKWeight = Owner._MainBlend * LegBlendWeight * InternalModuleBlendWeight;
                 BlendWeight = IKProcessor.IKWeight;
+                IKProcessor.InverseHint = InverseHint;
             }
 
             public void IK_UpdateParams()

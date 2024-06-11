@@ -1,7 +1,7 @@
 __________________________________________________________________________________________
 
 Package "Legs Animator"
-Version 1.0.1
+Version 1.0.1.5
 
 Made by FImpossible Creations - Filip Moeglich
 http://fimpossiblecreations.pl
@@ -60,6 +60,27 @@ Check Manual for more
 
 
 __________________________________________________________________________________________
+
+Version 1.0.1.5
+- Added possibility to override IK Processors with custom IK (inherited from FimpIK_Limb)
+It's placed under 'Modules - Community' directory.
+
+Version 1.0.1.4
+- Added "Unity Humanoid IK" hint mode
+- Added 'Override Direction' switch (coing) for 360 directional movement module
+
+Version 1.0.1.3
+- Added "Start Bone" raycast origin mode
+- Added "Redirect Raycasting" module
+
+Version 1.0.1.2
+- Added buttons on the right to animator variables fields for quick select animator properies.
+- Added Animal preset button (slightly different than insect preset)
+
+Version 1.0.1.1
+- Added Inverse Hint toggle under Setup->IK->IK Leg Settings
+It will reverse bend direction for leg.
+- Added support for script recompilling on script reload (unity 2022.3+)
 
 Version 1.0.1 (containing hotfixes since v1.0.0)
 - Added unscaled delta time switch

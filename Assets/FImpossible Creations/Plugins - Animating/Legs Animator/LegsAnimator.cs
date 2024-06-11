@@ -63,6 +63,16 @@ namespace FIMSpace.FProceduralAnimation
 
         private void OnEnable()
         {
+
+            #region Recompile support (Thanks to zORg_alex on our Discord!)
+
+#if UNITY_EDITOR
+#if UNITY_2021_3_OR_NEWER
+            if (Application.isPlaying) UnityEditor.AssemblyReloadEvents.afterAssemblyReload += ReInitialize;
+#endif
+#endif
+            #endregion
+
             // Prevent start-disable not activated component error
             if (_started)
             {
@@ -70,6 +80,14 @@ namespace FIMSpace.FProceduralAnimation
                 else _wasInstantTriggered = false;
             }
         }
+
+        private void ReInitialize()
+        {
+            LegsInitialized = false;
+            DisposeModules();
+            Start();
+        }
+
 
         #endregion Start Coroutine
 

@@ -121,6 +121,43 @@ namespace FIMSpace.FProceduralAnimation
             EditorGUILayout.EndVertical();
         }
 
+        GUIContent _guic_animatorParam = new GUIContent();
+
+        void GUI_PropertyWithAnimatorVariableSelector(SerializedProperty prop, UnityEngine.AnimatorControllerParameterType type, bool floatOrBoolParam = false)
+        {
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(prop);
+
+            if (_guic_animatorParam.image == null) _guic_animatorParam = new GUIContent(" >", EditorGUIUtility.IconContent("AnimatorController Icon").image);
+            if (GUILayout.Button(_guic_animatorParam, EditorStyles.boldLabel, GUILayout.Width(28), GUILayout.Height(18)))
+            {
+                GenericMenu menu = new GenericMenu();
+                menu.AddItem(new GUIContent("None"), prop.stringValue == "", () => { prop.stringValue = ""; prop.serializedObject.ApplyModifiedProperties(); });
+                var sp = prop.Copy();
+
+                for (int i = 0; i < Get.Mecanim.parameterCount; i++)
+                {
+                    var param = Get.Mecanim.parameters[i];
+
+                    if (param.type == type)
+                    {
+                        menu.AddItem(new GUIContent(param.name + " (" + param.type.ToString() + ")"), sp.stringValue == param.name, () => { sp.stringValue = param.name; sp.serializedObject.ApplyModifiedProperties(); });
+                        continue;
+                    }
+
+                    if (floatOrBoolParam)
+                        if (param.type == AnimatorControllerParameterType.Bool || param.type == AnimatorControllerParameterType.Float)
+                        {
+                            menu.AddItem(new GUIContent(param.name + " (" + param.type.ToString() + ")"), sp.stringValue == param.name, () => { sp.stringValue = param.name; sp.serializedObject.ApplyModifiedProperties(); });
+                        }
+                }
+
+                menu.ShowAsContext();
+            }
+
+            GUILayout.EndHorizontal();
+        }
+
         protected void View_Extra_Controll(bool drawExtras = true)
         {
             EditorGUILayout.BeginVertical(FGUI_Resources.BGInBoxBlankStyle);
@@ -134,8 +171,8 @@ namespace FIMSpace.FProceduralAnimation
             var sp = sp_Mecanim.Copy();
             if (drawExtras)
             {
-                sp.Next(false); if (Get.Mecanim) EditorGUILayout.PropertyField(sp); // Grounded Param
-                sp.Next(false); if (Get.Mecanim) EditorGUILayout.PropertyField(sp); // Movings Param
+                sp.Next(false); if (Get.Mecanim) GUI_PropertyWithAnimatorVariableSelector(sp, AnimatorControllerParameterType.Bool); // EditorGUILayout.PropertyField(sp); // Grounded Param
+                sp.Next(false); if (Get.Mecanim) GUI_PropertyWithAnimatorVariableSelector(sp, AnimatorControllerParameterType.Float, true); // Movings Param
 
                 sp.Next(false);
 
@@ -186,8 +223,9 @@ namespace FIMSpace.FProceduralAnimation
             }
 
 
-            sp.Next(false); EditorGUILayout.PropertyField(sp); // Sliding
-            EditorGUILayout.PropertyField(sp_RagdolledParameter); // Sliding
+            sp.Next(false); if ( Get.Mecanim) GUI_PropertyWithAnimatorVariableSelector(sp, AnimatorControllerParameterType.Bool); // Sliding
+            if (Get.Mecanim) GUI_PropertyWithAnimatorVariableSelector(sp_RagdolledParameter, AnimatorControllerParameterType.Bool); // Ragdolled
+
             sp.Next(false);
             if (asksSpine) EditorGUILayout.PropertyField(sp);
 

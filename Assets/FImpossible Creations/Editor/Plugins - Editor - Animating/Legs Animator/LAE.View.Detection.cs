@@ -177,7 +177,10 @@ namespace FIMSpace.FProceduralAnimation
                 if (Application.isPlaying == false)
                     Get._EditorAllowAutoUpdateFeetParams = EditorGUILayout.Toggle(new GUIContent("Auto Update Params", "Allowing to automatically refresh parameters below, when changing legs bones in the inspector window (Editor Only Feature).\nDisable if you want to adjust feet axes fully manually."), Get._EditorAllowAutoUpdateFeetParams);
 
-                sp = legsp.FindPropertyRelative("AnkleToHeel");
+                sp = legsp.FindPropertyRelative("InverseHint");
+                EditorGUILayout.PropertyField(sp);//
+                sp.Next(false);
+                //sp = legsp.FindPropertyRelative("AnkleToHeel");
 
                 EditorGUIUtility.fieldWidth = 24;
 
