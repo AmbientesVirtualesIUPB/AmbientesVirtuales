@@ -40,7 +40,7 @@ public class Split : MonoBehaviour
         //Inicializamos posiciones
         pos = new int[13];
         //Cargamos datos
-        SaveManagers.GetComponent<SaveManager>().CargarDatos();
+        //SaveManagers.GetComponent<SaveManager>().CargarDatos();
     }
 
     public void Start()
@@ -67,7 +67,7 @@ public class Split : MonoBehaviour
         }
 
         //Guardamos el ultimo item elegido en la posicion indicada
-        SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[0] , 0);
+        //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[0] , 0);
     }
 
     //Metodo invocado desde BtnMaleta para el cambio de estilo de la maleta
@@ -93,7 +93,7 @@ public class Split : MonoBehaviour
             }
 
             //Guardamos el ultimo item elegido en la posicion indicada
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[1], 1);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[1], 1);
         }
         else
         //Masculino
@@ -110,7 +110,7 @@ public class Split : MonoBehaviour
                 maleta_M[i].SetActive(pos[2] == i);
             }
 
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[2], 2);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[2], 2);
         }
     }
    
@@ -137,7 +137,7 @@ public class Split : MonoBehaviour
             }
 
             //Guardamos el ultimo item elegido en la posicion indicada
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[3], 3);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[3], 3);
         }
         //Masculino
         else
@@ -154,7 +154,7 @@ public class Split : MonoBehaviour
                 ropas_M[i].SetActive(pos[4] == i);
             }
 
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[4], 4);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[4], 4);
         }
     }
 
@@ -181,7 +181,7 @@ public class Split : MonoBehaviour
             }
 
             //Guardamos el ultimo item elegido en la posicion indicada
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[5], 5);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[5], 5);
         }
         else
         //Masculino
@@ -198,7 +198,7 @@ public class Split : MonoBehaviour
                 cabezas_M[i].SetActive(pos[6] == i);
             }
 
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[6], 6);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[6], 6);
         }
     }
 
@@ -225,7 +225,7 @@ public class Split : MonoBehaviour
                 cejas_F[i].SetActive(pos[7] == i);
             }
             //Guardamos el ultimo item elegido en la posicion indicada
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[7], 7);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[7], 7);
         }
         else
         //Masculino
@@ -241,7 +241,7 @@ public class Split : MonoBehaviour
             {
                 cejas_M[i].SetActive(pos[8] == i);
             }
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[8], 8);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[8], 8);
         }
     }
 
@@ -268,7 +268,7 @@ public class Split : MonoBehaviour
                 pelos_F[i].SetActive(pos[9] == i);
             }
             //Guardamos el ultimo item elegido en la posicion indicada
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[9], 9);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[9], 9);
         }
         else
         //Masculino
@@ -284,7 +284,7 @@ public class Split : MonoBehaviour
             {
                 pelos_M[i].SetActive(pos[10] == i);
             }
-            SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[10], 10);
+            //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[10], 10);
         }
     }
 
@@ -306,7 +306,7 @@ public class Split : MonoBehaviour
             sombreros[i].SetActive(pos[11] == i);
         }
         //Guardamos el ultimo item elegido en la posicion indicada
-        SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[11], 11);
+        //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[11], 11);
     }
 
     //Metodo invocado desde BtnZapatos para el cambio de estilo de zapatos
@@ -327,7 +327,7 @@ public class Split : MonoBehaviour
             zapatos[i].SetActive(pos[12] == i);
         }
         //Guardamos el ultimo item elegido en la posicion indicada
-        SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[12], 12);
+        //SaveManagers.GetComponent<SaveManager>().PesonalizacionPersonaje(pos[12], 12);
     }
 
     //Traemos los datos de cada caracteristica

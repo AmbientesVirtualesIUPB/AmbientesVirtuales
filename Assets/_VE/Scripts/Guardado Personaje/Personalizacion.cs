@@ -15,6 +15,8 @@ public class Personalizacion : MonoBehaviour
     public Color[] paletaRopa;
     public Material materialInicialPielHombre;
     public Material materialInicialPielMujer;
+    public Material[] materiales;
+    int num;
 
 
     // Start is called before the first frame update
@@ -24,28 +26,27 @@ public class Personalizacion : MonoBehaviour
         TransicionDeGenero(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-
+    // Pasar elemento a elemento las caracteristicas unicamente pertenecientes al genero Masculino
     public void SiguienteParteHombre(int cual)
     {
         partesHombre[cual].Siguiente();
     }
 
+    // Pasar elemento a elemento las caracteristicas unicamente pertenecientes al genero Femenino
     public void SiguienteParteMujer(int cual)
     {
         partesMujer[cual].Siguiente();
     }
 
+    // Pasar elemento a elemento las caracteristicas pertenecientes a ambos generos, invocado desde los botones de personalizacion
     public void SiguienteParteOtro(int cual)
     {
         partesOtros[cual].Siguiente();
     }
 
+
+    // Metodo invocado desde los botones de personalizacion, enviado el dato correspondiente a la caracteristica a modificar
     public void SiguienteParteGay(int cual)
     {
         if (genero==0)
@@ -58,9 +59,12 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
+    // Metodo invocado desde BtnMasculino y BtnFemenino para el cambio de genero
     public void TransicionDeGenero(int cual)
     {
         genero = cual;
+        // Si es cero, es femenino, establecemos los elementos de dicho genero y desactivamos los masculinos
+        // Si es uno, es masculino, establecemos los elementos de dicho genero y desactivamos los femeninos
         if (genero==0)
         {
             for (int i = 0; i < partesHombre.Length; i++)
@@ -77,6 +81,7 @@ public class Personalizacion : MonoBehaviour
             }
         }
 
+        // Establecemos los elementos de ambos generos
         for (int i = 0;i < partesOtros.Length; i++)
         {
             partesOtros[i].Establecer();
@@ -87,6 +92,23 @@ public class Personalizacion : MonoBehaviour
     {
 
     }
+
+
+    // PRUEBA CAMBIO DE MATERIALES
+    public void Materiales(int cual)
+    {
+        for (int i = 0; i < partesHombre.Length; i++)
+        {
+            //partesHombre[i].EstablecerMaterialPiel(materiales[cual]);
+            partesMujer[i].EstablecerMaterialPiel(materiales[cual]);
+        }
+    }
+    public void SiguienteMaterial()
+    {
+        num = (num + 1) % materiales.Length;
+        Materiales(num);
+    }
+
 
     public void InicializarElementos()
     {
@@ -111,7 +133,6 @@ public class Personalizacion : MonoBehaviour
 public class ElementoPersonalizable
 {
     public string nombre;
-
     public Color color1;
     public Color color2;
     int iColor1;
@@ -120,6 +141,7 @@ public class ElementoPersonalizable
     public int activo;
     public Color[] paleta;
     public Material materialPiel;
+
 
     public void Establecer()
     {
@@ -146,7 +168,7 @@ public class ElementoPersonalizable
                 {
                     if ((mr.materials[j].name).Substring(0,3)=="SKN")
                     {
-                        Debug.Log("Entro SKN" + mr.ToString());
+                        //Debug.Log("Entro SKN" + mr.ToString());
                         Material[] mats = mr.materials;
                         mats[j] = m;
                         mr.materials = mats;
@@ -157,11 +179,11 @@ public class ElementoPersonalizable
         }
     }
 
+    //
     public void Siguiente()
     {
         activo = (activo+1) % elementos.Length;
         Establecer();
-
     }
 
     public void Anterior()

@@ -45,8 +45,6 @@ public class Cambioboton : MonoBehaviour
     // Update is called once per frame
     void Actualizar()
     {
-        
-
         //Activamos la posición central y habilitamos el botón de personalizacion correspondiente
         botones[conteo % 8].gameObject.SetActive(true);
         botones[conteo % 8].gameObject.GetComponent<Button>().interactable = true;
@@ -74,140 +72,21 @@ public class Cambioboton : MonoBehaviour
 
 
         //Verificamos que objeto hijo esta marcado como interactuable en el momento para saber que enfoque le daremos al Zoom
-        //Cuerpo
-        if (transform.GetChild(0).gameObject.GetComponent<Button>().interactable == true)
-        {   
-            enfoqueActual = 1;
-        }
-        //Zapatos
-        else if (transform.GetChild(1).gameObject.GetComponent<Button>().interactable == true)
+        for (int i = 0; i < botones.Length; i++)
         {
-            enfoqueActual = 2;
+            if (transform.GetChild(conteo).gameObject.GetComponent<Button>().interactable == true)
+            {
+                enfoqueActual = conteo + 1;
+            }
         }
-        //Rostro
-        else if (transform.GetChild(2).gameObject.GetComponent<Button>().interactable == true)
-        {
-            enfoqueActual = 3;
-        }
-        //Cabello
-        else if (transform.GetChild(3).gameObject.GetComponent<Button>().interactable == true)
-        {
-            enfoqueActual = 4;
-        }
-        //Reloj
-        else if (transform.GetChild(4).gameObject.GetComponent<Button>().interactable == true)
-        {
-            enfoqueActual = 5;
-        }
-        //Maleta
-        else if (transform.GetChild(5).gameObject.GetComponent<Button>().interactable == true)
-        {
-            enfoqueActual = 6;
-        }
-        //Cejas
-        else if (transform.GetChild(6).gameObject.GetComponent<Button>().interactable == true)
-        {
-            enfoqueActual = 7;
-        }
-        //Sombrero
-        else if (transform.GetChild(7).gameObject.GetComponent<Button>().interactable == true)
-        {
-            enfoqueActual = 8;
-        }
-
+        
+        // Activamos el hijo del canvas zoom, dependiendo del enfoque actual activo
         for (int i = 0; i < 8; i++)
         {
             canvasZoom.transform.GetChild(i).gameObject.SetActive((enfoqueActual - 1) == i);
         }
 
-        //switch (conteo)
-        //{
-        //    case 0:
-        //        botones[0].gameObject.SetActive(true);
-        //        botones[0].gameObject.GetComponent<Button>().enabled = true;
-        //        botones[0].position = Posiciones[2].position;
-        //        botones[1].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[1].gameObject.SetActive(true);
-        //        botones[1].position = Posiciones[3].position;
-        //        botones[2].gameObject.SetActive(false);
-        //        botones[2].position = Posiciones[4].position;
-        //        botones[3].gameObject.SetActive(false);
-        //        botones[3].position = Posiciones[4].position;
-        //        botones[4].gameObject.SetActive(false);
-        //        botones[4].position = Posiciones[4].position;
-
-        //        break;
-        //    case 1:
-
-
-        //        botones[0].gameObject.SetActive(true);
-        //        botones[0].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[0].position = Posiciones[1].position;
-        //        botones[1].gameObject.SetActive(true);
-        //        botones[1].gameObject.GetComponent<Button>().enabled = true;
-        //        botones[1].position = Posiciones[2].position;
-        //        botones[2].gameObject.SetActive(true);
-        //        botones[2].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[2].position = Posiciones[3].position;
-        //        botones[3].gameObject.SetActive(false);
-        //        botones[3].position = Posiciones[4].position;
-        //        botones[4].gameObject.SetActive(false);
-        //        botones[4].position = Posiciones[4].position;
-        //        break;
-
-        //    case 2:
-
-        //        botones[0].gameObject.SetActive(false);
-        //        botones[0].position = Posiciones[0].position;
-        //        botones[1].gameObject.SetActive(true);
-        //        botones[1].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[1].position = Posiciones[1].position;
-        //        botones[2].gameObject.SetActive(true);
-        //        botones[2].gameObject.GetComponent<Button>().enabled = true;
-        //        botones[2].position = Posiciones[2].position;
-        //        botones[3].gameObject.SetActive(true);
-        //        botones[0].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[3].position = Posiciones[3].position;
-        //        botones[4].gameObject.SetActive(false);
-        //        botones[4].position = Posiciones[4].position;
-
-        //        break;
-
-        //    case 3:
-
-        //        botones[0].gameObject.SetActive(false);
-        //        botones[0].position = Posiciones[0].position;
-        //        botones[1].gameObject.SetActive(false);
-        //        botones[1].position = Posiciones[0].position;
-        //        botones[2].gameObject.SetActive(true);
-        //        botones[2].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[2].position = Posiciones[1].position;
-        //        botones[3].gameObject.SetActive(true);
-        //        botones[3].gameObject.GetComponent<Button>().enabled = true;
-        //        botones[3].position = Posiciones[2].position;
-        //        botones[4].gameObject.SetActive(true);
-        //        botones[4].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[4].position = Posiciones[3].position;
-        //        break;
-
-        //    case 4:
-        //        botones[0].gameObject.SetActive(false);
-        //        botones[0].position = Posiciones[0].position;
-        //        botones[1].gameObject.SetActive(false);
-        //        botones[1].position = Posiciones[0].position;
-        //        botones[2].gameObject.SetActive(false);
-        //        botones[2].position = Posiciones[0].position;
-        //        botones[3].gameObject.SetActive(true);
-        //        botones[3].gameObject.GetComponent<Button>().enabled = false;
-        //        botones[3].position = Posiciones[1].position;
-        //        botones[4].gameObject.SetActive(true);
-        //        botones[4].gameObject.GetComponent<Button>().enabled = true;
-        //        botones[4].position = Posiciones[2].position;
-        //        break;
-
-        //    default:
-        //        break;
-        //}
+       
     }
 
 
