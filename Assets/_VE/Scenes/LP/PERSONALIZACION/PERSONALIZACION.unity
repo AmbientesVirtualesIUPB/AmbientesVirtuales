@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18153833, g: 0.22717923, b: 0.3074036, a: 1}
+  m_IndirectSpecularColor: {r: 0.18153828, g: 0.22717905, b: 0.30740368, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -551,7 +551,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2126161627}
         m_TargetAssemblyTypeName: Personalizacion, Assembly-CSharp
-        m_MethodName: SiguienteMaterial
+        m_MethodName: SiguienteMaterialPiel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Color
+  m_text: Color Piel
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2307,6 +2307,12 @@ CanvasRenderer:
 --- !u!1 &570370590 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7961890833972912107, guid: f7049d1bd08befd499853a3147e331f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7255248093947067840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &606503352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3373620128283662047, guid: f7049d1bd08befd499853a3147e331f3,
     type: 3}
   m_PrefabInstance: {fileID: 7255248093947067840}
   m_PrefabAsset: {fileID: 0}
@@ -9145,8 +9151,6 @@ MonoBehaviour:
   - nombre: Maleta
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 2119226748}
     - {fileID: 341429166}
@@ -9156,8 +9160,6 @@ MonoBehaviour:
   - nombre: Cuerpo
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1915196362}
     - {fileID: 172349105}
@@ -9180,8 +9182,6 @@ MonoBehaviour:
   - nombre: Cabeza
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 258663957}
     - {fileID: 1819675646}
@@ -9193,8 +9193,6 @@ MonoBehaviour:
   - nombre: Cejas
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1651735530}
     - {fileID: 345063877}
@@ -9207,8 +9205,6 @@ MonoBehaviour:
   - nombre: Pelos
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 247467188}
     - {fileID: 1317150892}
@@ -9228,8 +9224,6 @@ MonoBehaviour:
   - nombre: Maleta
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 2119226748}
     - {fileID: 1907622091}
@@ -9239,8 +9233,6 @@ MonoBehaviour:
   - nombre: Cuerpo
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1394877568}
     - {fileID: 685420757}
@@ -9263,8 +9255,6 @@ MonoBehaviour:
   - nombre: Cabeza
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1590932955}
     - {fileID: 114401626}
@@ -9276,8 +9266,6 @@ MonoBehaviour:
   - nombre: Cejas
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1627410426}
     - {fileID: 1177245859}
@@ -9290,8 +9278,6 @@ MonoBehaviour:
   - nombre: Pelos
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1790617659}
     - {fileID: 237444590}
@@ -9311,8 +9297,6 @@ MonoBehaviour:
   - nombre: Reloj
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1246061200}
     - {fileID: 616498215}
@@ -9323,8 +9307,6 @@ MonoBehaviour:
   - nombre: Sombrero
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0}
     elementos:
     - {fileID: 2071255364}
     - {fileID: 185265282}
@@ -9335,8 +9317,6 @@ MonoBehaviour:
   - nombre: Zapatos
     tipo: 0
     padre: {fileID: 0}
-    color1: {r: 0, g: 0, b: 0, a: 0}
-    color2: {r: 0, g: 0, b: 0, a: 0}
     elementos:
     - {fileID: 1576337999}
     - {fileID: 1255691895}
@@ -9356,8 +9336,16 @@ MonoBehaviour:
     activo: 0
     materialPiel: {fileID: 0}
     materialGeneral: {fileID: 0}
+  - nombre: Ojos
+    tipo: 2
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 606503352}
+    activo: 0
+    materialPiel: {fileID: 0}
+    materialGeneral: {fileID: 0}
   genero: 0
-  paletaPiel:
+  paletaCejas:
   - {r: 1, g: 0.93442965, b: 0, a: 1}
   - {r: 0.21765637, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.12884092, b: 0, a: 1}
@@ -9405,7 +9393,11 @@ MonoBehaviour:
     type: 2}
   materialInicialPielMujer: {fileID: 2100000, guid: ec35a7ec5e9751044ae4b78bbf1bca9f,
     type: 2}
-  matPielMujer: []
+  matPielMujer:
+  - {fileID: 2100000, guid: 03adec1f8846e5040a564f3c217a5978, type: 2}
+  - {fileID: 2100000, guid: dc604a69aed171c4e8ca306d26810bf2, type: 2}
+  - {fileID: 2100000, guid: f97a5951fddf8884c99163b6adb3ea70, type: 2}
+  - {fileID: 2100000, guid: ec35a7ec5e9751044ae4b78bbf1bca9f, type: 2}
   matPielHombre: []
 --- !u!1001 &2127907305
 PrefabInstance:

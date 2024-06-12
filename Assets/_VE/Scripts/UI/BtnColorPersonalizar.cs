@@ -18,12 +18,14 @@ public class BtnColorPersonalizar : MonoBehaviour
         print("Activo" + tipo.ToString());
         switch (tipo)
         {
-            case TipoElemento.piel:
+            case TipoElemento.maleta:
+                //personalizacion.CambiarColorMaleta(indice);
                 break;
             case TipoElemento.cabello:
                 personalizacion.CambiarColorCabello(indice);
                 break;
             case TipoElemento.ojos:
+                personalizacion.CambiarColorOjos(indice);
                 break;
             case TipoElemento.cejas:
                 personalizacion.CambiarColorCabello(indice);

@@ -6,7 +6,7 @@ public class CrearPaletas : MonoBehaviour
 {
     public Personalizacion personalizacion;
     public GameObject prBoton;
-    public Transform panelPiel;
+    public Transform panelMaleta;
     public Transform panelOjos;
     public Transform panelCabello;
     public Transform panelPrimario;
@@ -14,13 +14,13 @@ public class CrearPaletas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < personalizacion.paletaPiel.Length; i++)
+        for (int i = 0; i < personalizacion.paletaCejas.Length; i++)
         {
-            GameObject go = Instantiate(prBoton, panelPiel);
+            GameObject go = Instantiate(prBoton, panelMaleta);
             BtnColorPersonalizar btn = go.GetComponent<BtnColorPersonalizar>();
             btn.personalizacion = personalizacion;
             btn.indice = i;
-            btn.tipo = TipoElemento.piel;
+            btn.tipo = TipoElemento.maleta;
         }
 
         for (int i = 0; i < personalizacion.paletaOjos.Length; i++)
