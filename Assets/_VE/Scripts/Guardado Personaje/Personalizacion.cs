@@ -13,6 +13,7 @@ public class Personalizacion : MonoBehaviour
     public Color[] paletaCabello;
     public Color[] paletaOjos;
     public Color[] paletaRopa;
+    public Color[] paletaPiel;
     public Material materialInicialPielHombre;
     public Material materialInicialPielMujer;
     public Material[] matPielMujer;
@@ -27,6 +28,7 @@ public class Personalizacion : MonoBehaviour
     {
         InicializarElementos();
         TransicionDeGenero(0);
+
     }
 
     [ContextMenu("Pintar")]
@@ -123,18 +125,18 @@ public class Personalizacion : MonoBehaviour
 
 
     // PRUEBA CAMBIO DE MATERIALES
-    public void CambiarMaterialPïel(int cual)
+    public void CambiarMaterialPiel(int cual)
     {
         for (int i = 0; i < partesHombre.Length; i++)
         {
             //partesHombre[i].EstablecerMaterialPiel(matPielHombre[cual]);
-            partesMujer[i].EstablecerMaterialPiel(matPielMujer[cual]);
+            partesMujer[i].EstablecerMaterialPiel(cual);
         }
     }
     public void SiguienteMaterialPiel()
     {
         numMaterial = (numMaterial + 1) % matPielMujer.Length;
-        CambiarMaterialPïel(numMaterial);
+        CambiarMaterialPiel(numMaterial);
     }
 
     public void CambioColorPrincipal(int num)
@@ -170,16 +172,16 @@ public class Personalizacion : MonoBehaviour
     public void CambiarColorCabello(int num)
     {
         print("Cambio color cabello " + num.ToString());
-        partesHombre[4].EstablecerColorGeneralPrueba(num);
-        partesHombre[3].EstablecerColorGeneralPrueba(num);
-        partesMujer[4].EstablecerColorGeneralPrueba(num);
-        partesMujer[3].EstablecerColorGeneralPrueba(num);
+        partesHombre[4].EstablecerColorGeneral(num);
+        partesHombre[3].EstablecerColorGeneral(num);
+        partesMujer[4].EstablecerColorGeneral(num);
+        partesMujer[3].EstablecerColorGeneral(num);
     }
 
     public void CambiarColorOjos(int num)
     {
         print("Cambio color ojos " + num.ToString());
-        partesOtros[3].EstablecerColorGeneralPrueba(num);
+        partesOtros[3].EstablecerColorGeneral(num);
     }
 
     public void CambiarColorMaleta(int num)
@@ -194,16 +196,24 @@ public class Personalizacion : MonoBehaviour
     {
         for (int i = 0; i < partesHombre.Length; i++)
         {
+            partesHombre[i].Inicializar();
             partesHombre[i].padre = this;
-            partesHombre[i].EstablecerMaterialPiel(materialInicialPielHombre);
+            partesHombre[i].EstablecerMaterialPiel(0);
+            partesHombre[i].EstablecerColorPrincipal(0);
+            partesHombre[i].EstablecerColorSecundario(0);
 
-            partesMujer[i].EstablecerMaterialPiel(materialInicialPielMujer);
+            partesMujer[i].Inicializar();
             partesMujer[i].padre = this;
+            partesMujer[i].EstablecerMaterialPiel(0);
+            partesMujer[i].EstablecerColorPrincipal(0);
+            partesMujer[i].EstablecerColorSecundario(0);
+
         }
 
         for (int i = 0; i < partesOtros.Length; i++)
         {
             partesOtros[i].padre = this;
+            partesOtros[i].Inicializar();
         }
     }
 
@@ -222,9 +232,15 @@ public class Personalizacion : MonoBehaviour
                 return paletaCabello[i];
             case TipoElemento.ropa:
                 return paletaRopa[i];
+            case TipoElemento.piel:
+                return paletaPiel[i];
             default:
                 return paletaRopa[i];
         }
+    }
+    public Color GetColorPiel(int i)
+    {
+        return paletaPiel[i];
     }
 
     public Color[] GetPaleta(TipoElemento t)
@@ -241,6 +257,8 @@ public class Personalizacion : MonoBehaviour
                 return paletaCabello;
             case TipoElemento.ropa:
                 return paletaRopa;
+            case TipoElemento.piel:
+                return paletaPiel;
             default:
                 return paletaRopa;
         }
@@ -251,17 +269,17 @@ public class Personalizacion : MonoBehaviour
 [System.Serializable]
 public class ElementoPersonalizable
 {
-    public string nombre;
-    public TipoElemento tipo;
-    public Personalizacion padre;
-    int iColor1;
-    int iColor2;
-    public GameObject[] elementos;
-    public int activo;
-    public Material materialPiel;
-    public Material materialGeneral;
+    public string           nombre;
+    public TipoElemento     tipo;
+    public Personalizacion  padre;
+    public GameObject[]     elementos;
+    public int              activo;
+    public List<Material>   materialesPiel;
+    public List<Material>   materialesGenerales;
     //List<Material> materialPiel = new List<Material>();
     
+    int iColor1;
+    int iColor2;
 
     
 
@@ -278,36 +296,40 @@ public class ElementoPersonalizable
         Establecer();
     }
 
-    
-    
-    
-
-    public void EstablecerMaterialPiel(Material m)
-    {
-        for (int i = 0;i < elementos.Length;i++) 
-        { 
-            Renderer mr = elementos[i].GetComponent<Renderer>();
-            if (mr != null)
-            {
+    public void Inicializar()
+	{
+        materialesPiel = new List<Material>();
+        materialesGenerales = new List<Material>();
+        Renderer mr;
+		for (int i = 0; i < elementos.Length; i++)
+		{
+            mr = elementos[i].GetComponent<Renderer>();
+			if (mr != null)
+			{
                 for (int j = 0; j < mr.materials.Length; j++)
                 {
-                    if ((mr.materials[j].name).Substring(0,3)=="SKN")
+                    if (mr.materials[j].name.Substring(0, 3).Equals("SKN"))
                     {
-                        Material[] mats = mr.materials;
-                        mats[j] = m;
-                        mr.materials = mats;
-                        materialPiel = mr.materials[j];
+                        materialesPiel.Add(mr.materials[j]);
                     }
                     else
                     {
-                        Material[] mats = mr.materials;
-                        mats[j] = mr.materials[j];
-                        mr.materials = mats;
-                        materialGeneral = mr.materials[j];
-
+                        materialesGenerales.Add(mr.materials[j]);
                     }
                 }
             }
+		}
+	}
+    
+    
+
+    public void EstablecerMaterialPiel(int num)
+    {
+        iColor1 = num;
+        for (int i = 0; i < materialesPiel.Count; i++)
+        {
+            materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
+            Debug.Log("Cambiando el color según el tipo: " + tipo.ToString());
         }
     }
 
@@ -353,57 +375,21 @@ public class ElementoPersonalizable
 
     public void SiguienteColorPrincipal()
     {
-        iColor1 = (iColor1 + 1) % padre.GetPaleta(tipo).Length;
-        if (materialGeneral!=null)
-        {
-            /*
-            for (int i = 0; i < materialGeneral.Count; i++)
-            {
-                materialGeneral[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
-            }
-            */
-            materialGeneral.SetColor("_ColorPrincipal", padre.GetColor(tipo,iColor1));
-        }
+        EstablecerColorPrincipal((iColor1 + 1) % padre.GetPaleta(tipo).Length);
     }
 
     public void SiguienteColorSecundario()
     {
-        iColor2 = (iColor2 + 1) % padre.GetPaleta(tipo).Length;
-        if (materialGeneral != null)
-        {
-            /*
-            for (int i = 0; i < materialGeneral.Count; i++)
-            {
-                materialGeneral[i].SetColor("_ColorSecundario", padre.GetColor(tipo, iColor2));
-            }
-            */
-            materialGeneral.SetColor("_ColorSecundario", padre.GetColor(tipo,iColor2));
-        }
+        EstablecerColorSecundario((iColor2 + 1) % padre.GetPaleta(tipo).Length);
+
     }
 
     public void EstablecerColorPrincipal(int num)
     {
         iColor1 = num;
-        if (materialGeneral != null)
-        {
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        {
-                            //Debug.Log(mr.materials[j].name);
-                            Material[] mats = mr.materials;
-                            mats[j].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
-                            mr.materials = mats;
-
-                        }
-                    }
-                }
-            }
+		for (int i = 0; i < materialesGenerales.Count; i++)
+		{
+            materialesGenerales[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
         }
 
 
@@ -412,79 +398,29 @@ public class ElementoPersonalizable
     public void EstablecerColorSecundario(int num)
     {
         iColor2 = num;
-        if (materialGeneral != null)
+        for (int i = 0; i < materialesGenerales.Count; i++)
         {
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        { 
-                            Material[] mats = mr.materials;
-                            mats[j].SetColor("_ColorSecundario", padre.GetColor(tipo, iColor2));
-                            mr.materials = mats;
-                        }
-                    }
-                }
-            }
+            materialesGenerales[i].SetColor("_ColorSecundario", padre.GetColor(tipo, iColor2));
+        }
+    }
+
+    public void EstablecerColorPiel(int num)
+    {
+        iColor2 = num;
+        for (int i = 0; i < materialesPiel.Count; i++)
+        {
+            materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColorPiel(iColor2));
         }
     }
 
     public void EstablecerColorGeneral(int num)
     {
-        Debug.Log("Llegó");
         iColor1 = num;
-        if (true)
+        for (int i = 0; i < materialesGenerales.Count; i++)
         {
-            Debug.Log("primer if");
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        {
-                            Debug.Log("Llegó final");
-                            Material[] mats = mr.materials;
-                            mats[j].SetColor("_Color" , padre.GetColor(tipo, iColor1));
-                            mr.materials = mats;
-                            materialGeneral = mats[j];
-                            materialGeneral.SetColor("_Color", padre.GetColor(tipo, iColor1));
-
-                        }
-                    }
-                }
-            }
+            materialesGenerales[i].color =  padre.GetColor(tipo, iColor1);
         }
-    }
-
-    public void EstablecerColorGeneralPrueba(int num)
-    {
-        iColor1 = num;
-        if (true)
-        {
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        {
-                            Material[] mats = mr.materials;
-                            mats[j].color = padre.GetColor(tipo, iColor1);
-                            materialGeneral = mats[j];
-                        }
-                    }
-                }
-            }
-        }
+        
     }
 
 
@@ -497,5 +433,6 @@ public enum TipoElemento
     cabello,
     ojos,
     cejas,
-    ropa
+    ropa,
+    piel
 }
