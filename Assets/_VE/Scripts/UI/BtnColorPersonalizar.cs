@@ -34,12 +34,10 @@ public class BtnColorPersonalizar : MonoBehaviour
                 if (esPrincipal)
                 {
                     personalizacion.CambioColorPrincipal(indice);
-                    personalizacion.CambiarMaterialPiel(indice);
                 }
                 else
                 {
                     personalizacion.CambioColorSecundario(indice);
-                    personalizacion.CambiarMaterialPiel(indice);
                 }
                 break;
             case TipoElemento.piel:
