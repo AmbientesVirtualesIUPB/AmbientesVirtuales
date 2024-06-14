@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1246061201
 Transform:
   m_ObjectHideFlags: 0
@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071255365}
-  - component: {fileID: 2071255366}
   m_Layer: 0
   m_Name: LUF_00
   m_TagString: Untagged
@@ -63,137 +62,6 @@ Transform:
   m_Father: {fileID: 5020231933456505497}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &2071255366
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071255364}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 26f902dd1f55a1f4a8b08fa1d6e2cfd6, type: 2}
-  - {fileID: 2100000, guid: 5909db5940230e44eaf3c0885183d9bf, type: 2}
-  - {fileID: 2100000, guid: 63326fd9648a5b14193b45730dd33c41, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -5493831565769685559, guid: 3704079809ae861418f796d7f89d889a, type: 3}
-  m_Bones:
-  - {fileID: 3349077099508692016}
-  - {fileID: 1142343017353913743}
-  - {fileID: 3532751404518718400}
-  - {fileID: 6338671616742166986}
-  - {fileID: 7846560869357085835}
-  - {fileID: 8573968577596859614}
-  - {fileID: 883517540879794459}
-  - {fileID: 3011990316356444775}
-  - {fileID: 7895203093308902606}
-  - {fileID: 3054614867646104326}
-  - {fileID: 5008821648938616250}
-  - {fileID: 6700266127609058024}
-  - {fileID: 6328079026784436311}
-  - {fileID: 343204311867333686}
-  - {fileID: 1100519409455138460}
-  - {fileID: 4877086574122066619}
-  - {fileID: 6152533852213427884}
-  - {fileID: 5971165164610367456}
-  - {fileID: 8689070376640099762}
-  - {fileID: 1660248350912076291}
-  - {fileID: 2337021020179502866}
-  - {fileID: 1194571173616570807}
-  - {fileID: 2716707429903475425}
-  - {fileID: 8951696330119372091}
-  - {fileID: 6119586618380739308}
-  - {fileID: 2182743777649167454}
-  - {fileID: 7907088099502747220}
-  - {fileID: 7121280984445920203}
-  - {fileID: 3771489742794484555}
-  - {fileID: 5491055865938117620}
-  - {fileID: 2641761510112852680}
-  - {fileID: 4244723203822516205}
-  - {fileID: 4439124056744489838}
-  - {fileID: 3481341684867114939}
-  - {fileID: 4266638374873707702}
-  - {fileID: 2423718239208145183}
-  - {fileID: 388031997471533456}
-  - {fileID: 4041341931092613580}
-  - {fileID: 3788316906815934756}
-  - {fileID: 9167422656790706797}
-  - {fileID: 2811825345281538623}
-  - {fileID: 5296894275196220991}
-  - {fileID: 169343222711682022}
-  - {fileID: 2994437704602594722}
-  - {fileID: 2059419175225817653}
-  - {fileID: 4556492616401029459}
-  - {fileID: 1048639932197026937}
-  - {fileID: 3647107572796362288}
-  - {fileID: 8676509600386379946}
-  - {fileID: 2238974449917730545}
-  - {fileID: 4063490736910439982}
-  - {fileID: 1327540719482994480}
-  - {fileID: 5220895528314802588}
-  - {fileID: 1206896277713110430}
-  - {fileID: 726526840316254433}
-  - {fileID: 779312070011045398}
-  - {fileID: 1629737085128379608}
-  - {fileID: 5794253329851477846}
-  - {fileID: 6211954595173689673}
-  - {fileID: 7893669655955516922}
-  - {fileID: 264827416831413434}
-  - {fileID: 6264237951096767987}
-  - {fileID: 5348207041201185977}
-  - {fileID: 1515092730893830242}
-  - {fileID: 3727642616055392917}
-  - {fileID: 5427985026008458912}
-  - {fileID: 5354993698334940348}
-  - {fileID: 8788380871804032861}
-  - {fileID: 5581173208804012425}
-  - {fileID: 6643557145683175391}
-  - {fileID: 4692146234796167853}
-  - {fileID: 5208783537611266414}
-  - {fileID: 1362643436797340416}
-  - {fileID: 8781503916186077260}
-  - {fileID: 8773592755992668143}
-  - {fileID: 4860012183567338948}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 3349077099508692016}
-  m_AABB:
-    m_Center: {x: 0.000002896064, y: 0.007715776, z: 0.00094630016}
-    m_Extent: {x: 0.0011703275, y: 0.0016259211, z: 0.0016319207}
-  m_DirtyAABB: 0
 --- !u!1 &2119226748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,7 +2493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &906105036772950240
 Transform:
   m_ObjectHideFlags: 0
@@ -2786,7 +2654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &995519266728054237
 Transform:
   m_ObjectHideFlags: 0
@@ -5570,7 +5438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116464401416278012}
   m_Layer: 0
-  m_Name: Cabeza
+  m_Name: Cabezas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6934,7 +6802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9147742161500324091
 Transform:
   m_ObjectHideFlags: 0
@@ -12332,7 +12200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7203618102439316758
 Transform:
   m_ObjectHideFlags: 0
@@ -14964,6 +14832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7144231620023851998}
   - component: {fileID: 6829978810967067121}
+  - component: {fileID: 2126161627}
   m_Layer: 0
   m_Name: PERSONAJES_FIN
   m_TagString: Untagged
@@ -15016,6 +14885,276 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2126161627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7525154758866420068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986d6ce16ce120344983528cfd108f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partesHombre:
+  - nombre: Maleta
+    tipo: 0
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 2119226748}
+    - {fileID: 6369162858571967293}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Cuerpo
+    tipo: 4
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 4493007578358014166}
+    - {fileID: 4991004941684370655}
+    - {fileID: 1419788458872134243}
+    - {fileID: 2189373797181794576}
+    - {fileID: 647474284949083068}
+    - {fileID: 197248506970398362}
+    - {fileID: 7641213547170277165}
+    - {fileID: 2555369788535660267}
+    - {fileID: 3782162124163996350}
+    - {fileID: 3357788228515672070}
+    - {fileID: 6583899447590378663}
+    - {fileID: 3740915480074222033}
+    - {fileID: 161088718627177270}
+    - {fileID: 2717464124356466650}
+    - {fileID: 1517292794644501256}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Cabeza
+    tipo: 5
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 2026205682879073984}
+    - {fileID: 2921919757521471099}
+    - {fileID: 871032109912793587}
+    - {fileID: 8956229542711324272}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Cejas
+    tipo: 3
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 8756177435348823012}
+    - {fileID: 8201181826120714062}
+    - {fileID: 2097686644412731164}
+    - {fileID: 9150309567575394239}
+    - {fileID: 5282024248550405546}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Pelos
+    tipo: 1
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 5141661751760177799}
+    - {fileID: 8514653714047759174}
+    - {fileID: 607538544030336718}
+    - {fileID: 8058090549849539975}
+    - {fileID: 4883367439611979921}
+    - {fileID: 1526795756471436875}
+    - {fileID: 5125483407419615597}
+    - {fileID: 3536321246953620639}
+    - {fileID: 8624389489882193599}
+    - {fileID: 4247913294346455020}
+    - {fileID: 3746102475292871213}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  partesMujer:
+  - nombre: Maleta
+    tipo: 0
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 2119226748}
+    - {fileID: 710525265443608715}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Cuerpo
+    tipo: 4
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 5070286771084599707}
+    - {fileID: 8232416429694743510}
+    - {fileID: 4504315502678939184}
+    - {fileID: 1281329963974139415}
+    - {fileID: 2030095733810876292}
+    - {fileID: 5381918291144997106}
+    - {fileID: 8137892948428227903}
+    - {fileID: 9026697606555109137}
+    - {fileID: 1035771839532500746}
+    - {fileID: 7505890283540118585}
+    - {fileID: 109691299656841927}
+    - {fileID: 1130636821426461221}
+    - {fileID: 5749140252755887860}
+    - {fileID: 8417130213917065226}
+    - {fileID: 4202468746796222768}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Cabeza
+    tipo: 5
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 3173402231775537277}
+    - {fileID: 8961319951284974338}
+    - {fileID: 6436660122665128300}
+    - {fileID: 1885742945371781650}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Cejas
+    tipo: 3
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 3732795069864377989}
+    - {fileID: 7212177108427968395}
+    - {fileID: 2483268479829877032}
+    - {fileID: 7961890833972912107}
+    - {fileID: 283158689357275497}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Pelos
+    tipo: 1
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 966013317300240518}
+    - {fileID: 2471495592773723957}
+    - {fileID: 290759551747071877}
+    - {fileID: 6821151439333647021}
+    - {fileID: 43433105033802307}
+    - {fileID: 2783306158297661830}
+    - {fileID: 2246581846170543042}
+    - {fileID: 549651377227799591}
+    - {fileID: 7022091041092993183}
+    - {fileID: 340217452821323579}
+    - {fileID: 7424584563404522042}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  partesOtros:
+  - nombre: Reloj
+    tipo: 0
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 1246061200}
+    - {fileID: 998310909595132260}
+    - {fileID: 3552611877372142409}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Sombrero
+    tipo: 0
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 2071255364}
+    - {fileID: 6614138353658023781}
+    - {fileID: 3804570096889919493}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Zapatos
+    tipo: 0
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 8309825164182726709}
+    - {fileID: 9139019414815668709}
+    - {fileID: 7647611299894629645}
+    - {fileID: 1460234688384912686}
+    - {fileID: 6001222963389810307}
+    - {fileID: 636649932960896532}
+    - {fileID: 2706202122840074899}
+    - {fileID: 1164940999454165607}
+    - {fileID: 4105066345921108220}
+    - {fileID: 7161022178051987325}
+    - {fileID: 3669439444260864121}
+    - {fileID: 5155930789650547374}
+    - {fileID: 4072490731770485670}
+    - {fileID: 6650043664702119098}
+    - {fileID: 8027343403409182156}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  - nombre: Ojos
+    tipo: 2
+    padre: {fileID: 0}
+    elementos:
+    - {fileID: 3373620128283662047}
+    activo: 0
+    materialesPiel: []
+    materialesGenerales: []
+  paletaCejas:
+  - {r: 1, g: 0.93442965, b: 0, a: 1}
+  - {r: 0.21765637, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.12884092, b: 0, a: 1}
+  - {r: 0, g: 0.8893428, b: 1, a: 1}
+  - {r: 0, g: 0.010046005, b: 1, a: 1}
+  - {r: 0.53834724, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.98466873, a: 1}
+  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
+  - {r: 0, g: 0.8893423, b: 1, a: 1}
+  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
+  paletaCabello:
+  - {r: 1, g: 0.93442965, b: 0, a: 1}
+  - {r: 0.21765637, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.12884092, b: 0, a: 1}
+  - {r: 0, g: 0.8893428, b: 1, a: 1}
+  - {r: 0, g: 0.010046005, b: 1, a: 1}
+  - {r: 0.53834724, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.98466873, a: 1}
+  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
+  - {r: 0, g: 0.8893423, b: 1, a: 1}
+  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
+  paletaOjos:
+  - {r: 1, g: 0.93442965, b: 0, a: 1}
+  - {r: 0.21765637, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.12884092, b: 0, a: 1}
+  - {r: 0, g: 0.8893428, b: 1, a: 1}
+  - {r: 0, g: 0.010046005, b: 1, a: 1}
+  - {r: 0.53834724, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.98466873, a: 1}
+  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
+  - {r: 0, g: 0.8893423, b: 1, a: 1}
+  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
+  paletaRopa:
+  - {r: 1, g: 0.93442965, b: 0, a: 1}
+  - {r: 0.21765637, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.12884092, b: 0, a: 1}
+  - {r: 0, g: 0.8893428, b: 1, a: 1}
+  - {r: 0, g: 0.010046005, b: 1, a: 1}
+  - {r: 0.53834724, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.98466873, a: 1}
+  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
+  - {r: 0, g: 0.8893423, b: 1, a: 1}
+  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
+  paletaPiel:
+  - {r: 1, g: 0.9306545, b: 0.86226416, a: 1}
+  - {r: 1, g: 0.7739084, b: 0.56037736, a: 1}
+  - {r: 0.8113208, g: 0.4940528, b: 0.19441079, a: 1}
+  - {r: 0.6415094, g: 0.38753393, b: 0.1476682, a: 1}
+  - {r: 0.4716981, g: 0.2735086, b: 0.086329624, a: 1}
+  - {r: 0.3679245, g: 0.22047703, b: 0.08122106, a: 1}
+  - {r: 0.23584908, g: 0.14590858, b: 0.06096475, a: 1}
+  - {r: 0.0754717, g: 0.04449372, b: 0.015236738, a: 1}
+  - {r: 0.19245279, g: 0.5173898, b: 1, a: 1}
+  - {r: 0.23160014, g: 0.4811321, b: 0.15160197, a: 1}
+  materialInicialPielHombre: {fileID: 2100000, guid: 4cf106d05b3ec5247ac553f10b867952,
+    type: 2}
+  materialInicialPielMujer: {fileID: 2100000, guid: ec35a7ec5e9751044ae4b78bbf1bca9f,
+    type: 2}
+  genero: 0
+  pos: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &7641213547170277165
 GameObject:
   m_ObjectHideFlags: 0
@@ -16417,7 +16556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8486817822064666016
 Transform:
   m_ObjectHideFlags: 0

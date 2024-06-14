@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18153828, g: 0.22717905, b: 0.30740368, a: 1}
+  m_IndirectSpecularColor: {r: 0.18153867, g: 0.22717999, b: 0.30740488, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2306,12 +2306,6 @@ CanvasRenderer:
 --- !u!1 &570370590 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7961890833972912107, guid: f7049d1bd08befd499853a3147e331f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7255248093947067840}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &606503352 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3373620128283662047, guid: f7049d1bd08befd499853a3147e331f3,
     type: 3}
   m_PrefabInstance: {fileID: 7255248093947067840}
   m_PrefabAsset: {fileID: 0}
@@ -8720,281 +8714,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7255248093947067840}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2126161624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7525154758866420068, guid: f7049d1bd08befd499853a3147e331f3,
+--- !u!114 &2126161627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2126161627, guid: f7049d1bd08befd499853a3147e331f3,
     type: 3}
   m_PrefabInstance: {fileID: 7255248093947067840}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2126161627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126161624}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 986d6ce16ce120344983528cfd108f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partesHombre:
-  - nombre: Maleta
-    tipo: 0
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 2119226748}
-    - {fileID: 341429166}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Cuerpo
-    tipo: 4
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1915196362}
-    - {fileID: 172349105}
-    - {fileID: 1981561859}
-    - {fileID: 2000742255}
-    - {fileID: 891922045}
-    - {fileID: 984142240}
-    - {fileID: 1251567756}
-    - {fileID: 797816027}
-    - {fileID: 1711099510}
-    - {fileID: 474841486}
-    - {fileID: 1806817294}
-    - {fileID: 198716494}
-    - {fileID: 1214653940}
-    - {fileID: 1127647161}
-    - {fileID: 984302663}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Cabeza
-    tipo: 5
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 258663957}
-    - {fileID: 1819675646}
-    - {fileID: 1887742733}
-    - {fileID: 972502558}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Cejas
-    tipo: 3
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1651735530}
-    - {fileID: 345063877}
-    - {fileID: 727048164}
-    - {fileID: 497773010}
-    - {fileID: 2008036481}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Pelos
-    tipo: 1
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 247467188}
-    - {fileID: 1317150892}
-    - {fileID: 1812860278}
-    - {fileID: 253390564}
-    - {fileID: 184110975}
-    - {fileID: 1193059925}
-    - {fileID: 47986020}
-    - {fileID: 861328898}
-    - {fileID: 1877232000}
-    - {fileID: 1379067628}
-    - {fileID: 2068405826}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  partesMujer:
-  - nombre: Maleta
-    tipo: 0
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 2119226748}
-    - {fileID: 1907622091}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Cuerpo
-    tipo: 4
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1394877568}
-    - {fileID: 685420757}
-    - {fileID: 907142788}
-    - {fileID: 325402227}
-    - {fileID: 1629701338}
-    - {fileID: 1467557254}
-    - {fileID: 1234013072}
-    - {fileID: 1139157599}
-    - {fileID: 534062900}
-    - {fileID: 906300922}
-    - {fileID: 509771883}
-    - {fileID: 2145673584}
-    - {fileID: 831724875}
-    - {fileID: 365404444}
-    - {fileID: 36465022}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Cabeza
-    tipo: 5
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1590932955}
-    - {fileID: 114401626}
-    - {fileID: 1512335387}
-    - {fileID: 263022112}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Cejas
-    tipo: 3
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1627410426}
-    - {fileID: 1177245859}
-    - {fileID: 1065273485}
-    - {fileID: 570370590}
-    - {fileID: 609250191}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Pelos
-    tipo: 1
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1790617659}
-    - {fileID: 237444590}
-    - {fileID: 1713478151}
-    - {fileID: 467717883}
-    - {fileID: 1561800156}
-    - {fileID: 1296348504}
-    - {fileID: 1151804283}
-    - {fileID: 536557916}
-    - {fileID: 290468462}
-    - {fileID: 1309207619}
-    - {fileID: 1383149254}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  partesOtros:
-  - nombre: Reloj
-    tipo: 0
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1246061200}
-    - {fileID: 616498215}
-    - {fileID: 1415437699}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Sombrero
-    tipo: 0
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 2071255364}
-    - {fileID: 185265282}
-    - {fileID: 2123918948}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Zapatos
-    tipo: 0
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 1576337999}
-    - {fileID: 1255691895}
-    - {fileID: 1496146503}
-    - {fileID: 990135259}
-    - {fileID: 25351956}
-    - {fileID: 1386752476}
-    - {fileID: 1508341121}
-    - {fileID: 1253970007}
-    - {fileID: 1527844112}
-    - {fileID: 2002748274}
-    - {fileID: 1807687335}
-    - {fileID: 1740558365}
-    - {fileID: 623979131}
-    - {fileID: 1218088158}
-    - {fileID: 1649713384}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  - nombre: Ojos
-    tipo: 2
-    padre: {fileID: 0}
-    elementos:
-    - {fileID: 606503352}
-    activo: 0
-    materialesPiel: []
-    materialesGenerales: []
-  paletaCejas:
-  - {r: 1, g: 0.93442965, b: 0, a: 1}
-  - {r: 0.21765637, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.12884092, b: 0, a: 1}
-  - {r: 0, g: 0.8893428, b: 1, a: 1}
-  - {r: 0, g: 0.010046005, b: 1, a: 1}
-  - {r: 0.53834724, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0.98466873, a: 1}
-  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
-  - {r: 0, g: 0.8893423, b: 1, a: 1}
-  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
-  paletaCabello:
-  - {r: 1, g: 0.93442965, b: 0, a: 1}
-  - {r: 0.21765637, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.12884092, b: 0, a: 1}
-  - {r: 0, g: 0.8893428, b: 1, a: 1}
-  - {r: 0, g: 0.010046005, b: 1, a: 1}
-  - {r: 0.53834724, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0.98466873, a: 1}
-  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
-  - {r: 0, g: 0.8893423, b: 1, a: 1}
-  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
-  paletaOjos:
-  - {r: 1, g: 0.93442965, b: 0, a: 1}
-  - {r: 0.21765637, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.12884092, b: 0, a: 1}
-  - {r: 0, g: 0.8893428, b: 1, a: 1}
-  - {r: 0, g: 0.010046005, b: 1, a: 1}
-  - {r: 0.53834724, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0.98466873, a: 1}
-  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
-  - {r: 0, g: 0.8893423, b: 1, a: 1}
-  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
-  paletaRopa:
-  - {r: 1, g: 0.93442965, b: 0, a: 1}
-  - {r: 0.21765637, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.12884092, b: 0, a: 1}
-  - {r: 0, g: 0.8893428, b: 1, a: 1}
-  - {r: 0, g: 0.010046005, b: 1, a: 1}
-  - {r: 0.53834724, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0.98466873, a: 1}
-  - {r: 0.4433962, g: 0.03535032, b: 0.027189402, a: 1}
-  - {r: 0, g: 0.8893423, b: 1, a: 1}
-  - {r: 0.5082325, g: 0.65666044, b: 0.764151, a: 1}
-  paletaPiel:
-  - {r: 1, g: 0.9306545, b: 0.86226416, a: 1}
-  - {r: 1, g: 0.7739084, b: 0.56037736, a: 1}
-  - {r: 0.8113208, g: 0.4940528, b: 0.19441079, a: 1}
-  - {r: 0.6415094, g: 0.38753393, b: 0.1476682, a: 1}
-  - {r: 0.4716981, g: 0.2735086, b: 0.086329624, a: 1}
-  - {r: 0.3679245, g: 0.22047703, b: 0.08122106, a: 1}
-  - {r: 0.23584908, g: 0.14590858, b: 0.06096475, a: 1}
-  - {r: 0.0754717, g: 0.04449372, b: 0.015236738, a: 1}
-  - {r: 0.19245279, g: 0.5173898, b: 1, a: 1}
-  - {r: 0.23160014, g: 0.4811321, b: 0.15160197, a: 1}
-  materialInicialPielHombre: {fileID: 2100000, guid: 4cf106d05b3ec5247ac553f10b867952,
-    type: 2}
-  materialInicialPielMujer: {fileID: 2100000, guid: ec35a7ec5e9751044ae4b78bbf1bca9f,
-    type: 2}
-  genero: 0
 --- !u!1001 &2127907305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9341,59 +9072,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1246061200, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2119226748, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 998310909595132260, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1281329963974139415, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450194529016911635, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Cabezas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471495592773723957, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3373620128283662047, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611730581397815473, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5070286771084599707, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6369162858571967293, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614138353658023781, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7144231620023851998, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_RootOrder
@@ -9454,16 +9132,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: PERSONAJES_FIN
       objectReference: {fileID: 0}
-    - target: {fileID: 8624389489882193599, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8805759907058979590, guid: f7049d1bd08befd499853a3147e331f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2071255366, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
