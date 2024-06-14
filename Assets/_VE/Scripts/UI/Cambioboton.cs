@@ -7,22 +7,22 @@ using UnityEngine.UI;
 public class Cambioboton : MonoBehaviour
 {
     //Variables para el manejo del panel derecho
-    public RectTransform[] botones;
-    public int conteo = 0;
-    public RectTransform[] Posiciones;
+    public RectTransform[]  botones;
+    public int              conteo = 0;
+    public RectTransform[]  Posiciones;
 
     //Variables para el control del Zoom
     int enfoqueActual = 0;
-    public GameObject panelZoom;
-    public GameObject canvasZoom;
+    public GameObject       panelZoom;
+    public GameObject       canvasZoom;
 
     //Posiciones de camaras
-    public GameObject camPrincipal;
-    public float velocidad = 3;
-    private Vector3 posicionInicial;
-    private Quaternion rotacionInicial;
-    public bool enZoom = false;
-    public Transform[] camsPositions;
+    public GameObject       camPrincipal;
+    public float            velocidad = 3;
+    private Vector3         posicionInicial;
+    private Quaternion      rotacionInicial;
+    public bool             enZoom = false;
+    public Transform[]      camsPositions;
 
     private void Awake()
     {
@@ -84,9 +84,7 @@ public class Cambioboton : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             canvasZoom.transform.GetChild(i).gameObject.SetActive((enfoqueActual - 1) == i);
-        }
-
-       
+        }     
     }
 
 
@@ -117,8 +115,6 @@ public class Cambioboton : MonoBehaviour
         {
             canvasZoom.transform.GetChild(i).gameObject.SetActive((enfoqueActual - 1)==i);
         }
-       
-
     }
 
 
@@ -152,8 +148,5 @@ public class Cambioboton : MonoBehaviour
 
         camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[enfoqueActual].position,velocidad*Time.deltaTime);
         camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[enfoqueActual].rotation,velocidad*Time.deltaTime);
-
     }
-    
-
 }
