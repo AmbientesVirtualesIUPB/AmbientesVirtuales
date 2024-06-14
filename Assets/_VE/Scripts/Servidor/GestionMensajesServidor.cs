@@ -53,7 +53,7 @@ public class GestionMensajesServidor : MonoBehaviour
 			SRVPersonaje sp = go.GetComponent<SRVPersonaje>();
 			SRVActualizarTransdformacion sATra = go.GetComponent<SRVActualizarTransdformacion>();
 			
-			sATra.Inicializar(p.posicion, p.rotacion, (Plataformas)p.plataforma);
+			sATra.Inicializar(p.posicion, p.rotacion, (Plataforma)p.plataforma);
 			sp.Inicializar(p.id_con, p.id_uss, false);
 			go.name = p.id_uss;
 			sp.conectado = true;

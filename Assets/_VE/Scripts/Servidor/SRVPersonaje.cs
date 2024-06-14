@@ -10,6 +10,7 @@ public class SRVPersonaje : MonoBehaviour
     public string id_uss;
 	public bool conectado = false;
 	public Color[] colores;
+	public Plataforma plataforma;
 
 	private void Awake()
 	{
@@ -25,7 +26,12 @@ public class SRVPersonaje : MonoBehaviour
 		identificador.Inicializar(_isOwner, _id_con);
 	}
 
-    void Start()
+	public void Inicializar(string _id_con, string _id_uss, bool _isOwner, Plataforma _plataforma)
+	{
+		plataforma = _plataforma;
+		Inicializar(_id_con, _id_uss, _isOwner);
+	}
+	void Start()
     {
 		if (identificador.isOwner)
 		{

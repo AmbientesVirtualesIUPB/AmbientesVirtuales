@@ -32,7 +32,7 @@ public class ControlUsuario : MonoBehaviour
 		usuarios = new Dictionary<string, GameObject>();
 		if (fakeInicio)
 		{
-			id_con = "US" + Random.Range(1111, 9999).ToString();
+			//id_con = "US" + Random.Range(1111, 9999).ToString();
 			id_uss = Random.Range(1111, 9999).ToString();
 		}
 	}
@@ -42,7 +42,11 @@ public class ControlUsuario : MonoBehaviour
 		print("---> Crear usuario");
 		GameObject jugador = Instantiate(GestionMensajesServidor.singeton.prJugador);
 		SRVPersonaje personaje = jugador.GetComponent<SRVPersonaje>();
-		personaje.Inicializar(id_con, id_uss, true);
+		personaje.Inicializar(id_con, id_uss, true, ConfiguracionGeneral.configuracionDefault.plataformaObjetivo);
+
+		SRVActualizarTransdformacion sATra = jugador.GetComponent<SRVActualizarTransdformacion>();
+		sATra.Inicializar(Vector3.zero, Vector3.zero, ConfiguracionGeneral.configuracionDefault.plataformaObjetivo);
+
 		gmJugador = jugador;
 	}
 
@@ -51,7 +55,7 @@ public class ControlUsuario : MonoBehaviour
 		Presentacion p = new Presentacion();
 		p.id_con = id_con;
 		p.id_uss = id_uss;
-		p.plataforma = 0;   // Esto está pendiente de cambiar por la plataforma real
+		p.plataforma = (int)ConfiguracionGeneral.configuracionDefault.plataformaObjetivo;
 		p.posicion = gmJugador.transform.position;
 		p.rotacion = gmJugador.transform.eulerAngles;
 		return p;

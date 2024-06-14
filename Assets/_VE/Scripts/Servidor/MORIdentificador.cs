@@ -17,6 +17,7 @@ public class MORIdentificador : MonoBehaviour
 		if (isOwner)
 		{
             id_con = "M" + Random.Range(1000, 9999) + "O" + Random.Range(1000, 9999);
+            ControlUsuario.singleton.id_con = id_con;
 		}
 		else
 		{

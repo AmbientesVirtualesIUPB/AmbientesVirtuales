@@ -17,7 +17,7 @@ public class SRVActualizarTransdformacion : MonoBehaviour
     public Vector3 posicionObjetivo;
     public Vector3 rotacionObjetivo;
     public bool isOwner;
-    public Plataformas plataforma;
+    public Plataforma plataforma;
     SRVPersonaje srvPersonaje;
 
     private void Awake()
@@ -43,7 +43,7 @@ public class SRVActualizarTransdformacion : MonoBehaviour
         posAnterior = transform.position;
         rotAnterior = transform.eulerAngles;
     }
-    public void Inicializar(Vector3 _posicion, Vector3 _rotacion, Plataformas _plataforma)
+    public void Inicializar(Vector3 _posicion, Vector3 _rotacion, Plataforma _plataforma)
     {
         Inicializar(_posicion, _rotacion);
         plataforma = _plataforma;
