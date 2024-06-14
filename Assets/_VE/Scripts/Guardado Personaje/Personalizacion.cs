@@ -8,19 +8,15 @@ public class Personalizacion : MonoBehaviour
     public ElementoPersonalizable[] partesHombre;
     public ElementoPersonalizable[] partesMujer;
     public ElementoPersonalizable[] partesOtros; 
+    public Color[]                  paletaCejas;
+    public Color[]                  paletaCabello;
+    public Color[]                  paletaOjos;
+    public Color[]                  paletaRopa;
+    public Color[]                  paletaPiel;
+    public Material                 materialInicialPielHombre;
+    public Material                 materialInicialPielMujer;
     public int genero;
-    public Color[] paletaCejas;
-    public Color[] paletaCabello;
-    public Color[] paletaOjos;
-    public Color[] paletaRopa;
-    public Color[] paletaPiel;
-    public Material materialInicialPielHombre;
-    public Material materialInicialPielMujer;
-    public Material[] matPielMujer;
-    public Material[] matPielHombre;
     int numMaterial;
-    //
-    List<Material> materialesGenerales = new List<Material>(10);
 
 
     // Start is called before the first frame update
@@ -28,37 +24,6 @@ public class Personalizacion : MonoBehaviour
     {
         InicializarElementos();
         TransicionDeGenero(0);
-
-    }
-
-    [ContextMenu("Pintar")]
-    public void ColorRandom()
-    {
-        //partesMujer[4].materialGeneral.color = Color.red;
-    }
-
-    public void InicializarListasMateriales()
-    {
-        /*
-        for (int i = 0; i < partesHombre.elementos.Length; i++)
-        {
-            Renderer mr = elementos[i].GetComponent<Renderer>();
-            Debug.Log(mr.materials[i].name);
-            if (mr != null)
-            {
-                Material[] materia = mr.materials;
-
-                if (materia[i] != null)
-                {
-                    materialesGenerales.Add(materia[i]);
-                    Debug.Log("materialesGenerales.ToString()");
-                }
-            }
-            for (int j = 0; j < materialesGenerales.Count; j++)
-            {
-                //materialPiel.Add(mr.materials[j]);
-            }
-        }*/
     }
 
 
@@ -79,7 +44,6 @@ public class Personalizacion : MonoBehaviour
     {
         partesOtros[cual].Siguiente();
     }
-
 
     // Metodo invocado desde los botones de personalizacion, enviado el dato correspondiente a la caracteristica a modificar
     public void SiguienteParteGay(int cual)
@@ -133,12 +97,8 @@ public class Personalizacion : MonoBehaviour
             partesMujer[i].EstablecerMaterialPiel(cual);
         }
     }
-    public void SiguienteMaterialPiel()
-    {
-        numMaterial = (numMaterial + 1) % matPielMujer.Length;
-        CambiarMaterialPiel(numMaterial);
-    }
 
+    //Metodo para cambiar el color principal de la ropa
     public void CambioColorPrincipal(int num)
     {
         print("Cambio color principal" + num.ToString());
@@ -155,6 +115,7 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
+    //Metodo para cambiar el color secundario de la ropa
     public void CambioColorSecundario(int num)
     {
         for (int i = 0; i < partesHombre.Length; i++)
@@ -169,6 +130,7 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
+    //Metodo para cambiar el color de cabello
     public void CambiarColorCabello(int num)
     {
         print("Cambio color cabello " + num.ToString());
@@ -178,20 +140,14 @@ public class Personalizacion : MonoBehaviour
         partesMujer[3].EstablecerColorGeneral(num);
     }
 
+    //Metodo para cambiar el color de ojos
     public void CambiarColorOjos(int num)
     {
         print("Cambio color ojos " + num.ToString());
         partesOtros[3].EstablecerColorGeneral(num);
     }
 
-    public void CambiarColorMaleta(int num)
-    {
-        print("Cambio color Maleta " + num.ToString());
-        partesHombre[0].EstablecerColorGeneral(num);
-        partesMujer[4].EstablecerColorGeneral(num);
-    }
-
-
+    //Metodo para cambiar inicializar todos los elementos en el start
     public void InicializarElementos()
     {
         for (int i = 0; i < partesHombre.Length; i++)
@@ -207,7 +163,6 @@ public class Personalizacion : MonoBehaviour
             partesMujer[i].EstablecerMaterialPiel(0);
             partesMujer[i].EstablecerColorPrincipal(0);
             partesMujer[i].EstablecerColorSecundario(0);
-
         }
 
         for (int i = 0; i < partesOtros.Length; i++)
@@ -217,7 +172,7 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
-
+    //Metodo para obtener los colores de la paleta
     public Color GetColor(TipoElemento t, int i)
     {
         switch (t)
@@ -238,11 +193,14 @@ public class Personalizacion : MonoBehaviour
                 return paletaRopa[i];
         }
     }
+
+    //Metodo para los colores de la paleta de piel
     public Color GetColorPiel(int i)
     {
         return paletaPiel[i];
     }
 
+    //Metodo para obtener la paleta de colores
     public Color[] GetPaleta(TipoElemento t)
     {
         switch (t)
@@ -275,14 +233,12 @@ public class ElementoPersonalizable
     public GameObject[]     elementos;
     public int              activo;
     public List<Material>   materialesPiel;
-    public List<Material>   materialesGenerales;
-    //List<Material> materialPiel = new List<Material>();
-    
-    int iColor1;
-    int iColor2;
+    public List<Material>   materialesGenerales; 
+    int                     iColor1;
+    int                     iColor2;
 
     
-
+    //Establecemos el elemento activo en personalizacion
     public void Establecer()
     {
         for (int i = 0; i < elementos.Length; i++)
@@ -290,12 +246,8 @@ public class ElementoPersonalizable
             elementos[i].SetActive(i == activo);
         }
     }
-    public void Establecer(int _activo)
-    {
-        activo = _activo;
-        Establecer();
-    }
 
+    //Inicializamos los elementos
     public void Inicializar()
 	{
         materialesPiel = new List<Material>();
@@ -321,8 +273,7 @@ public class ElementoPersonalizable
 		}
 	}
     
-    
-
+    //Establecemos el material para el color de piel
     public void EstablecerMaterialPiel(int num)
     {
         iColor1 = num;
@@ -333,20 +284,14 @@ public class ElementoPersonalizable
         }
     }
 
-    //
+    //Para cambiar entre elementos
     public void Siguiente()
     {
         activo = (activo+1) % elementos.Length;
         Establecer();
     }
 
-    public void Anterior()
-    {
-        activo = (activo - 1 + elementos.Length) % elementos.Length;
-        Establecer();
-
-    }
-
+    //Para desactivar los elementos al cambiar de genero
     public void Desactivar()
     {
         for (int i = 0; i < elementos.Length; i++)
@@ -354,6 +299,7 @@ public class ElementoPersonalizable
             elementos[i].SetActive(false);
         }
     }
+
 
     public string ConvertirATexto()
     {
@@ -372,18 +318,19 @@ public class ElementoPersonalizable
         Establecer();
     }
 
-
+    //Metodo aun no utilizado
     public void SiguienteColorPrincipal()
     {
         EstablecerColorPrincipal((iColor1 + 1) % padre.GetPaleta(tipo).Length);
     }
-
+    //Metodo aun no utilizado
     public void SiguienteColorSecundario()
     {
         EstablecerColorSecundario((iColor2 + 1) % padre.GetPaleta(tipo).Length);
 
     }
 
+    //Establecemos un color principal de ropa
     public void EstablecerColorPrincipal(int num)
     {
         iColor1 = num;
@@ -391,10 +338,9 @@ public class ElementoPersonalizable
 		{
             materialesGenerales[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
         }
-
-
     }
 
+    //Establecemos un color secundario de ropa
     public void EstablecerColorSecundario(int num)
     {
         iColor2 = num;
@@ -404,6 +350,7 @@ public class ElementoPersonalizable
         }
     }
 
+    //Establecemos un color de piel
     public void EstablecerColorPiel(int num)
     {
         iColor2 = num;
@@ -413,6 +360,7 @@ public class ElementoPersonalizable
         }
     }
 
+    //Establecemos un color general
     public void EstablecerColorGeneral(int num)
     {
         iColor1 = num;
@@ -426,7 +374,7 @@ public class ElementoPersonalizable
 
 }
 
-
+//Para identificar el tipo de elemento a seleccionar
 public enum TipoElemento
 {
     maleta,
