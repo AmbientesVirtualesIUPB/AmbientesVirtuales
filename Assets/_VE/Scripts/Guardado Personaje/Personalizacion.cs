@@ -279,7 +279,7 @@ public class ElementoPersonalizable
         iColor1 = num;
         for (int i = 0; i < materialesPiel.Count; i++)
         {
-            materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
+            materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColorPiel(iColor1));
             Debug.Log("Cambiando el color según el tipo: " + tipo.ToString());
         }
     }
