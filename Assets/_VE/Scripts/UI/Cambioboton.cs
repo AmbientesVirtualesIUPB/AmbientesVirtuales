@@ -94,11 +94,13 @@ public class Cambioboton : MonoBehaviour
     public void PasaDerecha()
     {
         conteo = (conteo + 8 + 1) % 8;
+        Debug.Log(conteo + " Derecha");
         Actualizar();
     }
     public void PasaIzquierda()
     {
         conteo = (conteo + 8 - 1) % 8;
+        Debug.Log(conteo + " Izq");
         Actualizar();
     }
 
@@ -155,5 +157,12 @@ public class Cambioboton : MonoBehaviour
 
     }
     
+    public void activardorPaletas() 
+    {
+        if (conteo == 0)
+        {
+
+        }
+    }
 
 }
