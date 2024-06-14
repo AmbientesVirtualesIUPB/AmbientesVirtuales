@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BtnColorPersonalizar : MonoBehaviour
 {
-    public Personalizacion personalizacion;
-    public TipoElemento tipo;
-    public int indice;
-    public bool esPrincipal;
+    public Personalizacion  personalizacion;
+    public TipoElemento     tipo;
+    public int              indice;
+    public bool             esPrincipal;
 
     private void Start()
     {
@@ -18,9 +18,6 @@ public class BtnColorPersonalizar : MonoBehaviour
         print("Activo" + tipo.ToString());
         switch (tipo)
         {
-            case TipoElemento.maleta:
-                //personalizacion.CambiarColorMaleta(indice);
-                break;
             case TipoElemento.cabello:
                 personalizacion.CambiarColorCabello(indice);
                 break;
