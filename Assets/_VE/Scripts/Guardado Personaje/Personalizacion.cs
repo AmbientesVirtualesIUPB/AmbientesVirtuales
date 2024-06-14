@@ -130,21 +130,13 @@ public class Personalizacion : MonoBehaviour
         for (int i = 0; i < partesHombre.Length; i++)
         {
             //partesHombre[i].EstablecerMaterialPiel(matPielHombre[cual]);
-<<<<<<< Updated upstream
             partesMujer[i].EstablecerMaterialPiel(cual);
-=======
-            partesMujer[i].EstablecerMaterialPiel(matPielMujer[cual]);
->>>>>>> Stashed changes
         }
     }
     public void SiguienteMaterialPiel()
     {
         numMaterial = (numMaterial + 1) % matPielMujer.Length;
-<<<<<<< Updated upstream
         CambiarMaterialPiel(numMaterial);
-=======
-        CambiarMaterialPïel(numMaterial);
->>>>>>> Stashed changes
     }
 
     public void CambioColorPrincipal(int num)
@@ -180,27 +172,16 @@ public class Personalizacion : MonoBehaviour
     public void CambiarColorCabello(int num)
     {
         print("Cambio color cabello " + num.ToString());
-<<<<<<< Updated upstream
         partesHombre[4].EstablecerColorGeneral(num);
         partesHombre[3].EstablecerColorGeneral(num);
         partesMujer[4].EstablecerColorGeneral(num);
         partesMujer[3].EstablecerColorGeneral(num);
-=======
-        partesHombre[4].EstablecerColorGeneralPrueba(num);
-        partesHombre[3].EstablecerColorGeneralPrueba(num);
-        partesMujer[4].EstablecerColorGeneralPrueba(num);
-        partesMujer[3].EstablecerColorGeneralPrueba(num);
->>>>>>> Stashed changes
     }
 
     public void CambiarColorOjos(int num)
     {
         print("Cambio color ojos " + num.ToString());
-<<<<<<< Updated upstream
         partesOtros[3].EstablecerColorGeneral(num);
-=======
-        partesOtros[3].EstablecerColorGeneralPrueba(num);
->>>>>>> Stashed changes
     }
 
     public void CambiarColorMaleta(int num)
@@ -299,15 +280,6 @@ public class ElementoPersonalizable
     
     int iColor1;
     int iColor2;
-<<<<<<< Updated upstream
-=======
-    public GameObject[] elementos;
-    public int activo;
-    public Material materialPiel;
-    public Material materialGeneral;
-    //List<Material> materialPiel = new List<Material>();
-    
->>>>>>> Stashed changes
 
     
 
@@ -324,7 +296,6 @@ public class ElementoPersonalizable
         Establecer();
     }
 
-<<<<<<< Updated upstream
     public void Inicializar()
 	{
         materialesPiel = new List<Material>();
@@ -335,31 +306,11 @@ public class ElementoPersonalizable
             mr = elementos[i].GetComponent<Renderer>();
 			if (mr != null)
 			{
-=======
-    
-    
-    
-
-    public void EstablecerMaterialPiel(Material m)
-    {
-        for (int i = 0;i < elementos.Length;i++) 
-        { 
-            Renderer mr = elementos[i].GetComponent<Renderer>();
-            if (mr != null)
-            {
->>>>>>> Stashed changes
                 for (int j = 0; j < mr.materials.Length; j++)
                 {
                     if (mr.materials[j].name.Substring(0, 3).Equals("SKN"))
                     {
-<<<<<<< Updated upstream
                         materialesPiel.Add(mr.materials[j]);
-=======
-                        Material[] mats = mr.materials;
-                        mats[j] = m;
-                        mr.materials = mats;
-                        materialPiel = mr.materials[j];
->>>>>>> Stashed changes
                     }
                     else
                     {
@@ -424,72 +375,21 @@ public class ElementoPersonalizable
 
     public void SiguienteColorPrincipal()
     {
-<<<<<<< Updated upstream
         EstablecerColorPrincipal((iColor1 + 1) % padre.GetPaleta(tipo).Length);
-=======
-        iColor1 = (iColor1 + 1) % padre.GetPaleta(tipo).Length;
-        if (materialGeneral!=null)
-        {
-            /*
-            for (int i = 0; i < materialGeneral.Count; i++)
-            {
-                materialGeneral[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
-            }
-            */
-            materialGeneral.SetColor("_ColorPrincipal", padre.GetColor(tipo,iColor1));
-        }
->>>>>>> Stashed changes
     }
 
     public void SiguienteColorSecundario()
     {
-<<<<<<< Updated upstream
         EstablecerColorSecundario((iColor2 + 1) % padre.GetPaleta(tipo).Length);
 
-=======
-        iColor2 = (iColor2 + 1) % padre.GetPaleta(tipo).Length;
-        if (materialGeneral != null)
-        {
-            /*
-            for (int i = 0; i < materialGeneral.Count; i++)
-            {
-                materialGeneral[i].SetColor("_ColorSecundario", padre.GetColor(tipo, iColor2));
-            }
-            */
-            materialGeneral.SetColor("_ColorSecundario", padre.GetColor(tipo,iColor2));
-        }
->>>>>>> Stashed changes
     }
 
     public void EstablecerColorPrincipal(int num)
     {
         iColor1 = num;
-<<<<<<< Updated upstream
 		for (int i = 0; i < materialesGenerales.Count; i++)
 		{
             materialesGenerales[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
-=======
-        if (materialGeneral != null)
-        {
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        {
-                            //Debug.Log(mr.materials[j].name);
-                            Material[] mats = mr.materials;
-                            mats[j].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
-                            mr.materials = mats;
-
-                        }
-                    }
-                }
-            }
->>>>>>> Stashed changes
         }
 
 
@@ -500,7 +400,6 @@ public class ElementoPersonalizable
         iColor2 = num;
         for (int i = 0; i < materialesGenerales.Count; i++)
         {
-<<<<<<< Updated upstream
             materialesGenerales[i].SetColor("_ColorSecundario", padre.GetColor(tipo, iColor2));
         }
     }
@@ -511,24 +410,6 @@ public class ElementoPersonalizable
         for (int i = 0; i < materialesPiel.Count; i++)
         {
             materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColorPiel(iColor2));
-=======
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        { 
-                            Material[] mats = mr.materials;
-                            mats[j].SetColor("_ColorSecundario", padre.GetColor(tipo, iColor2));
-                            mr.materials = mats;
-                        }
-                    }
-                }
-            }
->>>>>>> Stashed changes
         }
     }
 
@@ -540,30 +421,6 @@ public class ElementoPersonalizable
             materialesGenerales[i].color =  padre.GetColor(tipo, iColor1);
         }
         
-    }
-
-    public void EstablecerColorGeneralPrueba(int num)
-    {
-        iColor1 = num;
-        if (true)
-        {
-            for (int i = 0; i < elementos.Length; i++)
-            {
-                Renderer mr = elementos[i].GetComponent<Renderer>();
-                if (mr != null)
-                {
-                    for (int j = 0; j < mr.materials.Length; j++)
-                    {
-                        if (!((mr.materials[j].name).Substring(0, 3) == "SKN"))
-                        {
-                            Material[] mats = mr.materials;
-                            mats[j].color = padre.GetColor(tipo, iColor1);
-                            materialGeneral = mats[j];
-                        }
-                    }
-                }
-            }
-        }
     }
 
 
