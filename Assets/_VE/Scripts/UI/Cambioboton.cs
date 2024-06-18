@@ -24,10 +24,12 @@ public class Cambioboton : MonoBehaviour
     public bool enZoom = false;
     public Transform[] camsPositions;
 
+    public GameObject[] panelesColor;
     private void Awake()
     {
         posicionInicial = camPrincipal.transform.position;
         rotacionInicial = camPrincipal.transform.rotation;
+   
     }
 
     // Start is called before the first frame update
@@ -35,6 +37,8 @@ public class Cambioboton : MonoBehaviour
     {
 
         Actualizar();
+
+        //Zoom();
     }
 
     private void Update()
@@ -90,20 +94,63 @@ public class Cambioboton : MonoBehaviour
     }
 
 
+    
     //Metodos invocados desde BtnDerecha y BtnIzquierda en escena respectivamente, para cambiar entre botones de personalizacion
     public void PasaDerecha()
     {
         conteo = (conteo + 8 + 1) % 8;
-        Debug.Log(conteo + " Derecha");
-        Actualizar();
+
+        BotonesDescat();
     }
     public void PasaIzquierda()
     {
         conteo = (conteo + 8 - 1) % 8;
-        Debug.Log(conteo + " Izq");
-        Actualizar();
+
+        BotonesDescat();
     }
 
+    public void BotonesDescat() 
+    {
+        // Activar/Desactivar barras color
+        if (conteo == 0)
+        {
+            panelesColor[0].SetActive(true);
+            panelesColor[1].SetActive(true);
+        }
+        else
+        {
+            panelesColor[0].SetActive(false);
+            panelesColor[1].SetActive(false);
+        }
+
+        if (conteo == 2)
+        {
+            panelesColor[2].SetActive(true);
+        }
+        else
+        {
+            panelesColor[2].SetActive(false);
+        }
+
+        if (conteo == 3)
+        {
+            panelesColor[3].SetActive(true);
+        }
+        else
+        {
+            panelesColor[3].SetActive(false);
+        }
+
+        if (conteo == 6)
+        {
+            panelesColor[4].SetActive(true);
+        }
+        else
+        {
+            panelesColor[4].SetActive(false);
+        }
+        Actualizar();
+    }
 
     //Metodo invocado desde BtnZoom en scena para iniciar el Zoom segun el enfoque actual
     public void Zoom()
