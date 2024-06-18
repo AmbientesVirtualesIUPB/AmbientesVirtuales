@@ -11,6 +11,8 @@ public class CrearPaletas : MonoBehaviour
     public Transform        panelPrimario;
     public Transform        panelSecundario;
     public Transform        panelPiel;
+
+
     // Start is called before the first frame update
     void Start()
     {
