@@ -2,88 +2,110 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using TMPro;
 
 public class ConsumirAPI : MonoBehaviour
 {
     [Serializable]
-    //Representa los datos que enviarás en la solicitud POST
-    public class RequestData
+    // Clase que Representa los datos que enviarás en la solicitud POST
+    public class SolicitudLogin
     {
-        public string key1;
-        public string key2;
+        public string Email;
+        public string Contraseña;
     }
 
     [Serializable]
-    //Representa los datos que recibirás en la respuesta.
-    public class ResponseData
+    // Clase que Representa los datos anidados dentro de la respuesta
+    public class DatosRespuesta
     {
-        public string field1;
-        public string field2;
-        public string field3;
-        public string field4;
-        public string field5;
+        public string Identificacion;
+        public string NombreCompleto;
+        public string TipoDeUsuario;
+        public string Programa;
+        public string Facultad;
     }
 
-    private string apiUrl = "https://sicau.pascualbravo.edu.co/SICAU/API/ServicioLogin/LoginAmbientesVirtuales";  // URL a consumir
-    private string apiKey = "Authorization";  // Clave de API
-    private string apiValue = "s1c4uc0ntr0ld34cc3s02019*";  // Value secreta
+    [Serializable]
+    // Clase que Representa la respuesta general que contiene un booleano de éxito, un mensaje, y los datos de respuesta
+    public class LoginRespuesta
+    {
+        public bool             Estado;
+        public string           Mensaje;
+        public DatosRespuesta   Datos;
+    }
 
-    void Start()
+    // Solicitamos una referencia a los InputField del login
+    public TMP_InputField       InputUsuario;
+    public TMP_InputField       InputPassword;
+
+    // Establecemos las variables, con los datos de la url a consumir y su llave de autenticacion
+    private string apiUrl = "https://sicau.pascualbravo.edu.co/SICAU/API/ServicioLogin/LoginAmbientesVirtuales";
+    private string apiKey = "s1c4uc0ntr0ld34cc3s02019*";
+
+
+    //Metodo invocado desde el botón Iniciar en el Login
+    public void Consumir()
     {
         // Crear un objeto con los datos que queremos enviar
-        RequestData requestData = new RequestData
-        {
-            key1 = "julian.molina834@pascualbravo.edu.co",
-            key2 = "Miamolina.2015"
+        SolicitudLogin solicitudLogin = new SolicitudLogin
+        {    
+            Email = InputUsuario.text,
+            Contraseña = InputPassword.text
         };
 
         // Convertir el objeto a JSON
-        string jsonData = JsonUtility.ToJson(requestData);
+        string jsonDato = JsonUtility.ToJson(solicitudLogin);
 
         // Iniciar la corrutina para enviar los datos
-        StartCoroutine(PostData(jsonData));
+        StartCoroutine(PostData(jsonDato));
     }
 
-    IEnumerator PostData(string jsonData)
+    IEnumerator PostData(string jsonDato)
     {
-        // Crear una solicitud POST
-        UnityWebRequest request = new UnityWebRequest(apiUrl, "POST");
-
+        // Crear una solicitud POST, donde le enviamos la URL a consumir
+        UnityWebRequest solicitud = new UnityWebRequest(apiUrl, "POST");
         // Convertir el JSON a bytes y adjuntar a la solicitud
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
-        // Adjunta los datos JSON al cuerpo de la solicitud
-        request.uploadHandler = new UploadHandlerRaw(jsonToSend);
-        // Recibe la respuesta en el buffer.
-        request.downloadHandler = new DownloadHandlerBuffer();
+        byte[] jsonAEnviar = new System.Text.UTF8Encoding().GetBytes(jsonDato);
+        // Adjuntamos los datos JSON al cuerpo de la solicitud
+        solicitud.uploadHandler = new UploadHandlerRaw(jsonAEnviar);
+        // Recibe la respuesta en el buffer para su almacenamiento
+        solicitud.downloadHandler = new DownloadHandlerBuffer();
 
-        // Establecer las cabeceras adecuadas para JSON y autenticación
-        request.SetRequestHeader("Content-Type", "application/json");
-        request.SetRequestHeader("Key", apiKey);
-        request.SetRequestHeader("Value", apiValue);
+        // Establecemos las cabeceras necesarias para indicar que los datos son JSON y añadimos la clave de autenticación (Authorization en este caso).
+        solicitud.SetRequestHeader("Content-Type", "application/json");
+        solicitud.SetRequestHeader("Authorization", apiKey);
 
-        // Enviar la solicitud y esperar la respuesta
-        yield return request.SendWebRequest();
+        // Enviamos la solicitud y esperamos la respuesta
+        yield return solicitud.SendWebRequest();
 
-        // Comprobar si hay errores en la solicitud
-        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+        // Comprobamos si hay errores en la solicitud
+        if (solicitud.result == UnityWebRequest.Result.ConnectionError || solicitud.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError("Error: " + request.error);
-            Debug.LogError("Response Code: " + request.responseCode);
-            Debug.LogError("URL: " + request.url);
+            Debug.LogError("Error: " + solicitud.error);
+            Debug.LogError("Codigo de respuesta: " + solicitud.responseCode);
+            Debug.LogError("URL: " + solicitud.url);
         }
         else
         {
-            // Obtener la respuesta en formato JSON
-            string jsonResponse = request.downloadHandler.text;
-            ResponseData responseData = JsonUtility.FromJson<ResponseData>(jsonResponse);
+            // Sino se encuentra ningun error obtenemos la respuesta en formato JSON
+            string respuestaJson = solicitud.downloadHandler.text;
+            LoginRespuesta loginResponse = JsonUtility.FromJson<LoginRespuesta>(respuestaJson);
+            // Si la respuesta es exitosa el estado de la consulta es verdadero
+            loginResponse.Estado = true;
 
-            // Procesar la respuesta
-            Debug.Log("Received response: ");
-            Debug.Log("field1: " + responseData.field1);
-            Debug.Log("field2: " + responseData.field2);
-            Debug.Log("field3: " + responseData.field3);
-            Debug.Log("field4: " + responseData.field4);
-            Debug.Log("field5: " + responseData.field5);
+            // Procesamos la respuesta
+            Debug.Log("Respuesta recibida con exito:");
+            Debug.Log("Estado: " + loginResponse.Estado);
+            Debug.Log("Mensaje: " + loginResponse.Mensaje);
+            // Validamos si los datos del usuario son diferentes de nulos para poder mostrarlos sin errores
+            if (loginResponse.Datos != null)
+            {
+                Debug.Log("Identificacion: " + loginResponse.Datos.Identificacion);
+                Debug.Log("NombreCompleto: " + loginResponse.Datos.NombreCompleto);
+                Debug.Log("TipoDeUsuario: " + loginResponse.Datos.TipoDeUsuario);
+                Debug.Log("Programa: " + loginResponse.Datos.Programa);
+                Debug.Log("Facultad: " + loginResponse.Datos.Facultad);
+            }
         }
     }
 }
