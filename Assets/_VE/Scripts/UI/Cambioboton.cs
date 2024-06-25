@@ -38,7 +38,7 @@ public class Cambioboton : MonoBehaviour
 
         Actualizar();
 
-        //Zoom();
+        Zoom();
     }
 
     private void Update()
