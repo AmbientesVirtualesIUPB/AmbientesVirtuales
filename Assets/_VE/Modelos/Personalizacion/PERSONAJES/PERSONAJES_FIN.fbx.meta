@@ -48,7 +48,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: FRR_02
-    second: {fileID: 2100000, guid: be60b8c91f7551e48ada0ee950b350aa, type: 2}
+    second: {fileID: 2100000, guid: 57e8db186335c7741a7f36a5463f5be1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
