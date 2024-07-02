@@ -12,7 +12,9 @@ public class SaveManager : MonoBehaviour
     [SerializeField]
     private SaveSplit split;
 
-    [ContextMenu("Save")]
+    /// <summary>
+    /// Metodo para el guardado de archivos JSON
+    /// </summary>
     public void Save()
     {
         //Conovertimos el objeto a formato Json
@@ -24,11 +26,14 @@ public class SaveManager : MonoBehaviour
         
     }
 
-    [ContextMenu("Load")]
+    /// <summary>
+    /// Metodo para la carga de archivos JSON
+    /// </summary>
     public void Load()
     {
         //Traemos la ruta del archivo
         string path = Path.Combine(Application.persistentDataPath, "splitData.data");
+
         //Validamos si ya existe un archivo de guardado actual
         if (File.Exists(path))
         {
@@ -54,7 +59,7 @@ public class SaveManager : MonoBehaviour
     public void PesonalizacionPersonaje(string texto)
     {
         split.posiciones = texto;
-        //Grabamos
+        //Guardamos
         Save();
     }
 

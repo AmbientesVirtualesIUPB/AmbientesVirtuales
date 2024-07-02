@@ -23,13 +23,12 @@ public class Cambioboton : MonoBehaviour
     private Quaternion      rotacionInicial;
     public bool             enZoom = false;
     public Transform[]      camsPositions;
+    public GameObject[]     panelesColor;
 
-    public GameObject[] panelesColor;
     private void Awake()
     {
         posicionInicial = camPrincipal.transform.position;
         rotacionInicial = camPrincipal.transform.rotation;
-   
     }
 
     // Start is called before the first frame update
@@ -43,7 +42,9 @@ public class Cambioboton : MonoBehaviour
         Zoom2();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Metodo invocado para actualizar el canvas con los botones de personalizacion segun el enfoque
+    /// </summary>
     void Actualizar()
     {
         //Activamos la posición central y habilitamos el botón de personalizacion correspondiente
@@ -88,15 +89,19 @@ public class Cambioboton : MonoBehaviour
         }     
     }
 
-
-    
-    //Metodos invocados desde BtnDerecha y BtnIzquierda en escena respectivamente, para cambiar entre botones de personalizacion
+    /// <summary>
+    /// Metodos invocados desde BtnDerecha en escena para cambiar entre botones de personalizacion
+    /// </summary>
     public void PasaDerecha()
     {
         conteo = (conteo + 8 + 1) % 8;
 
         BotonesDescat();
     }
+
+    /// <summary>
+    /// Metodos invocados desde BtnIzquierda en escena para cambiar entre botones de personalizacion
+    /// </summary>
     public void PasaIzquierda()
     {
         conteo = (conteo + 8 - 1) % 8;
@@ -104,6 +109,9 @@ public class Cambioboton : MonoBehaviour
         BotonesDescat();
     }
 
+    /// <summary>
+    /// Para desactivar o activar el canvas con los colores dentro del zoom
+    /// </summary>
     public void BotonesDescat() 
     {
         // Activar/Desactivar barras color
@@ -144,10 +152,13 @@ public class Cambioboton : MonoBehaviour
         {
             panelesColor[4].SetActive(false);
         }
+        // Actualizamos el canvas
         Actualizar();
     }
 
-    //Metodo invocado desde BtnZoom en scena para iniciar el Zoom segun el enfoque actual
+    /// <summary>
+    /// Metodo invocado desde BtnZoom en scena para iniciar el Zoom segun el enfoque actual
+    /// </summary>
     public void Zoom()
     {
         enZoom = true;
@@ -164,7 +175,9 @@ public class Cambioboton : MonoBehaviour
     }
 
 
-    //Metodo invocado desde BtnSalirZoom en scena para volver al menu de personalizacion inicial
+    /// <summary>
+    /// Metodo invocado desde BtnSalirZoom en scena para volver al menu de personalizacion inicial
+    /// </summary>
     public void SalirZoom()
     {
         enZoom = false;
@@ -181,8 +194,10 @@ public class Cambioboton : MonoBehaviour
     }
 
 
-    
-    //Metodo invocado desde BtnZoom en scena para iniciar el Zoom segun el enfoque actual
+
+    /// <summary>
+    /// Metodo invocado en el Update para actualizar las posiciones de camara
+    /// </summary>
     public void Zoom2()
     {
         if (!enZoom)
@@ -194,12 +209,5 @@ public class Cambioboton : MonoBehaviour
 
         camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[enfoqueActual].position,velocidad*Time.deltaTime);
         camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[enfoqueActual].rotation,velocidad*Time.deltaTime);
-    }
-    public void activardorPaletas() 
-    {
-        if (conteo == 0)
-        {
-
-        }
     }
 }

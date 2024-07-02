@@ -34,7 +34,6 @@ public class envioPHP : MonoBehaviour
             }
             else
             {
-                Debug.Log("Form upload complete!");
                 Debug.Log(www.downloadHandler.text); // Muestra la respuesta del servidor
             }
         }

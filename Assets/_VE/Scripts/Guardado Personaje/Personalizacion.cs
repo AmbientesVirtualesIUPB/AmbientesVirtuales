@@ -16,8 +16,9 @@ public class Personalizacion : MonoBehaviour
     public Color[]                  paletaPiel;
     public Material                 materialInicialPielHombre;
     public Material                 materialInicialPielMujer;
-    public GameObject               saveManager;
     public int                      genero;
+    // Variables utilizadas para el guardado de archivos
+    public GameObject               saveManager;
     public int[]                    pos = new int[14];
 
     private void Awake()
@@ -104,6 +105,7 @@ public class Personalizacion : MonoBehaviour
                 pos[posicion + 10] = (partesOtros[posicion].activo + 1) % partesOtros[posicion].elementos.Length;
             }
         }
+        // Convertimos esos datos a una sola cadena de texto
         ConvertirATexto();
     }
 
@@ -149,7 +151,6 @@ public class Personalizacion : MonoBehaviour
     {
         genero = cual;
         // Si es cero, es femenino, establecemos los elementos de dicho genero y desactivamos los masculinos
-        // Si es uno, es masculino, establecemos los elementos de dicho genero y desactivamos los femeninos
         if (genero==0)
         {
             for (int i = 0; i < partesHombre.Length; i++)
@@ -158,6 +159,7 @@ public class Personalizacion : MonoBehaviour
                 partesMujer[i].Establecer();
             }     
         }
+        // Si es uno, es masculino, establecemos los elementos de dicho genero y desactivamos los femeninos
         else
         {
             for (int i = 0; i < partesHombre.Length; i++)
@@ -506,7 +508,6 @@ public class ElementoPersonalizable
     public void Siguiente()
     {
         activo = (activo+1) % elementos.Length;
-        Debug.Log(activo);
         Establecer();
     }
 
