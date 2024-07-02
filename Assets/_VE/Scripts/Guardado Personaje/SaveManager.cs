@@ -34,38 +34,29 @@ public class SaveManager : MonoBehaviour
         SaveSplit splitLoad = JsonUtility.FromJson<SaveSplit>(splitJson);
 
         //Asignamos la informacion guardada
-        for (int i = 0; i < split.pos.Length; i++)
-        {
-            split.pos[i] = splitLoad.pos[i];
-        }
+        split.posiciones = splitLoad.posiciones;
     }
 
-
-    public void PesonalizacionPersonaje(int numero, int posicion)
+    /// <summary>
+    /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones
+    /// </summary>
+    /// <param name="texto"> Parametro de texto con las posiciones </param>
+    public void PesonalizacionPersonaje(string texto)
     {
-        //Dependiento del numero y la posicion, asignamos antes de guardar
-        for (int i = 0; i < split.pos.Length; i++)
-        {
-            //Si la posicion es la indicada, guardamos el dato
-            if (i == posicion)
-            {
-                split.pos[i] = numero;
-            }
-        }
-
+        split.posiciones = texto;
         //Grabamos
         Save();
     }
 
+    /// <summary>
+    /// Metodo invocado desde el script de personalización, en el Awake
+    /// </summary>
     public void CargarDatos()
     {
         //Cargamos
         Load();
 
         //Asignamos los datos al personaje
-        for (int i = 0; i < split.pos.Length; i++)
-        {
-            personalizacion.gameObject.GetComponent<Split>().pos[i] = split.pos[i];
-        }  
+        personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTexto(split.posiciones);
     }
 }

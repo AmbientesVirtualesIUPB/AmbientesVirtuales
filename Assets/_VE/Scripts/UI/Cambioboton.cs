@@ -35,10 +35,7 @@ public class Cambioboton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         Actualizar();
-
-        Zoom();
     }
 
     private void Update()
@@ -198,9 +195,6 @@ public class Cambioboton : MonoBehaviour
         camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[enfoqueActual].position,velocidad*Time.deltaTime);
         camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[enfoqueActual].rotation,velocidad*Time.deltaTime);
     }
-<<<<<<< HEAD
-=======
-    
     public void activardorPaletas() 
     {
         if (conteo == 0)
@@ -208,6 +202,4 @@ public class Cambioboton : MonoBehaviour
 
         }
     }
-
->>>>>>> origin/FIresnowwUi
 }

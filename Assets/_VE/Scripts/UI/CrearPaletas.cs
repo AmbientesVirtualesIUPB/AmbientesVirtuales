@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CrearPaletas : MonoBehaviour
 {
-<<<<<<< HEAD
     public Personalizacion  personalizacion;
     public GameObject       prBoton;
     public Transform        panelOjos;
@@ -12,18 +11,8 @@ public class CrearPaletas : MonoBehaviour
     public Transform        panelPrimario;
     public Transform        panelSecundario;
     public Transform        panelPiel;
-=======
-    public Personalizacion personalizacion;
-    public GameObject prBoton;
-    public Transform panelMaleta;
-    public Transform panelOjos;
-    public Transform panelCabello;
-    public Transform panelPrimario;
-    public Transform panelSecundario;
-    public Transform panelPiel;
 
     [Header("Botones Zoom")]
-    public Transform panelMaletaZ;
     public Transform panelOjosZ;
     public Transform panelCabelloZ;
     public Transform panelPrimarioZ;
@@ -31,8 +20,6 @@ public class CrearPaletas : MonoBehaviour
     public Transform panelPielZ;
 
 
-
->>>>>>> origin/FIresnowwUi
     // Start is called before the first frame update
     void Start()
     {
