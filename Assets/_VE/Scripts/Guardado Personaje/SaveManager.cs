@@ -21,6 +21,7 @@ public class SaveManager : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, "splitData.data");
         //Guardamos el archibo json
         File.WriteAllText(path, splitJson);
+        
     }
 
     [ContextMenu("Load")]
@@ -28,13 +29,22 @@ public class SaveManager : MonoBehaviour
     {
         //Traemos la ruta del archivo
         string path = Path.Combine(Application.persistentDataPath, "splitData.data");
-        //leemos el archivo Json
-        string splitJson = File.ReadAllText(path);
-        //Convertimos el archivo Json a objeto unity
-        SaveSplit splitLoad = JsonUtility.FromJson<SaveSplit>(splitJson);
+        //Validamos si ya existe un archivo de guardado actual
+        if (File.Exists(path))
+        {
+            //leemos el archivo Json
+            string splitJson = File.ReadAllText(path);
+            //Convertimos el archivo Json a objeto unity
+            SaveSplit splitLoad = JsonUtility.FromJson<SaveSplit>(splitJson);
 
-        //Asignamos la informacion guardada
-        split.posiciones = splitLoad.posiciones;
+            //Asignamos la informacion guardada
+            split.posiciones = splitLoad.posiciones;
+        }
+        // Sino existe creamos uno por defecto
+        else
+        {
+            Save();
+        }
     }
 
     /// <summary>

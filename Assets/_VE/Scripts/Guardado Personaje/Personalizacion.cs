@@ -22,7 +22,7 @@ public class Personalizacion : MonoBehaviour
 
     private void Awake()
     {
-        
+        // Cargamos los datos que se puedan tener guardados
         saveManager.gameObject.GetComponent<SaveManager>().CargarDatos();
     }
 
@@ -30,9 +30,7 @@ public class Personalizacion : MonoBehaviour
     void Start()
     {
         InicializarElementos();
-        TransicionDeGenero(0);
-        // Generamos un guardado inicial por defecto, para crear el archivo en el sistema
-        saveManager.gameObject.GetComponent<SaveManager>().Save();
+        TransicionDeGenero(0); 
     }
 
     /// <summary>
@@ -128,7 +126,7 @@ public class Personalizacion : MonoBehaviour
     }
 
     /// <summary>
-    /// Para convertir las posiciones de texto a enteros y cargarlas
+    /// Metodo invocado desde el script SaveManager. Para convertir las posiciones de texto a enteros y cargarlas
     /// </summary>
     /// <param name="texto"></param>
     public void ConvertirDesdeTexto(string texto)
@@ -175,7 +173,7 @@ public class Personalizacion : MonoBehaviour
             partesOtros[i].Establecer();
         }
         // Cargamos la personalizacion que tenga guardada con anterioridad
-        //PersonalizacionSave();
+        PersonalizacionSave();
     }
 
     /// <summary>
