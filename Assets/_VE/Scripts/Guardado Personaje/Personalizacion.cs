@@ -31,6 +31,8 @@ public class Personalizacion : MonoBehaviour
     {
         InicializarElementos();
         TransicionDeGenero(0);
+        // Generamos un guardado inicial por defecto, para crear el archivo en el sistema
+        saveManager.gameObject.GetComponent<SaveManager>().Save();
     }
 
     /// <summary>
@@ -155,10 +157,10 @@ public class Personalizacion : MonoBehaviour
             for (int i = 0; i < partesHombre.Length; i++)
             {
                 partesHombre[i].Desactivar();
-                Debug.Log(partesHombre[i]);
                 partesMujer[i].Establecer();
-            }
-        }else
+            }     
+        }
+        else
         {
             for (int i = 0; i < partesHombre.Length; i++)
             {
@@ -172,8 +174,46 @@ public class Personalizacion : MonoBehaviour
         {
             partesOtros[i].Establecer();
         }
+        // Cargamos la personalizacion que tenga guardada con anterioridad
+        //PersonalizacionSave();
     }
 
+    /// <summary>
+    /// Dependiendo del genero, traemos la personalizacion que tenga guardada con anterioridad, sino tiene se establece por defecto
+    /// </summary>
+    public void PersonalizacionSave()
+    {
+        // Si es mujer
+        if (genero == 0)
+        {
+            for (int i = 0; i < partesMujer.Length; i++)
+            {
+                for (int j = 0; j < partesMujer[i].elementos.Length; j++)
+                {
+                    partesMujer[i].elementos[j].SetActive(pos[i + 5] == j);
+                }
+            }
+        }
+        // Si es hombre
+        else
+        {
+            for (int i = 0; i < partesHombre.Length; i++)
+            {
+                for (int j = 0; j < partesHombre[i].elementos.Length; j++)
+                {
+                    partesHombre[i].elementos[j].SetActive(pos[i] == j);
+                }
+            }
+        }
+        // Objetos generales
+        for (int i = 0; i < partesOtros.Length; i++)
+        {
+            for (int j = 0; j < partesOtros[i].elementos.Length; j++)
+            {
+                partesOtros[i].elementos[j].SetActive(pos[i + 10] == j);
+            }
+        }
+    }
 
     /// <summary>
     /// Para cambio de color de piel en el material
@@ -468,6 +508,7 @@ public class ElementoPersonalizable
     public void Siguiente()
     {
         activo = (activo+1) % elementos.Length;
+        Debug.Log(activo);
         Establecer();
     }
 
