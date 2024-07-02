@@ -12,6 +12,7 @@ public class CrearPaletas : MonoBehaviour
     public Transform        panelSecundario;
     public Transform        panelPiel;
 
+<<<<<<< HEAD
     [Header("Botones Zoom")]
     public Transform panelOjosZ;
     public Transform panelCabelloZ;
@@ -19,6 +20,8 @@ public class CrearPaletas : MonoBehaviour
     public Transform panelSecundarioZ;
     public Transform panelPielZ;
 
+=======
+>>>>>>> 5608d770a9a4a71295411ba55bc669efee87aa28
 
     // Start is called before the first frame update
     void Start()
