@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #038492;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #6a3458;
+    text-decoration: none;
+}
+h1{
+    color: #ffffff;
+    font-size: 20px; /* Tamaño más grande para el h1 */
+    transition: transform 0.3s ease; /* Añadir transición suave */
+}
+
+img{
+    border-radius: 15px;
+}
+
+.links {
+    font-size: 20px; /* Tamaño de fuente aumentado */
+    color: #6a3458; /* Color de texto opcional */
+    text-decoration: none; /* Quitar subrayado opcional */
+}
+
+.parrafos {
+    color: #ffffff;
+}
+
+.container {
+    display: flex; /* Utilizamos flexbox para organizar el contenido */
+    justify-content: space-between; /* Distribuye los elementos de manera uniforme */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+.left-section {
+    flex: 1; /* Ocupa el espacio disponible */
+    text-align: left; /* Alinea el contenido a la izquierda */
+}
+.right-section {
+    flex: 1; /* Ocupa el espacio disponible */
+    text-align: right; /* Alinea el contenido a la derecha */
+}
+
+.hero {
+    background: #102f49;
+    text-align: center;
+    padding: 50px 0;
+    border-radius: 105px;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-content h1.zoomed {
+    transform: scale(1.1); /* Efecto de zoom */
+}
+
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    background: #c0c0c0;
+}
+
+.service {
+    background: #96eff0;
+    text-align: center;
+    width: 13.5%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    transition: transform 0.3s ease; /* Añadir transición suave */
+}
+
+.service img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; /* Añadir transición suave */
+}
+
+.service img, .service h2, .service p, .service a {
+    transition: transform 0.3s ease; /* Añadir transición suave */
+}
+
+.service.zoomed, .service.zoomed img, .service.zoomed h2, .service.zoomed p, .service.zoomed a {
+    transform: scale(1.1); /* Efecto de zoom */
+}
+.service a {
+    display: block;
+    margin-top: 10px;
+    color: #00f;
+    text-decoration: none;
+}
+
+.gallery { 
+    display: flex;
+    justify-content: space-around;
+    background: #c0c0c0;
+}
+
+.gallery-item {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 40px;
+    background: #96eff0;
+    border-radius: 15px;
+    
+}
+
+.gallery-item img {
+    width: 250px;
+    height: 180px;
+    margin-right: 20px; 
+    transition: transform 0.3s ease; /* Añadir una transición para suavizar el efecto */
+}
+.gallery-item img.zoomed {
+    transform: scale(1.05); /* Ampliar la imagen al pasar el cursor */
+}
+
+.gallery-info {
+    flex: 1;
+}
+
+.gallery-info h3 {
+    margin: 10;
+}
+
+footer {
+    background: #102f49;
+    color: #ffffff;
+    text-align: center;
+    padding: 1px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
