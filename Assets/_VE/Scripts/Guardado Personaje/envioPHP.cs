@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class envioPHP : MonoBehaviour
 {
-    public string url = "http://localhost/apiwebm/form.php"; // Asegúrate de que la URL sea correcta
+    public string url = "http://localhost/apiwebm/form_ejemplo.php"; // Asegúrate de que la URL sea correcta
     public float[] pos = new float[14]; // Supón que este es tu array de 14 posiciones
 
     IEnumerator Start()

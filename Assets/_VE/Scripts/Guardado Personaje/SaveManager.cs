@@ -23,7 +23,6 @@ public class SaveManager : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, "splitData.data");
         //Guardamos el archibo json
         File.WriteAllText(path, splitJson);
-        
     }
 
     /// <summary>
@@ -44,6 +43,7 @@ public class SaveManager : MonoBehaviour
 
             //Asignamos la informacion guardada
             split.posiciones = splitLoad.posiciones;
+            split.colores = splitLoad.colores;
         }
         // Sino existe creamos uno por defecto
         else
@@ -64,6 +64,17 @@ public class SaveManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones
+    /// </summary>
+    /// <param name="texto"> Parametro de texto con las posiciones </param>
+    public void PesonalizacionColores(string texto)
+    {
+        split.colores = texto;
+        //Guardamos
+        Save();
+    }
+
+    /// <summary>
     /// Metodo invocado desde el script de personalización, en el Awake
     /// </summary>
     public void CargarDatos()
@@ -73,5 +84,6 @@ public class SaveManager : MonoBehaviour
 
         //Asignamos los datos al personaje
         personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTexto(split.posiciones);
+        personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTextoColores(split.colores);
     }
 }

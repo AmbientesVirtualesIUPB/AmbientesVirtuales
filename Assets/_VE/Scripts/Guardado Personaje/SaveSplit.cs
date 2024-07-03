@@ -9,10 +9,12 @@ public class SaveSplit
 {
     //Variable para guardas las posiciones de la personalizacion del personaje
     public string posiciones;
-    
+    public string colores;
+
     //Constructor con informacion por defecto
     public SaveSplit()
     {
         posiciones = "";
+        colores = "";
     }
 }

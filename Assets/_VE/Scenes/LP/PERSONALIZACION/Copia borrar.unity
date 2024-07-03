@@ -2892,7 +2892,7 @@ GameObject:
   - component: {fileID: 826943522}
   - component: {fileID: 826943523}
   m_Layer: 0
-  m_Name: SaveData
+  m_Name: SaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,6 +2928,7 @@ MonoBehaviour:
   personalizacion: {fileID: 2126161624}
   split:
     posiciones: 
+    colores: 
 --- !u!114 &826943523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2940,7 +2941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc73d9fe3fec3f47ad1961beb0ec267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: http://localhost/apiwebm/form.php
+  url: http://localhost/apiwebm/form_ejemplo.php
   pos:
   - 0
   - 0
@@ -8879,9 +8880,11 @@ MonoBehaviour:
     type: 2}
   materialInicialPielMujer: {fileID: 2100000, guid: ec35a7ec5e9751044ae4b78bbf1bca9f,
     type: 2}
-  saveManager: {fileID: 826943520}
   genero: 0
+  saveManager: {fileID: 826943520}
   pos: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  colores: 0000000000000000000000000000000000000000
+  esColor: 0
 --- !u!1001 &2127907305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9234,7 +9237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2119226748, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 998310909595132260, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}

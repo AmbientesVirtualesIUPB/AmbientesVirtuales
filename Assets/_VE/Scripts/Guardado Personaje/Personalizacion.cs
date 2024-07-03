@@ -20,6 +20,8 @@ public class Personalizacion : MonoBehaviour
     // Variables utilizadas para el guardado de archivos
     public GameObject               saveManager;
     public int[]                    pos = new int[14];
+    public int[]                    colores = new int[4];
+    public bool                     esColor;
 
     private void Awake()
     {
@@ -116,15 +118,33 @@ public class Personalizacion : MonoBehaviour
     public string ConvertirATexto()
     {
         string texto = "";
-        for (int i = 0; i < pos.Length; i++)
+        // Validamos si lo que estamos personalizando es el color
+        if (esColor == true)
         {
-            texto += (texto.Length > 0) ? "|" : "";
-            texto += pos[i].ToString(); 
-        }
-        // Enviamos los datos que queremos guardar
-        saveManager.gameObject.GetComponent<SaveManager>().PesonalizacionPersonaje(texto);
-        return texto;
+            for (int i = 0; i < colores.Length; i++)
+            {
+                texto += (texto.Length > 0) ? "|" : "";
+                texto += colores[i].ToString();
+            }
 
+            // Enviamos los datos que queremos guardar
+            saveManager.gameObject.GetComponent<SaveManager>().PesonalizacionColores(texto);
+        }
+        // Si lo que estamos personalizando son los elementos, entonces
+        else
+        {
+            for (int i = 0; i < pos.Length; i++)
+            {
+                texto += (texto.Length > 0) ? "|" : "";
+                texto += pos[i].ToString();
+            }
+
+            // Enviamos los datos que queremos guardar
+            saveManager.gameObject.GetComponent<SaveManager>().PesonalizacionPersonaje(texto);
+        }
+
+        esColor = false;
+        return texto;
     }
 
     /// <summary>
@@ -139,6 +159,22 @@ public class Personalizacion : MonoBehaviour
             for (int i = 0; i < nombre.Length; i++)
             {
                 pos[i] = int.Parse(nombre[i]);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Metodo invocado desde el script SaveManager. Para convertir las posiciones de texto a enteros y cargarlas
+    /// </summary>
+    /// <param name="texto"></param>
+    public void ConvertirDesdeTextoColores(string texto)
+    {
+        string[] nombre = texto.Split("|");
+        if (texto.Length > 0)
+        {
+            for (int i = 0; i < nombre.Length; i++)
+            {
+                colores[i] = int.Parse(nombre[i]);
             }
         }
     }
@@ -213,19 +249,59 @@ public class Personalizacion : MonoBehaviour
                 partesOtros[i].elementos[j].SetActive(pos[i + 10] == j);
             }
         }
+        // Establecemos los colores
+        partesOtros[3].EstablecerColorGeneral(colores[0]);
+        partesHombre[4].EstablecerColorGeneral(colores[1]);
+        partesHombre[3].EstablecerColorGeneral(colores[1]);
+        partesMujer[4].EstablecerColorGeneral(colores[1]);
+        partesMujer[3].EstablecerColorGeneral(colores[1]);
+        for (int i = 0; i < partesHombre.Length; i++)
+        {
+            partesHombre[i].EstablecerColorPrincipal(colores[2]);
+            partesMujer[i].EstablecerColorPrincipal(colores[2]);
+            partesHombre[i].EstablecerColorSecundario(colores[3]);
+            partesMujer[i].EstablecerColorSecundario(colores[3]);
+            partesHombre[i].EstablecerMaterialPiel(colores[4]);
+            partesMujer[i].EstablecerMaterialPiel(colores[4]);
+        }
+
+        for (int i = 0; i < partesOtros.Length; i++)
+        {
+            partesOtros[i].EstablecerColorPrincipal(colores[2]);
+            partesOtros[i].EstablecerColorSecundario(colores[3]);
+        }
     }
 
     /// <summary>
-    /// Para cambio de color de piel en el material
+    /// Metodo para cambiar el color de ojos
     /// </summary>
-    /// <param name="cual"> para verificar si es hombre o mujer</param>
-    public void CambiarMaterialPiel(int cual)
+    /// <param name="num"> para indicar cual color</param>
+    public void CambiarColorOjos(int num)
     {
-        for (int i = 0; i < partesHombre.Length; i++)
-        {
-            partesHombre[i].EstablecerMaterialPiel(cual);
-            partesMujer[i].EstablecerMaterialPiel(cual);
-        }
+        // Asigamos a la posicion correcta el color seleccionado
+        colores[0] = num;
+        // Indicamos que estamos cambiando color
+        esColor = true;
+        ConvertirATexto();
+        // Establecemos el color
+        partesOtros[3].EstablecerColorGeneral(num);
+    }
+
+    /// <summary>
+    /// Metodo para cambiar el color de cabello
+    /// </summary>
+    /// <param name="num"> para indicar cual color </param>
+    public void CambiarColorCabello(int num)
+    {
+        // Asigamos a la posicion correcta el color seleccionado
+        colores[1] = num;
+        esColor = true;
+        ConvertirATexto();
+        // Establecemos el color
+        partesHombre[4].EstablecerColorGeneral(num);
+        partesHombre[3].EstablecerColorGeneral(num);
+        partesMujer[4].EstablecerColorGeneral(num);
+        partesMujer[3].EstablecerColorGeneral(num);
     }
 
     /// <summary>
@@ -234,8 +310,12 @@ public class Personalizacion : MonoBehaviour
     /// <param name="num"> para indicar cual color </param>
     public void CambioColorPrincipal(int num)
     {
-        print("Cambio color principal" + num.ToString());
+        // Asigamos a la posicion correcta el color seleccionado
+        colores[2] = num;
+        esColor = true;
+        ConvertirATexto();
 
+        // Establecemos el color
         for (int i = 0; i < partesHombre.Length; i++)
         {
             partesHombre[i].EstablecerColorPrincipal(num);
@@ -254,6 +334,12 @@ public class Personalizacion : MonoBehaviour
     /// <param name="num"> para indicar cual color </param>
     public void CambioColorSecundario(int num)
     {
+        // Asigamos a la posicion correcta el color seleccionado
+        colores[3] = num;
+        esColor = true;
+        ConvertirATexto();
+
+        // Establecemos el color
         for (int i = 0; i < partesHombre.Length; i++)
         {
             partesHombre[i].EstablecerColorSecundario(num);
@@ -267,26 +353,22 @@ public class Personalizacion : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo para cambiar el color de cabello
+    /// Para cambio de color de piel en el material
     /// </summary>
-    /// <param name="num"> para indicar cual color </param>
-    public void CambiarColorCabello(int num)
+    /// <param name="cual"> para verificar si es hombre o mujer</param>
+    public void CambiarMaterialPiel(int cual)
     {
-        print("Cambio color cabello " + num.ToString());
-        partesHombre[4].EstablecerColorGeneral(num);
-        partesHombre[3].EstablecerColorGeneral(num);
-        partesMujer[4].EstablecerColorGeneral(num);
-        partesMujer[3].EstablecerColorGeneral(num);
-    }
+        // Asigamos a la posicion correcta el color seleccionado
+        colores[4] = cual;
+        esColor = true;
+        ConvertirATexto();
 
-    /// <summary>
-    /// Metodo para cambiar el color de ojos
-    /// </summary>
-    /// <param name="num"> para indicar cual color</param>
-    public void CambiarColorOjos(int num)
-    {
-        print("Cambio color ojos " + num.ToString());
-        partesOtros[3].EstablecerColorGeneral(num);
+        // Establecemos el color
+        for (int i = 0; i < partesHombre.Length; i++)
+        {
+            partesHombre[i].EstablecerMaterialPiel(cual);
+            partesMujer[i].EstablecerMaterialPiel(cual);
+        }
     }
 
     /// <summary>
