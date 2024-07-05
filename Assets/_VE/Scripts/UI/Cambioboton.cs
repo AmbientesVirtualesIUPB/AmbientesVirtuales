@@ -35,6 +35,7 @@ public class Cambioboton : MonoBehaviour
     void Start()
     {
         Actualizar();
+        Zoom();
     }
 
     private void Update()
@@ -95,8 +96,7 @@ public class Cambioboton : MonoBehaviour
     public void PasaDerecha()
     {
         conteo = (conteo + 8 + 1) % 8;
-
-        BotonesDescat();
+        BotonesDescat(); 
     }
 
     /// <summary>
@@ -105,8 +105,7 @@ public class Cambioboton : MonoBehaviour
     public void PasaIzquierda()
     {
         conteo = (conteo + 8 - 1) % 8;
-
-        BotonesDescat();
+        BotonesDescat(); 
     }
 
     /// <summary>
@@ -171,7 +170,7 @@ public class Cambioboton : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             canvasZoom.transform.GetChild(i).gameObject.SetActive((enfoqueActual - 1)==i);
-        }
+        }    
     }
 
 
@@ -206,7 +205,6 @@ public class Cambioboton : MonoBehaviour
             camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, rotacionInicial, velocidad * Time.deltaTime);
             return;
         }
-
         camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[enfoqueActual].position,velocidad*Time.deltaTime);
         camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[enfoqueActual].rotation,velocidad*Time.deltaTime);
     }
