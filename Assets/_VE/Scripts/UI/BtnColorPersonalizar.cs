@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BtnColorPersonalizar : MonoBehaviour
 {
+    //Variables para manejar cada boton de color personalizable y su identificación
     public Personalizacion  personalizacion;
     public TipoElemento     tipo;
     public int              indice;
@@ -11,8 +12,13 @@ public class BtnColorPersonalizar : MonoBehaviour
 
     private void Start()
     {
+        //Obtenemos una referencia del color, para asignarla al boton y darle visualización al usuario
         GetComponent<UnityEngine.UI.Image>().color = personalizacion.GetColor(tipo, indice);
     }
+
+    /// <summary>
+    /// Metodo invocado desde cada instancia de los botones en las paletas de colores
+    /// </summary>
     public void Activar()
     {
         print("Activo" + tipo.ToString());

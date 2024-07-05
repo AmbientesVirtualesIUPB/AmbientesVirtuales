@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a509924e33d4c94dacb2493491ed1a0, type: 3}
   m_Name: Servidor
   m_EditorClassIdentifier: 
-  servidor: http://localhost/gamificacion/
+  servidor: http://localhost/gamificacion
   servicios:
   - nombre: login
     URL: login.php

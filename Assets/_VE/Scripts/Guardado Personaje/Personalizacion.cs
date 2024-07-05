@@ -117,6 +117,7 @@ public class Personalizacion : MonoBehaviour
     /// <returns></returns>
     public string ConvertirATexto()
     {
+
         string texto = "";
         // Validamos si lo que estamos personalizando es el color
         if (esColor == true)

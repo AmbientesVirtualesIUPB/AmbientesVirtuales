@@ -9,10 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
-    //Referencia al servidor
+    //Referencia al servidor para conexion
     public Servidor         servidor;
-    public TextMeshProUGUI  InputUsuario;
-    public TextMeshProUGUI  InputPass;
+    public TMP_InputField   InputUsuario;
+    public TMP_InputField   InputPass;
     public GameObject       imloading;
     public DBusuario        usuario;
 
@@ -50,17 +50,17 @@ public class Login : MonoBehaviour
                 print(servidor.respuesta.mensaje);
                 break;
 
-
             case 205: //Inicio de sesion correcto
-                //SceneManager.LoadScene("Scena2");
-                usuario = JsonUtility.FromJson<DBusuario>(servidor.respuesta.respuesta);
+                SceneManager.LoadScene("Scena2");
+                //Mostrar los datos del usuario
+                //usuario = JsonUtility.FromJson<DBusuario>(servidor.respuesta.respuesta);
                 break;
 
-            case 402: //Faltan datos
+            case 402: //Faltan datos para ejecutar la consulta
                 print(servidor.respuesta.mensaje);
                 break;
 
-            case 404: //Error
+            case 404: //Error en la ejecucion
                 print("No hay conexion con el servidor");
                 break;
 

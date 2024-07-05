@@ -4,36 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 
+/// <summary>
+/// Utilizada para consumir una API, en este caso la api de SICAU para validar los usuarios activos en el periodo
+/// </summary>
 public class ConsumirAPI : MonoBehaviour
 {
-    [Serializable]
-    // Clase que Representa los datos que enviarás en la solicitud POST
-    public class SolicitudLogin
-    {
-        public string Email;
-        public string Contraseña;
-    }
-
-    [Serializable]
-    // Clase que Representa los datos anidados dentro de la respuesta
-    public class DatosRespuesta
-    {
-        public string Identificacion;
-        public string NombreCompleto;
-        public string TipoDeUsuario;
-        public string Programa;
-        public string Facultad;
-    }
-
-    [Serializable]
-    // Clase que Representa la respuesta general que contiene un booleano de éxito, un mensaje, y los datos de respuesta
-    public class LoginRespuesta
-    {
-        public bool             Estado;
-        public string           Mensaje;
-        public DatosRespuesta   Datos;
-    }
-
     // Solicitamos una referencia a los InputField del login
     public TMP_InputField       InputUsuario;
     public TMP_InputField       InputPassword;
@@ -43,9 +18,12 @@ public class ConsumirAPI : MonoBehaviour
     private string apiKey = "s1c4uc0ntr0ld34cc3s02019*";
 
 
-    //Metodo invocado desde el botón Iniciar en el Login
+    /// <summary>
+    /// Metodo invocado desde el botón Iniciar en el Login para consumir el servicio
+    /// </summary>
     public void Consumir()
     {
+        //GraficsConfig.configuracionDefault.Equals("true");
         // Crear un objeto con los datos que queremos enviar
         SolicitudLogin solicitudLogin = new SolicitudLogin
         {    
@@ -60,6 +38,10 @@ public class ConsumirAPI : MonoBehaviour
         StartCoroutine(PostData(jsonDato));
     }
 
+    /// <summary>
+    /// Currutina empleada para consumir el serevicio donde se valida su recepción y posterior lectura
+    /// </summary>
+    /// <param name="jsonDato"> Objeto convertido en json para su manejo </param>
     IEnumerator PostData(string jsonDato)
     {
         // Crear una solicitud POST, donde le enviamos la URL a consumir
@@ -89,6 +71,7 @@ public class ConsumirAPI : MonoBehaviour
         {
             // Sino se encuentra ningun error obtenemos la respuesta en formato JSON
             string respuestaJson = solicitud.downloadHandler.text;
+            // Pasamos el json a un objeto tipo LoginRespuesta
             LoginRespuesta loginResponse = JsonUtility.FromJson<LoginRespuesta>(respuestaJson);
             // Si la respuesta es exitosa el estado de la consulta es verdadero
             loginResponse.Estado = true;
@@ -97,15 +80,50 @@ public class ConsumirAPI : MonoBehaviour
             Debug.Log("Respuesta recibida con exito:");
             Debug.Log("Estado: " + loginResponse.Estado);
             Debug.Log("Mensaje: " + loginResponse.Mensaje);
+
             // Validamos si los datos del usuario son diferentes de nulos para poder mostrarlos sin errores
             if (loginResponse.Datos != null)
             {
-                Debug.Log("Identificacion: " + loginResponse.Datos.Identificacion);
-                Debug.Log("NombreCompleto: " + loginResponse.Datos.NombreCompleto);
-                Debug.Log("TipoDeUsuario: " + loginResponse.Datos.TipoDeUsuario);
-                Debug.Log("Programa: " + loginResponse.Datos.Programa);
-                Debug.Log("Facultad: " + loginResponse.Datos.Facultad);
+                string[] datos = new string[5];
+                datos[0] = "Identificacion: " + loginResponse.Datos.Identificacion;
+                datos[1] = "NombreCompleto: " + loginResponse.Datos.NombreCompleto;
+                datos[2] = "TipoDeUsuario: " + loginResponse.Datos.TipoDeUsuario;
+                datos[3] = "Programa: " + loginResponse.Datos.Programa;
+                datos[4] = "Facultad: " + loginResponse.Datos.Facultad;
+
+                for (int i = 0; i < datos.Length; i++)
+                {
+                    Debug.Log(datos[i]);
+                }
             }
         }
     }
+}
+
+[Serializable]
+// Clase que Representa los datos que enviarás en la solicitud POST
+public class SolicitudLogin
+{
+    public string Email;
+    public string Contraseña;
+}
+
+[Serializable]
+// Clase que Representa los datos anidados dentro de la respuesta
+public class DatosRespuesta
+{
+    public string Identificacion;
+    public string NombreCompleto;
+    public string TipoDeUsuario;
+    public string Programa;
+    public string Facultad;
+}
+
+[Serializable]
+// Clase que Representa la respuesta general que contiene un booleano de éxito, un mensaje, y los datos de respuesta
+public class LoginRespuesta
+{
+    public bool Estado;
+    public string Mensaje;
+    public DatosRespuesta Datos;
 }
