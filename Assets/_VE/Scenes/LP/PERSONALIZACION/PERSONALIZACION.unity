@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.18153828, g: 0.22717905, b: 0.30740368, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.000065582106, g: 0.007158067, b: 0.010666391, a: 1}
->>>>>>> origin/FIresnowwUi
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6147,17 +6143,6 @@ RectTransform:
   m_LocalScale: {x: 0.88509, y: 0.88509, z: 0.88509}
   m_ConstrainProportionsScale: 0
   m_Children: []
-<<<<<<< HEAD
-  m_Father: {fileID: 795127076}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1367180603
-=======
   m_Father: {fileID: 415001653}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -6167,7 +6152,6 @@ RectTransform:
   m_SizeDelta: {x: 364.6, y: 73.1}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1385031758
->>>>>>> origin/FIresnowwUi
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7652,13 +7636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personalizacion: {fileID: 2126161627}
   prBoton: {fileID: 5236802941581302979, guid: e5ebf442725068a428f7cbaed31466c3, type: 3}
-<<<<<<< HEAD
-  panelOjos: {fileID: 1003532216}
-  panelCabello: {fileID: 1430302437}
-  panelPrimario: {fileID: 1413503884}
-  panelSecundario: {fileID: 2037873003}
-  panelPiel: {fileID: 1367180602}
-=======
   panelMaleta: {fileID: 0}
   panelOjos: {fileID: 1247502262}
   panelCabello: {fileID: 863089801}
@@ -7671,7 +7648,6 @@ MonoBehaviour:
   panelPrimarioZ: {fileID: 1430302437}
   panelSecundarioZ: {fileID: 1413503884}
   panelPielZ: {fileID: 2037873003}
->>>>>>> origin/FIresnowwUi
 --- !u!1 &1627410426 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3732795069864377989, guid: f7049d1bd08befd499853a3147e331f3,
@@ -9760,9 +9736,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
+  m_EditorClassIdentifier:
 --- !u!1 &2033073550
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,7 +9840,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033073550}
   m_CullTransparentMesh: 1
->>>>>>> origin/FIresnowwUi
 --- !u!1 &2037873002
 GameObject:
   m_ObjectHideFlags: 0
