@@ -119,36 +119,25 @@ public class Cambioboton : MonoBehaviour
             panelesColor[0].SetActive(true);
             panelesColor[1].SetActive(true);
         }
-        else
-        {
-            panelesColor[0].SetActive(false);
-            panelesColor[1].SetActive(false);
-        }
-
-        if (conteo == 2)
+        else if (conteo == 2)
         {
             panelesColor[2].SetActive(true);
         }
-        else
-        {
-            panelesColor[2].SetActive(false);
-        }
-
-        if (conteo == 3)
+        else if (conteo == 3)
         {
             panelesColor[3].SetActive(true);
+            panelesColor[2].SetActive(false);
         }
-        else
-        {
-            panelesColor[3].SetActive(false);
-        }
-
-        if (conteo == 6)
+        else if (conteo == 6)
         {
             panelesColor[4].SetActive(true);
         }
         else
         {
+            panelesColor[0].SetActive(false);
+            panelesColor[1].SetActive(false);
+            panelesColor[2].SetActive(false);
+            panelesColor[3].SetActive(false);
             panelesColor[4].SetActive(false);
         }
         // Actualizamos el canvas

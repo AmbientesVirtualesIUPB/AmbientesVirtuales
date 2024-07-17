@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18153867, g: 0.22717999, b: 0.30740488, a: 1}
+  m_IndirectSpecularColor: {r: 0.18153828, g: 0.22717905, b: 0.30740368, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -643,6 +643,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7255248093947067840}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1 &117733909
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +720,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117733909}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &121609039
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,8 +4957,13 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122030493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: -0.015159}
   m_LocalScale: {x: -73.697, y: 49.993496, z: 0.57188874}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -130, y: 85, z: 1.0088}
+>>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1412560604}
@@ -4964,7 +4972,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 7.5, y: 112.65}
+=======
+  m_AnchoredPosition: {x: -1.4000015, y: 143}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 0.7809, y: 1}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1122030495
@@ -5024,6 +5036,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< Updated upstream
       - m_Target: {fileID: 488369913}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: Play
@@ -5036,6 +5049,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1122030496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5719,8 +5734,13 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251613395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: -0.015159}
   m_LocalScale: {x: 73.697, y: 49.993496, z: 0.5669}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 130, y: 85, z: 1}
+>>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 121609040}
@@ -5729,7 +5749,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -56.5, y: 112.65}
+=======
+  m_AnchoredPosition: {x: -109, y: 143}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 0.7759, y: 1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1251613397
@@ -5789,6 +5813,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< Updated upstream
       - m_Target: {fileID: 1038546368}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: Play
@@ -5801,6 +5826,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1251613398
 MonoBehaviour:
   m_ObjectHideFlags: 0
