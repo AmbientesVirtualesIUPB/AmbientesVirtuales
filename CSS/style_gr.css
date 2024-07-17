@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, rgba(233, 233, 233, 1) 0%, #038492);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "intro intro"
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    max-width: 1600px;
+    width: 100%;
+    max-height: 900px;
+    height: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.intro {
+    grid-area: intro;
+    background-color: #038492;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    text-align: center;
+}
+
+.header {
+    grid-area: header;
+    background-color: #102f49;
+    color: white;
+    padding: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-bottom-left-radius: 8px;
+}
+
+.sidebar-item {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+    grid-area: main;
+    padding: 20px;
+}
+
+.info-card, .chart-card {
+    background-color: #96eff0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.info-card h2 {
+    margin-top: 0;
+}
+
+.chart-card {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #102f49;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.footer button {
+    background-color: #fff;
+    color: #181717;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.footer button:hover {
+    background-color: #96eff0;
+    color: #fff;
+}
