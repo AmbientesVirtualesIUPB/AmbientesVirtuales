@@ -8,12 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cab_07
-    second: {fileID: 2100000, guid: e6d35dc4ef9e62e46930c76b6c8da2cb, type: 2}
+    second: {fileID: 2100000, guid: 34d7db4f693082441aa177b564776e77, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cro_07
-    second: {fileID: 2100000, guid: 8a56e303ade8cb149a121b32f6729da9, type: 2}
+    second: {fileID: 2100000, guid: a13430dd92dbe7d40ba358813fc910e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: whe_07
+    second: {fileID: 2100000, guid: bb958a2a01623b645861f341d83de249, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

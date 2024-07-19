@@ -7,38 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Chasiis
-    second: {fileID: 2100000, guid: c3afe198488201f47a3a0477a7e5b232, type: 2}
+      name: cab_#5
+    second: {fileID: 2100000, guid: de4f18b032e5a934885cd347b175fcf9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Furtivo1
-    second: {fileID: 2100000, guid: 717f0fe2f15eae74e804fa64cc7e80be, type: 2}
+      name: cro_#5
+    second: {fileID: 2100000, guid: 5f29dbaa562c3a24c957ebd98fcef626, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Volante1
-    second: {fileID: 2100000, guid: 1268fce987a385e41ae8abd1491f7855, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bodywork_01
-    second: {fileID: 2100000, guid: 7c6b4071372e8f44ca1fad017b11c1a3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 6a9513f60f5300a42b861bed9d229d18, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: d4931d83cee553e4db3397b1c307c59d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: whe_#2
-    second: {fileID: 2100000, guid: 0fcf2b6deea4b5544bd4b18c7c61804f, type: 2}
+      name: whe_#5
+    second: {fileID: 2100000, guid: b575fe632b5071445bc8f4334b320d77, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
