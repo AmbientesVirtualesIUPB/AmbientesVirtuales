@@ -1,9 +1,49 @@
 fileFormatVersion: 2
-guid: 261897607dad68740b13775aefc7dd64
+guid: c7961a4526a182d488028406e9b20217
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BATERIA_FOSFATO
+    second: {fileID: 2100000, guid: 7f36a587fae3c954980b529b5fdf3d14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BATERIA_TITANATO
+    second: {fileID: 2100000, guid: cb91f167b05a3744793552c618724c12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CUBIERTA_BATERIA1_PASCUAL
+    second: {fileID: 2100000, guid: 3e52a5b038120e54b9cc5f872a5091b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CUBIERTA_BATERIA2_TITANATO
+    second: {fileID: 2100000, guid: cddc74d57aad69e4e82df04818d116e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CUBIERTA_BATERIA3_FOSFATO
+    second: {fileID: 2100000, guid: a81b70239c803b540a5d46b3905be8ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PROTECTOR
+    second: {fileID: 2100000, guid: bb857a75110cb7340824a4aa4861a632, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baterias
+    second: {fileID: 2100000, guid: 7ae23cef2ff5e1347a7c3b00e345f9c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cinta
+    second: {fileID: 2100000, guid: daa420fa684e40d4d8d95618f7987fa2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

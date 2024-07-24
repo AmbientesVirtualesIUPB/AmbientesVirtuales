@@ -11368,6 +11368,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732795069864377989, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5070286771084599707, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_IsActive
@@ -11443,12 +11448,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: PERSONAJES_FIN
       objectReference: {fileID: 0}
+    - target: {fileID: 7647611299894629645, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232416429694743510, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309825164182726709, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8624389489882193599, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8805759907058979590, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139019414815668709, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
