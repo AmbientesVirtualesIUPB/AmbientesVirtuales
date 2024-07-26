@@ -23,6 +23,7 @@ public class IniciarPlataforma : MonoBehaviour
         StartCoroutine(MovimientoSuave(0));
     }
 
+
     /// <summary>
     /// Funcion para iniciar la currutina del movimiento suave hacia abajo
     /// </summary>
@@ -38,7 +39,6 @@ public class IniciarPlataforma : MonoBehaviour
     /// Currutina para iniciar el movimiento suave
     /// </summary>
     /// <param name="posicion"> Indica a que posicon nos vamos a mover</param>
-    /// <returns></returns>
     IEnumerator MovimientoSuave(int posicion)
     {
         // Validamos si se esta abriendo la compuerta
@@ -51,9 +51,11 @@ public class IniciarPlataforma : MonoBehaviour
             yield return new WaitForSeconds(2f);
         }
 
-        int frames = 0;
+        float tiempoTotal = 900f; // Duración total del ciclo en segundos
+        float tiempoTranscurrido = 0f; // Tiempo total del ciclo
+
         // Mientras la distancia entre la posición actual y la posición objetivo sea mayor que una pequeña tolerancia
-        while (frames < 1000)
+        while (tiempoTranscurrido < tiempoTotal)
         {
             // Aplica el movimiento suave
             brazo.gameObject.transform.position = Vector3.SmoothDamp(brazo.gameObject.transform.position, posiciones[posicion].position, ref velocidad, tiempoSuavizado);
@@ -62,12 +64,12 @@ public class IniciarPlataforma : MonoBehaviour
             yield return null;
 
             // Validamos si se esta cerrando la compuerta y activamos la animacion y verificamos que tenga una pequeña tolerancia de distancia antes de cerrar
-            if (posicion == 1 && frames == 350)
+            if (posicion == 1 && tiempoTranscurrido == 400f)
             {
                 plataforma.gameObject.GetComponent<Animator>().SetBool("open", false);
                 plataforma.gameObject.GetComponent<Animator>().SetBool("close", true);
             }
-            frames++;
+            tiempoTranscurrido += 1f;
         }
         // Una vez que se alcanza la posición objetivo, nos aseguramos de que el objeto esté exactamente en la posición objetivo
         brazo.gameObject.transform.position = posiciones[posicion].position;

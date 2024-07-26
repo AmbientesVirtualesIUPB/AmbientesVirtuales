@@ -6,54 +6,56 @@ using UnityEngine.EventSystems;
 public class BrazoGiratorio : MonoBehaviour
 {
     // Velocidad de rotación en grados por segundo
-    public float rotationSpeed = 100f;
-    private bool rotateRight = false;
-    private bool rotateLeft = false;
+    public float velocidadRotacion = 100f;
+    private bool rotarDerecha = false;
+    private bool rotarizquierda = false;
 
 
-    // Update se llama una vez por frame
+    /// <summary>
+    /// Metodo invocado frame a frame
+    /// </summary>
     void Update()
     {
-        if (rotateRight)
+        if (rotarDerecha)
         {
             // Rotar hacia la derecha (sentido horario)
-            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, velocidadRotacion * Time.deltaTime, 0);
         }
-        else if (rotateLeft)
+        else if (rotarizquierda)
         {
             // Rotar hacia la izquierda (sentido antihorario)
-            transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, -velocidadRotacion * Time.deltaTime, 0);
         }
     }
 
     /// <summary>
-    /// Métodos para iniciar y detener la rotación desde ButtonDerecha en la scena
+    /// Métodos para iniciar la rotación en sentido a las manecillas del reloj desde ButtonDerecha en la scena
     /// </summary>
     /// <param name="data"></param>
     public void RotarDerechaPresionada(BaseEventData data)
     {
-        rotateRight = true; 
-        rotateLeft = false;
+        rotarDerecha = true;
+        rotarizquierda = false;
     }
 
     /// <summary>
-    /// Métodos para iniciar y detener la rotación desde ButtonIzquierda en la scena
+    /// Métodos para iniciar la rotación en sentido contrario a las manecillas del relojdesde ButtonIzquierda en la scena
     /// </summary>
     /// <param name="data"></param>
     public void RotarIzquierdaPresionada(BaseEventData data)
     {
-        rotateRight = false;
-        rotateLeft = true;
+        rotarDerecha = false;
+        rotarizquierda = true;
     }
 
     /// <summary>
-    /// Metodo invocado al dejar de presionar los botones del canvas
+    /// Metodo invocado al dejar de presionar los botones del canvas desde Event Trigger
     /// </summary>
     /// <param name="data"></param>
     public void NoRotar(BaseEventData data)
     {
-        rotateRight = false;
-        rotateLeft = false;
+        rotarDerecha = false;
+        rotarizquierda = false;
     }
 
     /// <summary>
