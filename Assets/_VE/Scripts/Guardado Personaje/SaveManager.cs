@@ -106,6 +106,6 @@ public class SaveManager : MonoBehaviour
         {
             //Asignamos los datos al personaje
             personalizacionFurtivos.gameObject.GetComponent<PersonalizacionFurtivo>().ConvertirDesdeTexto(split.furtivos);
-        }
+        }    
     }
 }

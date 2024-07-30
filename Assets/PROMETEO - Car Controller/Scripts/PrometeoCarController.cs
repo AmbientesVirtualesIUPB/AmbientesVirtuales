@@ -234,10 +234,10 @@ public class PrometeoCarController : MonoBehaviour
             RRWParticleSystem.Stop();
           }
           if(RLWTireSkid != null){
-            RLWTireSkid.emitting = false;
+            RLWTireSkid.emitting = true;
           }
           if(RRWTireSkid != null){
-            RRWTireSkid.emitting = false;
+            RRWTireSkid.emitting = true;
           }
         }
 
@@ -265,7 +265,6 @@ public class PrometeoCarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
       //CAR DATA
 
       // We determine the speed of the car.
@@ -692,7 +691,8 @@ public class PrometeoCarController : MonoBehaviour
           if(isDrifting){
             RLWParticleSystem.Play();
             RRWParticleSystem.Play();
-          }else if(!isDrifting){
+          }
+          else if(!isDrifting){
             RLWParticleSystem.Stop();
             RRWParticleSystem.Stop();
           }

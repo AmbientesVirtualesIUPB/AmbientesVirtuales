@@ -13,6 +13,7 @@ public class InicializarFurtivo : MonoBehaviour
     public GameObject   plataforma;
     public GameObject   brazo;
     public GameObject   canvas;
+    public GameObject   canvasPantalla;
     private Collider    collider;
 
     //Variables para el manejo de camaras
@@ -117,6 +118,9 @@ public class InicializarFurtivo : MonoBehaviour
     /// </summary>
     IEnumerator MovimientoSuave()
     {
+        //Activamos el canvas con la pantalla del vehiculo
+        canvasPantalla.gameObject.SetActive(true);
+
         float tiempoTotal = 300f; // Duración total del ciclo en segundos
         float tiempoTranscurrido = 0f; // Validamos el tiempo transcurrido
 
@@ -198,6 +202,9 @@ public class InicializarFurtivo : MonoBehaviour
             tiempoTranscurrido += 1f;
             yield return null;
         }
+
+        //Activamos el canvas con la pantalla del vehiculo
+        canvasPantalla.gameObject.SetActive(false);
 
         // Iniciamos la animacion de esconder del brazo de la plataforma
         plataforma.gameObject.GetComponent<IniciarPlataforma>().MoverAbajo();
