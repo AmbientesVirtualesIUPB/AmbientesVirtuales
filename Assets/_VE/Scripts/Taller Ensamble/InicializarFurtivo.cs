@@ -7,14 +7,17 @@ using UnityEngine.UIElements;
 
 public class InicializarFurtivo : MonoBehaviour
 {
-    public Transform[]  camsPositions;
-    public GameObject[] botonesCanvas;
-    public Transform    camPrincipal;
-    public GameObject   plataforma;
-    public GameObject   brazo;
-    public GameObject   canvas;
-    public GameObject   canvasPantalla;
-    private Collider    collider;
+    public Transform[]  camsPositions; // Posiciones de las camaras
+    public GameObject[] botonesCanvas; // Botones de rotar para poder desactivarlos cuando deseemos
+    public Transform    camPrincipal; // Referencia de la camara principal
+    public GameObject   plataforma; // Referencia a la plataforma en general
+    public GameObject   brazo; // Referencia al brazo giratorio para poderlo detener
+    public GameObject   canvas; // Canvas principal
+    public GameObject   canvasPantalla; // Canvas pantalla que se visualiza al cambiar las baterias
+    private Collider    collider; // Referencia al collider para que no se pueda ejecutar repetidas veces
+
+    // Variables provisionales para el manejo de particulas
+    public GameObject   particulas;
 
     //Variables para el manejo de camaras
     public float        velocidad = 3;           // Velocidad de interpolación
@@ -118,8 +121,9 @@ public class InicializarFurtivo : MonoBehaviour
     /// </summary>
     IEnumerator MovimientoSuave()
     {
-        //Activamos el canvas con la pantalla del vehiculo
+        //Activamos el canvas con la pantalla del vehiculo y las particulas
         canvasPantalla.gameObject.SetActive(true);
+        particulas.gameObject.SetActive(true);
 
         float tiempoTotal = 300f; // Duración total del ciclo en segundos
         float tiempoTranscurrido = 0f; // Validamos el tiempo transcurrido
@@ -203,14 +207,15 @@ public class InicializarFurtivo : MonoBehaviour
             yield return null;
         }
 
-        //Activamos el canvas con la pantalla del vehiculo
+        //Desactivamos el canvas con la pantalla del vehiculo y las particulas
         canvasPantalla.gameObject.SetActive(false);
+        particulas.gameObject.SetActive(false);
 
         // Iniciamos la animacion de esconder del brazo de la plataforma
         plataforma.gameObject.GetComponent<IniciarPlataforma>().MoverAbajo();
         yield return new WaitForSeconds(7f);
 
-        // Confirmamos que la ultima posicion sea la inicial antes de la personalizacion
+        // Confirmamos que la ultima posicion de la camara sea la inicial antes de la personalizacion
         posicion = camsPositions[1].transform.position;
         rotacion = camsPositions[1].transform.rotation;
 

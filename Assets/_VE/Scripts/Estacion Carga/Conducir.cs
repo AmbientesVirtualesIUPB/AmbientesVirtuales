@@ -3,70 +3,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class Conducir : MonoBehaviour
 {
     //CAR SETUP
-
-    [Space(20)]
-    [Header("CAR SETUP")]
+    [Header("CONFIGURACION COCHE")]
     [Space(10)]
     [Range(20, 190)]
-    public int maxSpeed = 90; //The maximum speed that the car can reach in km/h.
+    public int              maxSpeed = 90; // La velocidad máxima que puede alcanzar el coche en km/h.
     [Range(10, 120)]
-    public int maxReverseSpeed = 45; //The maximum speed that the car can reach while going on reverse in km/h.
+    public int              maxReverseSpeed = 45; // La velocidad máxima que puede alcanzar el coche en reversa dada en km/h
     [Range(1, 10)]
-    public int accelerationMultiplier = 2; // How fast the car can accelerate. 1 is a slow acceleration and 10 is the fastest.
+    public int              accelerationMultiplier = 2; // Qué tan rápido puede acelerar el auto. 1 es una aceleración lenta y 10 es la más rápida
     [Space(10)]
     [Range(10, 45)]
-    public int maxSteeringAngle = 27; // The maximum angle that the tires can reach while rotating the steering wheel.
+    public int              maxSteeringAngle = 27; // El ángulo máximo que pueden alcanzar los neumáticos al girar el volante.
     [Range(0.1f, 1f)]
-    public float steeringSpeed = 0.5f; // How fast the steering wheel turns.
+    public float            steeringSpeed = 0.5f; // Qué tan rápido gira el volante
     [Space(10)]
     [Range(100, 600)]
-    public int brakeForce = 350; // The strength of the wheel brakes.
+    public int              brakeForce = 350; // La fuerza de los frenos de las ruedas
     [Range(1, 10)]
-    public int decelerationMultiplier = 2; // How fast the car decelerates when the user is not using the throttle.
+    public int              decelerationMultiplier = 2; // Qué tan rápido desacelera el automóvil cuando el usuario no usa el acelerador
     [Range(1, 10)]
-    public int handbrakeDriftMultiplier = 5; // How much grip the car loses when the user hit the handbrake.
+    public int              handbrakeDriftMultiplier = 5; // Cuánto agarre pierde el automóvil cuando el usuario pisa el freno de mano
     [Space(10)]
-    public Vector3 bodyMassCenter; // This is a vector that contains the center of mass of the car. I recommend to set this value
-                                   // in the points x = 0 and z = 0 of your car. You can select the value that you want in the y axis,
-                                   // however, you must notice that the higher this value is, the more unstable the car becomes.
-                                   // Usually the y value goes from 0 to 1.5.
+    public Vector3          bodyMassCenter; // Este es un vector que contiene el centro de masa del automóvil. Recomiendan establecer este valor
+                                            // en los puntos x = 0 y z = 0 de tu coche. Puedes seleccionar el valor que quieras en el eje y,
+                                            // sin embargo, debes notar que cuanto mayor es este valor, más inestable se vuelve el auto.
+                                            // Normalmente el valor de y va de 0 a 1,5.
 
     //WHEELS
-
-    [Header("WHEELS")]
-
-    /*
-    The following variables are used to store the wheels' data of the car. We need both the mesh-only game objects and wheel
-    collider components of the wheels. The wheel collider components and 3D meshes of the wheels cannot come from the same
-    game object; they must be separate game objects.
-    */
-    public GameObject frontLeftMesh;
-    public WheelCollider frontLeftCollider;
+    [Space(20)]
+    [Header("LLANTAS")]
     [Space(10)]
-    public GameObject frontRightMesh;
-    public WheelCollider frontRightCollider;
+    // Variables para almacenar los Mesh de las ruedas con sus respectivos colliders
+    public GameObject       frontLeftMesh;
+    public WheelCollider    frontLeftCollider;
     [Space(10)]
-    public GameObject rearLeftMesh;
-    public WheelCollider rearLeftCollider;
+    public GameObject       frontRightMesh;
+    public WheelCollider    frontRightCollider;
+    [Space(10)]
+    public GameObject       rearMesh;
+    public WheelCollider    rearCollider;
 
     //PARTICLE SYSTEMS
-
     [Space(20)]
-    //[Header("EFFECTS")]
+    [Header("EFECTOS")]
     [Space(10)]
-    //The following variable lets you to set up particle systems in your car
-    public bool useEffects = false;
-
-    // The following particle systems are used as tire smoke when the car drifts.
-    public ParticleSystem RLWParticleSystem;
-
+    //Para indicar si se va utilizar o no el sistema de particulas
+    public bool             useEffects = false;
+    // Particulas de humo para los neumaticos
+    public ParticleSystem   RLWParticleSystem;
     [Space(10)]
-    // The following trail renderers are used as tire skids when the car loses traction.
-    public TrailRenderer RLWTireSkid;
+    // Particulas para el derrape de los neumaticos
+    public TrailRenderer    RLWTireSkid;
 
 
     //SPEED TEXT (UI)
@@ -169,12 +161,12 @@ public class Conducir : MonoBehaviour
         FRwheelFriction.asymptoteValue = frontRightCollider.sidewaysFriction.asymptoteValue;
         FRwheelFriction.stiffness = frontRightCollider.sidewaysFriction.stiffness;
         RLwheelFriction = new WheelFrictionCurve();
-        RLwheelFriction.extremumSlip = rearLeftCollider.sidewaysFriction.extremumSlip;
-        RLWextremumSlip = rearLeftCollider.sidewaysFriction.extremumSlip;
-        RLwheelFriction.extremumValue = rearLeftCollider.sidewaysFriction.extremumValue;
-        RLwheelFriction.asymptoteSlip = rearLeftCollider.sidewaysFriction.asymptoteSlip;
-        RLwheelFriction.asymptoteValue = rearLeftCollider.sidewaysFriction.asymptoteValue;
-        RLwheelFriction.stiffness = rearLeftCollider.sidewaysFriction.stiffness;
+        RLwheelFriction.extremumSlip = rearCollider.sidewaysFriction.extremumSlip;
+        RLWextremumSlip = rearCollider.sidewaysFriction.extremumSlip;
+        RLwheelFriction.extremumValue = rearCollider.sidewaysFriction.extremumValue;
+        RLwheelFriction.asymptoteSlip = rearCollider.sidewaysFriction.asymptoteSlip;
+        RLwheelFriction.asymptoteValue = rearCollider.sidewaysFriction.asymptoteValue;
+        RLwheelFriction.stiffness = rearCollider.sidewaysFriction.stiffness;
         // We save the initial pitch of the car engine sound.
         if (carEngineSound != null)
         {
@@ -513,9 +505,9 @@ public class Conducir : MonoBehaviour
 
             Quaternion RLWRotation;
             Vector3 RLWPosition;
-            rearLeftCollider.GetWorldPose(out RLWPosition, out RLWRotation);
-            rearLeftMesh.transform.position = RLWPosition;
-            rearLeftMesh.transform.rotation = RLWRotation;
+            rearCollider.GetWorldPose(out RLWPosition, out RLWRotation);
+            rearMesh.transform.position = RLWPosition;
+            rearMesh.transform.rotation = RLWRotation;
         }
         catch (Exception ex)
         {
@@ -564,8 +556,8 @@ public class Conducir : MonoBehaviour
                 frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
                 frontRightCollider.brakeTorque = 0;
                 frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
-                rearLeftCollider.brakeTorque = 0;
-                rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+                rearCollider.brakeTorque = 0;
+                rearCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
             }
             else
             {
@@ -574,7 +566,7 @@ public class Conducir : MonoBehaviour
                 // could be a bit higher than expected.
                 frontLeftCollider.motorTorque = 0;
                 frontRightCollider.motorTorque = 0;
-                rearLeftCollider.motorTorque = 0;
+                rearCollider.motorTorque = 0;
             }
         }
     }
@@ -616,8 +608,8 @@ public class Conducir : MonoBehaviour
                 frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
                 frontRightCollider.brakeTorque = 0;
                 frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
-                rearLeftCollider.brakeTorque = 0;
-                rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+                rearCollider.brakeTorque = 0;
+                rearCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
             }
             else
             {
@@ -626,7 +618,7 @@ public class Conducir : MonoBehaviour
                 // could be a bit higher than expected.
                 frontLeftCollider.motorTorque = 0;
                 frontRightCollider.motorTorque = 0;
-                rearLeftCollider.motorTorque = 0;
+                rearCollider.motorTorque = 0;
             }
         }
     }
@@ -636,7 +628,7 @@ public class Conducir : MonoBehaviour
     {
         frontLeftCollider.motorTorque = 0;
         frontRightCollider.motorTorque = 0;
-        rearLeftCollider.motorTorque = 0;
+        rearCollider.motorTorque = 0;
     }
 
     // The following method decelerates the speed of the car according to the decelerationMultiplier variable, where
@@ -674,7 +666,7 @@ public class Conducir : MonoBehaviour
         // Since we want to decelerate the car, we are going to remove the torque from the wheels of the car.
         frontLeftCollider.motorTorque = 0;
         frontRightCollider.motorTorque = 0;
-        rearLeftCollider.motorTorque = 0;
+        rearCollider.motorTorque = 0;
         // If the magnitude of the car's velocity is less than 0.25f (very slow velocity), then stop the car completely and
         // also cancel the invoke of this method.
         if (carRigidbody.velocity.magnitude < 0.25f)
@@ -689,7 +681,7 @@ public class Conducir : MonoBehaviour
     {
         frontLeftCollider.brakeTorque = brakeForce;
         frontRightCollider.brakeTorque = brakeForce;
-        rearLeftCollider.brakeTorque = brakeForce;
+        rearCollider.brakeTorque = brakeForce;
     }
 
     // This function is used to make the car lose traction. By using this, the car will start drifting. The amount of traction lost
@@ -734,7 +726,7 @@ public class Conducir : MonoBehaviour
             frontRightCollider.sidewaysFriction = FRwheelFriction;
 
             RLwheelFriction.extremumSlip = RLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
-            rearLeftCollider.sidewaysFriction = RLwheelFriction;
+            rearCollider.sidewaysFriction = RLwheelFriction;
         }
 
         // Whenever the player uses the handbrake, it means that the wheels are locked, so we set 'isTractionLocked = true'
@@ -819,7 +811,7 @@ public class Conducir : MonoBehaviour
             frontRightCollider.sidewaysFriction = FRwheelFriction;
 
             RLwheelFriction.extremumSlip = RLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
-            rearLeftCollider.sidewaysFriction = RLwheelFriction;
+            rearCollider.sidewaysFriction = RLwheelFriction;
 
             Invoke("RecoverTraction", Time.deltaTime);
 
@@ -833,7 +825,7 @@ public class Conducir : MonoBehaviour
             frontRightCollider.sidewaysFriction = FRwheelFriction;
 
             RLwheelFriction.extremumSlip = RLWextremumSlip;
-            rearLeftCollider.sidewaysFriction = RLwheelFriction;
+            rearCollider.sidewaysFriction = RLwheelFriction;
 
             driftingAxis = 0f;
         }

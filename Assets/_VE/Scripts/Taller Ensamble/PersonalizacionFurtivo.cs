@@ -12,8 +12,8 @@ public class PersonalizacionFurtivo : MonoBehaviour
     public GameObject[] furtivos; 
     public GameObject   baterias;
     public GameObject   saveManager;
-    public int          numBat = 0;
     public int[]        activo;
+    private int         numBat = 0;
 
     /// <summary>
     /// Metodo invocado antes de iniciar la scena
