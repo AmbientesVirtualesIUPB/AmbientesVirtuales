@@ -11,12 +11,6 @@ public class envioPHP : MonoBehaviour
 
     IEnumerator Start()
     {
-        // Inicializa el array con algunos valores para el ejemplo
-        for (int i = 0; i < pos.Length; i++)
-        {
-            pos[i] = i;
-        }
-
         // Convierte el array a JSON
         string jsonData = JsonUtility.ToJson(new Wrapper<float> { data = pos });
         Debug.Log("JSON Data: " + jsonData); // Imprime el JSON para verificarlo

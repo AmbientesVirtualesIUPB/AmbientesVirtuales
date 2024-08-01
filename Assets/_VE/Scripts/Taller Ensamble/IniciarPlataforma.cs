@@ -8,7 +8,7 @@ public class IniciarPlataforma : MonoBehaviour
 {
     public GameObject   brazo; // El objeto a desplazar
     public GameObject   plataforma; // Referencia a las puertas de la plataforma para utilizar su componenete animator
-    public Transform[]  posiciones; // El objeto al que quieres moverte
+    public Transform[]  posiciones; // Los objetivos a los que queremos movernos
     public float        tiempoSuavizado = 0.3f; // Tiempo de suavizado
     private Vector3     velocidad = Vector3.zero; // Vector de velocidad
 
@@ -54,16 +54,16 @@ public class IniciarPlataforma : MonoBehaviour
         float tiempoTotal = 900f; // Duración total del ciclo en segundos
         float tiempoTranscurrido = 0f; // Tiempo total del ciclo
 
-        // Mientras la distancia entre la posición actual y la posición objetivo sea mayor que una pequeña tolerancia
+        // Mientras la distancia entre la posición actual y la posición objetivo sea menor
         while (tiempoTranscurrido < tiempoTotal)
         {
-            // Aplica el movimiento suave
+            // Aplica el movimiento suave, SmoothDamp se utiliza para suavizar la transición de un valor hacia un objetivo
             brazo.gameObject.transform.position = Vector3.SmoothDamp(brazo.gameObject.transform.position, posiciones[posicion].position, ref velocidad, tiempoSuavizado);
 
             // Pausa el ciclo hasta el siguiente frame
             yield return null;
 
-            // Validamos si se esta cerrando la compuerta y activamos la animacion y verificamos que tenga una pequeña tolerancia de distancia antes de cerrar
+            // Validamos si se esta cerrando la compuerta y si el tiempo transcurrido son 4 segundos
             if (posicion == 1 && tiempoTranscurrido == 400f)
             {
                 plataforma.gameObject.GetComponent<Animator>().SetBool("open", false);

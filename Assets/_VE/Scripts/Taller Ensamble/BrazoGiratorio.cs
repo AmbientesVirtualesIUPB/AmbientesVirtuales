@@ -63,6 +63,7 @@ public class BrazoGiratorio : MonoBehaviour
     /// </summary>
     public void Detener()
     {
+        // Dejamos las rotaciones en cero
         transform.rotation = Quaternion.identity;
     }
 }

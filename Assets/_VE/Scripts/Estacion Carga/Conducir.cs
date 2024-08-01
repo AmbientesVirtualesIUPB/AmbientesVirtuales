@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,27 +11,27 @@ public class Conducir : MonoBehaviour
     [Header("CONFIGURACION COCHE")]
     [Space(10)]
     [Range(20, 190)]
-    public int              maxSpeed = 90; // La velocidad m�xima que puede alcanzar el coche en km/h.
+    public int              maxSpeed = 90; // La velocidad máxima que puede alcanzar el coche en km/h.
     [Range(10, 120)]
-    public int              maxReverseSpeed = 45; // La velocidad m�xima que puede alcanzar el coche en reversa dada en km/h
+    public int              maxReverseSpeed = 45; // La velocidad máxima que puede alcanzar el coche en reversa dada en km/h
     [Range(1, 10)]
-    public int              accelerationMultiplier = 2; // Qu� tan r�pido puede acelerar el auto. 1 es una aceleraci�n lenta y 10 es la m�s r�pida
+    public int              accelerationMultiplier = 2; // Qué tan rápido puede acelerar el auto. 1 es una aceleración lenta y 10 es la más rápida
     [Space(10)]
     [Range(10, 45)]
-    public int              maxSteeringAngle = 27; // El �ngulo m�ximo que pueden alcanzar los neum�ticos al girar el volante.
+    public int              maxSteeringAngle = 27; // El ángulo máximo que pueden alcanzar los neumáticos al girar el volante.
     [Range(0.1f, 1f)]
-    public float            steeringSpeed = 0.5f; // Qu� tan r�pido gira el volante
+    public float            steeringSpeed = 0.5f; // Qué tan rápido gira el volante
     [Space(10)]
     [Range(100, 600)]
     public int              brakeForce = 350; // La fuerza de los frenos de las ruedas
     [Range(1, 10)]
-    public int              decelerationMultiplier = 2; // Qu� tan r�pido desacelera el autom�vil cuando el usuario no usa el acelerador
+    public int              decelerationMultiplier = 2; // Qué tan rápido desacelera el automóvil cuando el usuario no usa el acelerador
     [Range(1, 10)]
-    public int              handbrakeDriftMultiplier = 5; // Cu�nto agarre pierde el autom�vil cuando el usuario pisa el freno de mano
+    public int              handbrakeDriftMultiplier = 5; // Cuánto agarre pierde el automóvil cuando el usuario pisa el freno de mano
     [Space(10)]
-    public Vector3          bodyMassCenter; // Este es un vector que contiene el centro de masa del autom�vil. Recomiendan establecer este valor
+    public Vector3          bodyMassCenter; // Este es un vector que contiene el centro de masa del automóvil. Recomiendan establecer este valor
                                             // en los puntos x = 0 y z = 0 de tu coche. Puedes seleccionar el valor que quieras en el eje y,
-                                            // sin embargo, debes notar que cuanto mayor es este valor, m�s inestable se vuelve el auto.
+                                            // sin embargo, debes notar que cuanto mayor es este valor, más inestable se vuelve el auto.
                                             // Normalmente el valor de y va de 0 a 1,5.
 
     //WHEELS
@@ -39,113 +39,103 @@ public class Conducir : MonoBehaviour
     [Header("LLANTAS")]
     [Space(10)]
     // Variables para almacenar los Mesh de las ruedas con sus respectivos colliders
-    public GameObject       frontLeftMesh;
-    public WheelCollider    frontLeftCollider;
+    public GameObject       frontLeftMesh; // Mesh rueda delantera izquierda
+    public WheelCollider    frontLeftCollider; // Collider rueda delantera izquierda
     [Space(10)]
-    public GameObject       frontRightMesh;
-    public WheelCollider    frontRightCollider;
+    public GameObject       frontRightMesh; // Mesh rueda delantera derecha
+    public WheelCollider    frontRightCollider;// Collider rueda delantera derecha
     [Space(10)]
-    public GameObject       rearMesh;
-    public WheelCollider    rearCollider;
+    public GameObject       rearMesh; // Mesh rueda trasera
+    public WheelCollider    rearCollider;// Collider rueda trasera
 
     //PARTICLE SYSTEMS
     [Space(20)]
-    [Header("EFECTOS")]
+    [Header("EFECTOS PARTICULAS")]
     [Space(10)]
-    //Para indicar si se va utilizar o no el sistema de particulas
-    public bool             useEffects = false;
-    // Particulas de humo para los neumaticos
-    public ParticleSystem   RLWParticleSystem;
-    [Space(10)]
-    // Particulas para el derrape de los neumaticos
-    public TrailRenderer    RLWTireSkid;
-
+    public bool             useEffects = false; //Para indicar si se va utilizar o no el sistema de particulas
+    public ParticleSystem   RLWParticleSystem; // Particulas de humo para los neumaticos
+    public TrailRenderer    RLWTireSkid; // Particulas para el derrape de los neumaticos
 
     //SPEED TEXT (UI)
     [Space(20)]
-    //[Header("UI")]
+    [Header("TEXTO UI")]
     [Space(10)]
-    //The following variable lets you to set up a UI text to display the speed of your car.
-    public bool useUI = false;
-    public Text carSpeedText; // Used to store the UI object that is going to show the speed of the car.
+    // Variables para almacenar la velocidad del usuario y se muestre en pantalla
+    public bool             useUI = false;
+    public Text             carSpeedText; // Variable para asignar el texto de la UI
 
     //SOUNDS
-
     [Space(20)]
-    //[Header("Sounds")]
+    [Header("SONIDOS")]
     [Space(10)]
-    //The following variable lets you to set up sounds for your car such as the car engine or tire screech sounds.
-    public bool useSounds = false;
-    public AudioSource carEngineSound; // This variable stores the sound of the car engine.
-    public AudioSource tireScreechSound; // This variable stores the sound of the tire screech (when the car is drifting).
-    float initialCarEngineSoundPitch; // Used to store the initial pitch of the car engine sound.
+    // Variables para configurar el sonido del auto o derrape de los neumaticos
+    public bool             useSounds = false;
+    public AudioSource      carEngineSound; // Sonido del motor
+    public AudioSource      tireScreechSound; // Sonido de los neumaticos al derrapar
+    float                   initialCarEngineSoundPitch; // Para almacenar el tono inicial del sonido carEngineSound y poderlo modificar
 
     //CONTROLS
-
     [Space(20)]
-    //[Header("CONTROLS")]
+    [Header("CONTROLES")]
     [Space(10)]
-    //The following variables lets you to set up touch controls for mobile devices.
-    public bool useTouchControls = false;
-    public GameObject throttleButton;
-    PrometeoTouchInput throttlePTI;
-    public GameObject reverseButton;
-    PrometeoTouchInput reversePTI;
-    public GameObject turnRightButton;
-    PrometeoTouchInput turnRightPTI;
-    public GameObject turnLeftButton;
-    PrometeoTouchInput turnLeftPTI;
-    public GameObject handbrakeButton;
-    PrometeoTouchInput handbrakePTI;
+    //Variables para configurar los controles tactil para movil
+    public bool             useTouchControls = false;
+    public GameObject       throttleButton;
+    PrometeoTouchInput      throttlePTI;
+    public GameObject       reverseButton;
+    PrometeoTouchInput      reversePTI;
+    public GameObject       turnRightButton;
+    PrometeoTouchInput      turnRightPTI;
+    public GameObject       turnLeftButton;
+    PrometeoTouchInput      turnLeftPTI;
+    public GameObject       handbrakeButton;
+    PrometeoTouchInput      handbrakePTI;
 
-    //CAR DATA
-
+    //DATOS COCHE
     [HideInInspector]
-    public float carSpeed; // Used to store the speed of the car.
+    public float            carSpeed; // Velocidad actual del coche
     [HideInInspector]
-    public bool isDrifting; // Used to know whether the car is drifting or not.
+    public bool             isDrifting; // Saber si esta derrapando o no
     [HideInInspector]
-    public bool isTractionLocked; // Used to know whether the traction of the car is locked or not.
+    public bool             isTractionLocked; // Saber si la traccion del coche esta bloqueada o no
 
     //PRIVATE VARIABLES
+    /*
+    IMPORTANT: No darles valores a estas variables
+    */
+    Rigidbody               carRigidbody; // Stores the car's rigidbody.
+    float                   steeringAxis; // Se utiliza para saber si el volante ha alcanzado el valor máximo. Va de -1 a 1.
+    float                   throttleAxis; // Se utiliza para saber si el acelerador ha alcanzado el valor máximo. Va de -1 a 1.
+    float                   driftingAxis;
+    float                   localVelocityZ;
+    float                   localVelocityX;
+    bool                    deceleratingCar;
+    bool                    touchControlsSetup = false;
 
     /*
-    IMPORTANT: The following variables should not be modified manually since their values are automatically given via script.
+    Las siguientes variables se utilizan para almacenar información sobre la fricción lateral de las ruedas como 
+    (extremumSlip,extremumValue, asymptoteSlip, asymptoteValue and stiffness). Cambiamos estos valores y haz que el auto comience a derrapar
     */
-    Rigidbody carRigidbody; // Stores the car's rigidbody.
-    float steeringAxis; // Used to know whether the steering wheel has reached the maximum value. It goes from -1 to 1.
-    float throttleAxis; // Used to know whether the throttle has reached the maximum value. It goes from -1 to 1.
-    float driftingAxis;
-    float localVelocityZ;
-    float localVelocityX;
-    bool deceleratingCar;
-    bool touchControlsSetup = false;
-    /*
-    The following variables are used to store information about sideways friction of the wheels (such as
-    extremumSlip,extremumValue, asymptoteSlip, asymptoteValue and stiffness). We change this values to
-    make the car to start drifting.
-    */
-    WheelFrictionCurve FLwheelFriction;
-    float FLWextremumSlip;
-    WheelFrictionCurve FRwheelFriction;
-    float FRWextremumSlip;
-    WheelFrictionCurve RLwheelFriction;
-    float RLWextremumSlip;
-    WheelFrictionCurve RRwheelFriction;
-    float RRWextremumSlip;
+    WheelFrictionCurve      FLwheelFriction;
+    float                   FLWextremumSlip;
+    WheelFrictionCurve      FRwheelFriction;
+    float                   FRWextremumSlip;
+    WheelFrictionCurve      RLwheelFriction;
+    float                   RLWextremumSlip;
+    WheelFrictionCurve      RRwheelFriction;
+    float                   RRWextremumSlip;
 
     // Start is called before the first frame update
     void Start()
     {
-        //In this part, we set the 'carRigidbody' value with the Rigidbody attached to this
-        //gameObject. Also, we define the center of mass of the car with the Vector3 given
-        //in the inspector.
+        //En esta parte, configuramos el valor 'carRigidbody' con el Rigidbody adjunto a este
+        //Además, definimos el centro de masa del coche con el Vector3 dado en el inspector
         carRigidbody = gameObject.GetComponent<Rigidbody>();
         carRigidbody.centerOfMass = bodyMassCenter;
 
-        //Initial setup to calculate the drift value of the car. This part could look a bit
-        //complicated, but do not be afraid, the only thing we're doing here is to save the default
-        //friction values of the car wheels so we can set an appropiate drifting value later.
+        // Configuración inicial para calcular el valor de derrape del coche. Esta parte podría parecer un poco
+        // complicado, pero lo unico que se realiza es guardar el valor predeterminado de friccion del coche
+        // para que podamos establecer un valor de derrape apropiado más adelante.
         FLwheelFriction = new WheelFrictionCurve();
         FLwheelFriction.extremumSlip = frontLeftCollider.sidewaysFriction.extremumSlip;
         FLWextremumSlip = frontLeftCollider.sidewaysFriction.extremumSlip;
@@ -167,15 +157,16 @@ public class Conducir : MonoBehaviour
         RLwheelFriction.asymptoteSlip = rearCollider.sidewaysFriction.asymptoteSlip;
         RLwheelFriction.asymptoteValue = rearCollider.sidewaysFriction.asymptoteValue;
         RLwheelFriction.stiffness = rearCollider.sidewaysFriction.stiffness;
-        // We save the initial pitch of the car engine sound.
+
+        // Guardamos el tono inicial del sonido del motor del coche
         if (carEngineSound != null)
         {
             initialCarEngineSoundPitch = carEngineSound.pitch;
         }
 
-        // We invoke 2 methods inside this script. CarSpeedUI() changes the text of the UI object that stores
-        // the speed of the car and CarSounds() controls the engine and drifting sounds. Both methods are invoked
-        // in 0 seconds, and repeatedly called every 0.1 seconds.
+        // Invocamos 2 métodos dentro de este script.. CarSpeedUI() cambia el texto del objeto UI que almacena la velocidad del carro
+        // y CarSounds() controla los sonidos del motor y de derrape 
+        // Ambos métodos se invocan en 0 segundos y se llaman repetidamente cada 0,1 segundos.
         if (useUI)
         {
             InvokeRepeating("CarSpeedUI", 0f, 0.1f);
@@ -234,8 +225,8 @@ public class Conducir : MonoBehaviour
             }
             else
             {
-                String ex = "Touch controls are not completely set up. You must drag and drop your scene buttons in the" +
-                " PrometeoCarController component.";
+                String ex = "Los controles táctiles no están completamente configurados. Debes arrastrar y soltar los botones de tu escena en el" +
+                "componente PrometeoCarController.";
                 Debug.LogWarning(ex);
             }
         }
@@ -245,26 +236,26 @@ public class Conducir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CAR DATA
+        //DATOS DEL COCHE
 
-        // We determine the speed of the car.
+        // Determinamos la velocidad del coche.
         carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
-        // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
+        // Guarde la velocidad local del automóvil en el eje x. Se utiliza para saber si el coche se está derrapando.
         localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
-        // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
+        // Guarde la velocidad local del automóvil en el eje z. Se utiliza para saber si el coche va hacia adelante o hacia atrás.
         localVelocityZ = transform.InverseTransformDirection(carRigidbody.velocity).z;
 
-        //CAR PHYSICS
+        //FISICAS DEL COCHE
 
-        /*
-        The next part is regarding to the car controller. First, it checks if the user wants to use touch controls (for
-        mobile devices) or analog input controls (WASD + Space).
+        /*      
+        La siguiente parte trata sobre el controlador del automóvil. Primero, verifica si el usuario desea usar controles táctiles 
+        (por ejemplo dispositivos móviles) o controles de entrada analógica (WASD + Space)
 
-        The following methods are called whenever a certain key is pressed. For example, in the first 'if' we call the
-        method GoForward() if the user has pressed W.
+        Los siguientes métodos se llaman cada vez que se presiona una determinada tecla. Por ejemplo, en el primer 'if' llamamos al
+        método GoForward() si el usuario ha presionado W.
 
-        In this part of the code we specify what the car needs to do if the user presses W (throttle), S (reverse),
-        A (turn left), D (turn right) or Space bar (handbrake).
+        En esta parte del código especificamos qué debe hacer el automóvil si el usuario presiona W (acelerador), S (marcha atrás),
+        A (girar a la izquierda), D (girar a la derecha) o Barra espaciadora (freno de mano).
         */
         if (useTouchControls && touchControlsSetup)
         {
@@ -366,12 +357,12 @@ public class Conducir : MonoBehaviour
         }
 
 
-        // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
+        // Llamamos al metodo AnimateWheelMeshes() para hacer coincidir los movimientos del colisionador de ruedas con las mallas 3D de las ruedas.
         AnimateWheelMeshes();
 
     }
 
-    // This method converts the car speed data from float to string, and then set the text of the UI carSpeedText with this value.
+    // Este método convierte los datos de velocidad del automóvil de flotante a cadena y luego establece el texto de la interfaz de usuario carSpeedText con este valor
     public void CarSpeedUI()
     {
         if (useUI)
@@ -379,7 +370,7 @@ public class Conducir : MonoBehaviour
             try
             {
                 float absoluteCarSpeed = Mathf.Abs(carSpeed);
-                carSpeedText.text = Mathf.RoundToInt(absoluteCarSpeed *100).ToString();
+                carSpeedText.text = Mathf.RoundToInt(absoluteCarSpeed * 100).ToString();
             }
             catch (Exception ex)
             {
@@ -388,13 +379,12 @@ public class Conducir : MonoBehaviour
         }
     }
 
-    // This method controls the car sounds. For example, the car engine will sound slow when the car speed is low because the
-    // pitch of the sound will be at its lowest point. On the other hand, it will sound fast when the car speed is high because
-    // the pitch of the sound will be the sum of the initial pitch + the car speed divided by 100f.
-    // Apart from that, the tireScreechSound will play whenever the car starts drifting or losing traction.
+    // Este método controla los sonidos del coche. Por ejemplo, el motor del automóvil sonará lento cuando la velocidad del automóvil es baja
+    // porque el tono del sonido estará en su punto más bajo. Por otro lado, sonará rápido cuando la velocidad del automóvil sea alta porque
+    // el tono del sonido será la suma del tono inicial + la velocidad del auto dividida por 100f.
+    // Aparte de eso, tireScreechSound se reproducirá cada vez que el automóvil comience a derrapar o perder tracción.
     public void CarSounds()
     {
-
         if (useSounds)
         {
             try
@@ -432,14 +422,13 @@ public class Conducir : MonoBehaviour
                 tireScreechSound.Stop();
             }
         }
-
     }
 
     //
-    //STEERING METHODS
+    //METODOS DE DIRECCION
     //
 
-    //The following method turns the front car wheels to the left. The speed of this movement will depend on the steeringSpeed variable.
+    //El siguiente método gira las ruedas delanteras del coche hacia la izquierda. La velocidad de este movimiento dependerá de la variable steeringSpeed.
     public void TurnLeft()
     {
         steeringAxis = steeringAxis - (Time.deltaTime * 10f * steeringSpeed);
@@ -452,7 +441,7 @@ public class Conducir : MonoBehaviour
         frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeringAngle, steeringSpeed);
     }
 
-    //The following method turns the front car wheels to the right. The speed of this movement will depend on the steeringSpeed variable.
+    //El siguiente método gira las ruedas delanteras del coche hacia la derecha. La velocidad de este movimiento dependerá de la variable steeringSpeed
     public void TurnRight()
     {
         steeringAxis = steeringAxis + (Time.deltaTime * 10f * steeringSpeed);
@@ -465,8 +454,8 @@ public class Conducir : MonoBehaviour
         frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeringAngle, steeringSpeed);
     }
 
-    //The following method takes the front car wheels to their default position (rotation = 0). The speed of this movement will depend
-    // on the steeringSpeed variable.
+    // El siguiente método lleva las ruedas delanteras del automóvil a su posición predeterminada (rotación = 0). 
+    // La velocidad de este movimiento dependerá de la variable steeringSpeed.
     public void ResetSteeringAngle()
     {
         if (steeringAxis < 0f)
@@ -486,7 +475,7 @@ public class Conducir : MonoBehaviour
         frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeringAngle, steeringSpeed);
     }
 
-    // This method matches both the position and rotation of the WheelColliders with the WheelMeshes.
+    // Este método hace coincidir tanto la posición como la rotación de WheelColliders con WheelMeshes..
     void AnimateWheelMeshes()
     {
         try
@@ -516,14 +505,14 @@ public class Conducir : MonoBehaviour
     }
 
     //
-    //ENGINE AND BRAKING METHODS
+    //METODOS DE MOTOR Y FRENADO
     //
 
-    // This method apply positive torque to the wheels in order to go forward.
+    // Este método aplica un torque positivo a las ruedas para poder avanzar
     public void GoForward()
     {
-        //If the forces aplied to the rigidbody in the 'x' asis are greater than
-        //3f, it means that the car is losing traction, then the car will start emitting particle systems.
+        //Si las fuerzas aplicadas al cuerpo rígido en el eje 'x' son mayores que
+        //3f, significa que el coche está perdiendo tracción, entonces el coche empezará a emitir sistemas de partículas.
         if (Mathf.Abs(localVelocityX) > 2.5f)
         {
             isDrifting = true;
@@ -534,15 +523,14 @@ public class Conducir : MonoBehaviour
             isDrifting = false;
             DriftCarPS();
         }
-        // The following part sets the throttle power to 1 smoothly.
+        // La siguiente parte ajusta la potencia del acelerador a 1 suavemente.
         throttleAxis = throttleAxis + (Time.deltaTime * 3f);
         if (throttleAxis > 1f)
         {
             throttleAxis = 1f;
         }
-        //If the car is going backwards, then apply brakes in order to avoid strange
-        //behaviours. If the local velocity in the 'z' axis is less than -1f, then it
-        //is safe to apply positive torque to go forward.
+        //Si el automóvil va hacia atrás, aplique los frenos para evitar comportamientos extraños.
+        //behaviours. Si la velocidad local en el eje 'z' es menor que -1f, entonces Es seguro aplicar torsión positiva para avanzar.
         if (localVelocityZ < -1f)
         {
             Brakes();
@@ -551,7 +539,7 @@ public class Conducir : MonoBehaviour
         {
             if (Mathf.RoundToInt(carSpeed) < maxSpeed)
             {
-                //Apply positive torque in all wheels to go forward if maxSpeed has not been reached.
+                //Aplique torque positivo en todas las ruedas para avanzar si no se ha alcanzado la velocidad máxima.
                 frontLeftCollider.brakeTorque = 0;
                 frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
                 frontRightCollider.brakeTorque = 0;
@@ -561,9 +549,8 @@ public class Conducir : MonoBehaviour
             }
             else
             {
-                // If the maxSpeed has been reached, then stop applying torque to the wheels.
-                // IMPORTANT: The maxSpeed variable should be considered as an approximation; the speed of the car
-                // could be a bit higher than expected.
+                // Si se ha alcanzado la velocidad máxima, deje de aplicar torsión a las ruedas
+                // IMPORTANT: La variable maxSpeed ​​debe considerarse como una aproximación; La velocidad del coche podría ser un poco mayor de lo esperado.
                 frontLeftCollider.motorTorque = 0;
                 frontRightCollider.motorTorque = 0;
                 rearCollider.motorTorque = 0;
@@ -571,11 +558,12 @@ public class Conducir : MonoBehaviour
         }
     }
 
-    // This method apply negative torque to the wheels in order to go backwards.
+    // Este método aplica un torque negativo a las ruedas para poder retroceder.
     public void GoReverse()
     {
-        //If the forces aplied to the rigidbody in the 'x' asis are greater than
-        //3f, it means that the car is losing traction, then the car will start emitting particle systems.
+        //Si las fuerzas aplicadas al cuerpo rígido en el eje 'x' son mayores que 3f, significa que el automóvil está perdiendo tracción,
+        //entonces el automóvil comenzará a emitir sistemas de partículas.
+
         if (Mathf.Abs(localVelocityX) > 2.5f)
         {
             isDrifting = true;
@@ -586,15 +574,14 @@ public class Conducir : MonoBehaviour
             isDrifting = false;
             DriftCarPS();
         }
-        // The following part sets the throttle power to -1 smoothly.
+        // La siguiente parte ajusta la potencia del acelerador a -1 suavemente.
         throttleAxis = throttleAxis - (Time.deltaTime * 3f);
         if (throttleAxis < -1f)
         {
             throttleAxis = -1f;
         }
-        //If the car is still going forward, then apply brakes in order to avoid strange
-        //behaviours. If the local velocity in the 'z' axis is greater than 1f, then it
-        //is safe to apply negative torque to go reverse.
+        //Si el coche sigue avanzando, aplique los frenos para evitar comportamientos extraños. Si la velocidad local en el eje 'z' es mayor que 1f,
+        //entonces es seguro aplicar un torque negativo para retroceder.
         if (localVelocityZ > 1f)
         {
             Brakes();
@@ -603,7 +590,7 @@ public class Conducir : MonoBehaviour
         {
             if (Mathf.Abs(Mathf.RoundToInt(carSpeed)) < maxReverseSpeed)
             {
-                //Apply negative torque in all wheels to go in reverse if maxReverseSpeed has not been reached.
+                //Aplique torque negativo en todas las ruedas para ir en reversa si no se ha alcanzado maxReverseSpeed.
                 frontLeftCollider.brakeTorque = 0;
                 frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
                 frontRightCollider.brakeTorque = 0;
@@ -613,9 +600,8 @@ public class Conducir : MonoBehaviour
             }
             else
             {
-                //If the maxReverseSpeed has been reached, then stop applying torque to the wheels.
-                // IMPORTANT: The maxReverseSpeed variable should be considered as an approximation; the speed of the car
-                // could be a bit higher than expected.
+                // Si se ha alcanzado maxReverseSpeed entonces deje de aplicar torsión a las ruedas.
+                // IMPORTANT: La variable maxReverseSpeed ​​debe considerarse como una aproximación; La velocidad del coche podría ser un poco mayor de lo esperado.
                 frontLeftCollider.motorTorque = 0;
                 frontRightCollider.motorTorque = 0;
                 rearCollider.motorTorque = 0;
@@ -623,7 +609,7 @@ public class Conducir : MonoBehaviour
         }
     }
 
-    //The following function set the motor torque to 0 (in case the user is not pressing either W or S).
+    //La siguiente función establece el torque del motor en 0 (en caso de que el usuario no esté presionando W o S).
     public void ThrottleOff()
     {
         frontLeftCollider.motorTorque = 0;
@@ -631,9 +617,9 @@ public class Conducir : MonoBehaviour
         rearCollider.motorTorque = 0;
     }
 
-    // The following method decelerates the speed of the car according to the decelerationMultiplier variable, where
-    // 1 is the slowest and 10 is the fastest deceleration. This method is called by the function InvokeRepeating,
-    // usually every 0.1f when the user is not pressing W (throttle), S (reverse) or Space bar (handbrake).
+    // El siguiente método desacelera la velocidad del automóvil de acuerdo con la variable multiplicadora de desaceleración,
+    // donde 1 es la desaceleración más lenta y 10 es la más rápida. Este método es llamado por la función InvokeRepeating,
+    // generalmente cada 0.1f cuando el usuario no está presionando W (acelerador), S (marcha atrás) o la barra espaciadora (freno de mano).
     public void DecelerateCar()
     {
         if (Mathf.Abs(localVelocityX) > 2.5f)
@@ -646,7 +632,7 @@ public class Conducir : MonoBehaviour
             isDrifting = false;
             DriftCarPS();
         }
-        // The following part resets the throttle power to 0 smoothly.
+        // La siguiente parte restablece la potencia del acelerador a 0 suavemente.
         if (throttleAxis != 0f)
         {
             if (throttleAxis > 0f)
@@ -663,12 +649,12 @@ public class Conducir : MonoBehaviour
             }
         }
         carRigidbody.velocity = carRigidbody.velocity * (1f / (1f + (0.025f * decelerationMultiplier)));
-        // Since we want to decelerate the car, we are going to remove the torque from the wheels of the car.
+        // Como queremos desacelerar el auto, vamos a quitar el torque de las ruedas
         frontLeftCollider.motorTorque = 0;
         frontRightCollider.motorTorque = 0;
         rearCollider.motorTorque = 0;
-        // If the magnitude of the car's velocity is less than 0.25f (very slow velocity), then stop the car completely and
-        // also cancel the invoke of this method.
+        // Si la magnitud de la velocidad del automóvil es inferior a 0,25 f (velocidad muy lenta), detenga el automóvil por completo
+        // y cancele también la invocación de este método.
         if (carRigidbody.velocity.magnitude < 0.25f)
         {
             carRigidbody.velocity = Vector3.zero;
@@ -676,7 +662,7 @@ public class Conducir : MonoBehaviour
         }
     }
 
-    // This function applies brake torque to the wheels according to the brake force given by the user.
+    // Esta función aplica el torque de frenado a las ruedas de acuerdo con la fuerza de frenado proporcionada por el usuario..
     public void Brakes()
     {
         frontLeftCollider.brakeTorque = brakeForce;
@@ -684,15 +670,15 @@ public class Conducir : MonoBehaviour
         rearCollider.brakeTorque = brakeForce;
     }
 
-    // This function is used to make the car lose traction. By using this, the car will start drifting. The amount of traction lost
-    // will depend on the handbrakeDriftMultiplier variable. If this value is small, then the car will not drift too much, but if
-    // it is high, then you could make the car to feel like going on ice.
+    // Esta función se utiliza para hacer que el coche pierda tracción. Al usar esto, el coche comenzará a derrapar.
+    // La cantidad de tracción perdida dependerá de la variable handbrakeDriftMultiplier. Si este valor es pequeño,
+    // entonces el automóvil no se desviará demasiado, pero si es alto, entonces podría hacer que el automóvil tenga la sensación de estar sobre hielo.
     public void Handbrake()
     {
         CancelInvoke("RecoverTraction");
-        // We are going to start losing traction smoothly, there is were our 'driftingAxis' variable takes
-        // place. This variable will start from 0 and will reach a top value of 1, which means that the maximum
-        // drifting value has been reached. It will increase smoothly by using the variable Time.deltaTime.
+        // Vamos a empezar a perder tracción suavemente, ahí es donde nuestra variable 'driftingAxis' toma lugar
+        // Esta variable comenzará desde 0 y alcanzará un valor máximo de 1, lo que significa que se ha alcanzado el valor máximo de derrape.
+        // Aumentará suavemente utilizando la variable Time.deltaTime.
         driftingAxis = driftingAxis + (Time.deltaTime);
         float secureStartingPoint = driftingAxis * FLWextremumSlip * handbrakeDriftMultiplier;
 
@@ -704,8 +690,8 @@ public class Conducir : MonoBehaviour
         {
             driftingAxis = 1f;
         }
-        //If the forces aplied to the rigidbody in the 'x' asis are greater than
-        //3f, it means that the car lost its traction, then the car will start emitting particle systems.
+        //Si las fuerzas aplicadas al cuerpo rígido en el eje 'x' son mayores que 3f, significa que el automóvil perdió tracción,
+        //entonces el automóvil comenzará a emitir sistemas de partículas.
         if (Mathf.Abs(localVelocityX) > 2.5f)
         {
             isDrifting = true;
@@ -714,9 +700,8 @@ public class Conducir : MonoBehaviour
         {
             isDrifting = false;
         }
-        //If the 'driftingAxis' value is not 1f, it means that the wheels have not reach their maximum drifting
-        //value, so, we are going to continue increasing the sideways friction of the wheels until driftingAxis
-        // = 1f.
+        //Si el valor de 'driftingAxis' no es 1f, significa que las ruedas no han alcanzado su valor máximo de derrape,
+        //por lo que vamos a seguir aumentando la fricción lateral de las ruedas hasta que driftingAxis = 1f
         if (driftingAxis < 1f)
         {
             FLwheelFriction.extremumSlip = FLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
@@ -729,18 +714,17 @@ public class Conducir : MonoBehaviour
             rearCollider.sidewaysFriction = RLwheelFriction;
         }
 
-        // Whenever the player uses the handbrake, it means that the wheels are locked, so we set 'isTractionLocked = true'
-        // and, as a consequense, the car starts to emit trails to simulate the wheel skids.
+        // Cada vez que el jugador usa el freno de mano, significa que las ruedas están bloqueadas, por lo que configuramos 'isTractionLocked = true'
+        // y, como consecuencia, el auto comienza a emitir estelas para simular el derrape de las ruedas.
         isTractionLocked = true;
         DriftCarPS();
 
     }
 
-    // This function is used to emit both the particle systems of the tires' smoke and the trail renderers of the tire skids
-    // depending on the value of the bool variables 'isDrifting' and 'isTractionLocked'.
+    // Esta función se utiliza para emitir tanto los sistemas de partículas del humo de los neumáticos como los renderizadores de rastros de los derrapes
+    // de los neumáticos dependiendo del valor de las variables bool 'isDrifting' e 'isTractionLocked'.
     public void DriftCarPS()
     {
-
         if (useEffects)
         {
             try
@@ -786,10 +770,9 @@ public class Conducir : MonoBehaviour
                 RLWTireSkid.emitting = false;
             }
         }
-
     }
 
-    // This function is used to recover the traction of the car when the user has stopped using the car's handbrake.
+    // Esta función se utiliza para recuperar la tracción del coche cuando el usuario ha dejado de utilizar el freno de mano del coche.
     public void RecoverTraction()
     {
         isTractionLocked = false;
@@ -799,9 +782,8 @@ public class Conducir : MonoBehaviour
             driftingAxis = 0f;
         }
 
-        //If the 'driftingAxis' value is not 0f, it means that the wheels have not recovered their traction.
-        //We are going to continue decreasing the sideways friction of the wheels until we reach the initial
-        // car's grip.
+        //Si el valor de 'driftingAxis' no es 0f, significa que las ruedas no han recuperado la tracción.
+        //Vamos a seguir disminuyendo el rozamiento lateral de las ruedas hasta llegar al agarre inicial del coche.
         if (FLwheelFriction.extremumSlip > FLWextremumSlip)
         {
             FLwheelFriction.extremumSlip = FLWextremumSlip * handbrakeDriftMultiplier * driftingAxis;

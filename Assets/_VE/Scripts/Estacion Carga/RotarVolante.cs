@@ -54,7 +54,7 @@ public class RotarVolante : MonoBehaviour
                 nuevoAngulo = -rotacionMaxima;
             }
 
-            // Aplicar la rotación al pivote en el eje X forward
+            // Aplicar la rotación al pivote en el eje Z = forward
             pivote.Rotate(Vector3.forward, nuevoAngulo - anguloActual);
 
             // Actualizar el ángulo actual
@@ -65,7 +65,7 @@ public class RotarVolante : MonoBehaviour
             {
                 // Calcular el ángulo de retorno hacia el ángulo inicial
                 float anguloDeseado = anguloInicial;
-                // Mathf.DeltaAngle calcular la diferencia entre dos ángulos, teniendo en cuenta el valor de la diferencia más corta entre ellos en un círculo de 360 grados
+                // Mathf.DeltaAngle calcula la diferencia entre dos ángulos, teniendo en cuenta el valor de la diferencia más corta entre ellos en un círculo de 360 grados
                 float anguloDistancia = Mathf.DeltaAngle(anguloActual, anguloDeseado);
                 // Calculamos el paso de retorno multiplicado por la velocidad a la cual queremos retornar
                 float retorno = velocidadRetorno * Time.deltaTime;

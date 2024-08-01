@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class SeguimientoCamara : MonoBehaviour
+public class CamTerceraPersona : MonoBehaviour
 {
     public Transform    vehiculo; // El vehículo al que la cámara seguirá
     public float        velocidadRotacion = 5f; // Velocidad de rotación de la cámara, se puede modificar a gusto
@@ -32,6 +31,6 @@ public class SeguimientoCamara : MonoBehaviour
         else
         {
             Debug.LogWarning("Asignar vehiculo en el inspector.");
-        }      
+        }
     }
 }

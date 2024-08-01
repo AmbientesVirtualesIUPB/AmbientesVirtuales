@@ -18,6 +18,7 @@ public class InicializarFurtivo : MonoBehaviour
 
     // Variables provisionales para el manejo de particulas
     public GameObject   particulas;
+    public GameObject[] lucesLamparas;
 
     //Variables para el manejo de camaras
     public float        velocidad = 3;           // Velocidad de interpolación
@@ -101,7 +102,7 @@ public class InicializarFurtivo : MonoBehaviour
 
 
     /// <summary>
-    /// Evento invocado al momento de hacer click con el mouse
+    /// Evento invocado al momento de hacer click con el mouse para iniciar la fase de personalizacion
     /// </summary>
     private void OnMouseDown()
     {
@@ -109,7 +110,7 @@ public class InicializarFurtivo : MonoBehaviour
         collider.enabled = false;
         // Inicializamos la animacion para la plataforma
         plataforma.gameObject.GetComponent<IniciarPlataforma>().MoverArriba();
-        // Activamos las baterias para que no se vean en escena
+        // Activamos las baterias para que se vean en escena
         plataforma.gameObject.GetComponent<PersonalizacionFurtivo>().baterias.gameObject.SetActive(true);
         // Iniciamos currutinas para cambios de camara e inicio de interfaz
         StartCoroutine(MovimientoSuave());
@@ -139,10 +140,12 @@ public class InicializarFurtivo : MonoBehaviour
             tiempoTranscurrido += 1f;
             yield return null;
         }
+        // Encendemos las luces
+        StartCoroutine(EncenderLuces());
 
         // Reiniciamos el tiempo transcurrido
         tiempoTranscurrido = 0f;
-        // Esperamos 4.5 segundos
+        
         yield return new WaitForSeconds(4.5f);
 
         // Mientras que el tiempo transcurrido sea menor al total indicado
@@ -164,9 +167,8 @@ public class InicializarFurtivo : MonoBehaviour
         iniciarCamaras = true;
     }
 
-
     /// <summary>
-    /// Metodo invocado desde BtnSalir en nuestro canvas
+    /// Metodo invocado desde BtnSalir en nuestro canvas para salir de la escena de personalizacion
     /// </summary>
     public void Salir()
     {
@@ -184,7 +186,7 @@ public class InicializarFurtivo : MonoBehaviour
     { 
         // Iniciamos la animacion que tiene el canvas
         canvas.gameObject.GetComponent<Animator>().SetBool("hide", true);
-        // esperamos 0.8 segundos
+   
         yield return new WaitForSeconds(0.8f);
         // Deshabilitamos canvas
         canvas.gameObject.SetActive(false);
@@ -213,6 +215,10 @@ public class InicializarFurtivo : MonoBehaviour
 
         // Iniciamos la animacion de esconder del brazo de la plataforma
         plataforma.gameObject.GetComponent<IniciarPlataforma>().MoverAbajo();
+
+        // Apagamos las luces
+        StartCoroutine(ApagarLuces());
+
         yield return new WaitForSeconds(7f);
 
         // Confirmamos que la ultima posicion de la camara sea la inicial antes de la personalizacion
@@ -225,6 +231,31 @@ public class InicializarFurtivo : MonoBehaviour
 
         // Habilitamos nuevamente el collider
         collider.enabled = true;
+    }
+
+    /// <summary>
+    /// Currutina para el encendido de las luces
+    /// </summary>
+    IEnumerator EncenderLuces()
+    {
+        for (int i = 0; i < lucesLamparas.Length; i++)
+        {
+            lucesLamparas[i].gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    /// <summary>
+    /// Currutina para el apagado de las luces
+    /// </summary>
+    IEnumerator ApagarLuces()
+    {
+        yield return new WaitForSeconds(3f);
+        for (int i = 0; i < lucesLamparas.Length; i++)
+        {
+            lucesLamparas[i].gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+        }
     }
 
 }

@@ -9,11 +9,11 @@ using static UnityEditor.PlayerSettings;
 
 public class PersonalizacionFurtivo : MonoBehaviour
 {
-    public GameObject[] furtivos; 
-    public GameObject   baterias;
-    public GameObject   saveManager;
-    public int[]        activo;
-    private int         numBat = 0;
+    public GameObject[] furtivos; // Referencia para almacenar todos los furtivos
+    public GameObject   baterias; // Referencia a las baterias para su personalizacion
+    public GameObject   saveManager; // Objeto de guardado
+    public int[]        activo; // Para validar que objetos estan actrivos en cada item de personalizacion
+    private int         numBat = 0; // Para validar que bateria esta activa
 
     /// <summary>
     /// Metodo invocado antes de iniciar la scena
@@ -36,9 +36,10 @@ public class PersonalizacionFurtivo : MonoBehaviour
         // Recorremos al array para encontrar cada parte
         for (int i = 0; i < furtivos.Length; i++)
         {
+            // Si el objeto coincide con el siguiente numero
             if (i == activo[0])
             {
-                // Recorrer todos los hijos del objeto actual
+                // Recorremos todos los hijos del objeto actual
                 foreach (Transform child in furtivos[i].transform)
                 {
                     // Verificar si el nombre del hijo empieza con un patrón específico
