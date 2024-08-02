@@ -20,7 +20,7 @@ public class Personalizacion : MonoBehaviour
     // Variables utilizadas para el guardado de archivos
     public GameObject               saveManager;
     public int[]                    pos = new int[14];
-    public int[]                    colores = new int[4];
+    public int[]                    colores = new int[5];
     public bool                     esColor;
 
     private void Awake()
