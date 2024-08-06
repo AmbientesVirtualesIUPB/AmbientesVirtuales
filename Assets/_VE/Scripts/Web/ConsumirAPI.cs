@@ -27,7 +27,7 @@ public class ConsumirAPI : MonoBehaviour
         // Crear un objeto con los datos que queremos enviar
         SolicitudLogin solicitudLogin = new SolicitudLogin
         {    
-            Email = InputUsuario.text,
+            Email = InputUsuario.text + "@pascualbravo.edu.co",
             Contraseña = InputPassword.text
         };
 

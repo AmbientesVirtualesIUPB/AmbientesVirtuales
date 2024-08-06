@@ -21,10 +21,12 @@ public class InicializarFurtivo : MonoBehaviour
     public GameObject[] lucesLamparas;
 
     //Variables para el manejo de camaras
-    public float        velocidad = 3;           // Velocidad de interpolación
+    private float       tiempoTranscurrido = 5.0f; // Variable para controlar el tiempo en transiciones
+    private float       tiempoTotal = 0.0f; // Variable para controlar el tiempo en transiciones
+    private float       velocidad = 3;           // Velocidad de interpolación
     private float       lerpTime = 0.0f;        // Tiempo de interpolación
-    public float        lerpDuration = 2.0f;    // Duración de la interpolación
-    public bool         iniciarCamaras = false; // Variable para determinar cuando podemos mover posiciones de camara
+    private float       lerpDuration = 2.0f;    // Duración de la interpolación
+    private bool        iniciarCamaras = false; // Variable para determinar cuando podemos mover posiciones de camara
 
     // Vectores con las variables para almacenar las posiciones y rotaciones
     private Vector3     posicionInicial;
@@ -62,6 +64,9 @@ public class InicializarFurtivo : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Controlamos el flujo de tiempo para las transiciones
+        tiempoTranscurrido += Time.deltaTime;
+
         // Validamos si ya podemos hacer cambios de camaras
         if (iniciarCamaras)
         {
@@ -113,21 +118,21 @@ public class InicializarFurtivo : MonoBehaviour
         // Activamos las baterias para que se vean en escena
         plataforma.gameObject.GetComponent<PersonalizacionFurtivo>().baterias.gameObject.SetActive(true);
         // Iniciamos currutinas para cambios de camara e inicio de interfaz
-        StartCoroutine(MovimientoSuave());
+        StartCoroutine(InicializarPlataforma());
     }
 
 
     /// <summary>
     /// Currutina para dar un movimiento suavizado a los cambios de camara y preparacion de la plataforma
     /// </summary>
-    IEnumerator MovimientoSuave()
+    IEnumerator InicializarPlataforma()
     {
         //Activamos el canvas con la pantalla del vehiculo y las particulas
         canvasPantalla.gameObject.SetActive(true);
         particulas.gameObject.SetActive(true);
 
-        float tiempoTotal = 300f; // Duración total del ciclo en segundos
-        float tiempoTranscurrido = 0f; // Validamos el tiempo transcurrido
+        tiempoTranscurrido = 0.0f; // Reiniciamos el flujo de tiempo
+        tiempoTotal = 3.0f; // Duración total del ciclo en segundos
 
         // Mientras que el tiempo transcurrido sea menor al total indicado
         while (tiempoTranscurrido < tiempoTotal)
@@ -135,18 +140,18 @@ public class InicializarFurtivo : MonoBehaviour
             // Hacemos el primer cambio de camara
             camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[0].position, velocidad * Time.deltaTime);
             camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[0].rotation, velocidad * Time.deltaTime);
-
+            
             // Pausa el ciclo hasta el siguiente frame
-            tiempoTranscurrido += 1f;
             yield return null;
         }
         // Encendemos las luces
         StartCoroutine(EncenderLuces());
 
-        // Reiniciamos el tiempo transcurrido
-        tiempoTranscurrido = 0f;
-        
+        tiempoTranscurrido = 0.0f; // Reiniciamos el flujo de tiempo
+
         yield return new WaitForSeconds(4.5f);
+
+        tiempoTotal = 7.0f; // Duración total del ciclo en segundos
 
         // Mientras que el tiempo transcurrido sea menor al total indicado
         while (tiempoTranscurrido < tiempoTotal)
@@ -154,7 +159,6 @@ public class InicializarFurtivo : MonoBehaviour
             // Hacemos el segundo cambio de camara
             camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[1].position, velocidad * Time.deltaTime);
             camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[1].rotation, velocidad * Time.deltaTime);
-            tiempoTranscurrido += 1f;
             yield return null;
         }  
 
@@ -175,14 +179,14 @@ public class InicializarFurtivo : MonoBehaviour
         // Indicamos que ya no podemos hacer cambios de camaras
         iniciarCamaras = false;
         // Iniciamos currutina de salida
-        StartCoroutine(SalirCanvas());
+        StartCoroutine(SalirInicializarPlataforma());
     }
 
 
     /// <summary>
     /// Currutina que se ejecuta al salir de la personalizacion
     /// </summary>
-    IEnumerator SalirCanvas()
+    IEnumerator SalirInicializarPlataforma()
     { 
         // Iniciamos la animacion que tiene el canvas
         canvas.gameObject.GetComponent<Animator>().SetBool("hide", true);
@@ -196,8 +200,8 @@ public class InicializarFurtivo : MonoBehaviour
         plataforma.gameObject.GetComponent<PersonalizacionFurtivo>().baterias.gameObject.SetActive(false);
 
 
-        float tiempoTotal = 200f; // Duración total del ciclo en segundos
-        float tiempoTranscurrido = 0f; // Tiempo transcurrido del ciclo
+        tiempoTotal = 2.5f; // Duración total del ciclo en segundos
+        tiempoTranscurrido = 0.0f; // Reiniciamos el flujo de tiempo
 
         // Mientras que el tiempo transcurrido sea menor al total indicado realiza el cambio de camara
         while (tiempoTranscurrido < tiempoTotal)
@@ -205,7 +209,6 @@ public class InicializarFurtivo : MonoBehaviour
             camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, posicionInicial, velocidad * Time.deltaTime);
             camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, rotacionInicial, velocidad * Time.deltaTime);
             // Pausa el ciclo hasta el siguiente frame
-            tiempoTranscurrido += 1f;
             yield return null;
         }
 
