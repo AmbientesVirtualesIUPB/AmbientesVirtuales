@@ -40,13 +40,13 @@ public class Personalizacion : MonoBehaviour
         TransicionDeGenero(0); 
     }
 
-    
+    /*
     [ContextMenu("Engordar")]
     public void Engordar()
     {
         obj.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(1, 5);
     }
-    
+    */
 
     /// <summary>
     /// Pasar elemento a elemento las caracteristicas unicamente pertenecientes al genero Masculino
