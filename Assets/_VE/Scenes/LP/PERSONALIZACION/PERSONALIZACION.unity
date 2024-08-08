@@ -16222,6 +16222,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 737700482148300117, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 737700482148300117, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966013317300240518, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 998310909595132260, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_IsActive
@@ -16242,6 +16257,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3173402231775537277, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3373620128283662047, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_IsActive
@@ -16252,9 +16272,49 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617613303975721412, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617613303975721412, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617613303975721412, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617613303975721412, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3732795069864377989, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125468542410454306, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125468542410454306, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992379292182097420, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992379292182097420, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5070286771084599707, guid: f7049d1bd08befd499853a3147e331f3,
@@ -16325,6 +16385,16 @@ PrefabInstance:
     - target: {fileID: 7144231620023851998, guid: f7049d1bd08befd499853a3147e331f3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458272686754023122, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458272686754023122, guid: f7049d1bd08befd499853a3147e331f3,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7525154758866420068, guid: f7049d1bd08befd499853a3147e331f3,

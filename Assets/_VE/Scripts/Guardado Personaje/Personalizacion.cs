@@ -23,11 +23,15 @@ public class Personalizacion : MonoBehaviour
     public int[]                    colores = new int[5];
     public bool                     esColor;
 
+    //public SkinnedMeshRenderer obj; // Engordar
+
+    /*
     private void Awake()
     {
         // Cargamos los datos que se puedan tener guardados
         saveManager.gameObject.GetComponent<SaveManager>().CargarDatos();
     }
+    */
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,14 @@ public class Personalizacion : MonoBehaviour
         InicializarElementos();
         TransicionDeGenero(0); 
     }
+
+    /*
+    [ContextMenu("Engordar")]
+    public void Engordar()
+    {
+        obj.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(1, 5);
+    }
+    */
 
     /// <summary>
     /// Pasar elemento a elemento las caracteristicas unicamente pertenecientes al genero Masculino
