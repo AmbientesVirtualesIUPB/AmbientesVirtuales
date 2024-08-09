@@ -17,7 +17,7 @@ public class ActivarInterfaces : MonoBehaviour
     /// <summary>
     /// Referencia al objeto de texto que muestra el turno.
     /// </summary>
-    public Text Turno;
+    //public Text Turno;
 
     /// <summary>
     /// Sistema de partículas que se reproduce al abrir.
