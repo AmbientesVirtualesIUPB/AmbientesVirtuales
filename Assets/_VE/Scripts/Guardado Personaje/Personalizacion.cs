@@ -47,7 +47,6 @@ public class Personalizacion : MonoBehaviour
     /// <summary>
     /// Metodo invocado desde el Scrollbar al momento de cambiar el valor del Scrollbar
     /// </summary>
-    /// <param name="valor"> Valor enviado por el scrollbar </param>
     public void Engordar()
     {
         // Redondeamos para que solo tenga un decimal y multiplicamos por 100 para darle un valor entre 0 y 100 para el SetBlendShapeWeight
@@ -253,9 +252,25 @@ public class Personalizacion : MonoBehaviour
     /// </summary>
     public void PersonalizacionSave()
     {
-        //Se deben cargar tambien los valores de la variable activo
-        //partesHombre[1].activo = pos[1];
-        partesHombre[2].activo = pos[2];
+        //Se cargar tambien los valores de la variable activo para que continue desde el elemento de personalizacion anteriormente seleccionado
+        for (int i = 0; i < pos.Length; i++)
+        {
+            // Hacemos una validacion para asignar correctamente a cada objeto sus posiciones
+            if (i <= 4)
+            {
+                partesHombre[i].activo = pos[i];
+            }
+            else if (i <= 9)
+            {
+                partesMujer[i - 5].activo = pos[i];
+            }
+            else if (i <= 12)
+            {
+                partesOtros[i - 10].activo = pos[i];
+            }
+        }
+        
+
         // Si es mujer
         if (genero == 0)
         {
@@ -546,7 +561,6 @@ public class ElementoPersonalizable
     /// </summary>
     public void Establecer()
     {
-        Debug.Log(activo);
         for (int i = 0; i < elementos.Length; i++)
         {
             elementos[i].SetActive(i == activo);
