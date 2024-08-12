@@ -870,11 +870,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: 
+  cloudProjectId: 7bf56bec-7058-4979-8c4a-d5e88134157e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Ambientes Virtuales
+  organizationId: ambientesvirtuales
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

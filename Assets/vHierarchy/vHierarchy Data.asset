@@ -19,6 +19,15 @@ MonoBehaviour:
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-0e0a7a819eb0afe46868d7ff5b6921dc-854012911-0
+        - globalObjectIdString: GlobalObjectId_V1-2-0e0a7a819eb0afe46868d7ff5b6921dc-1175316008-0
+        - globalObjectIdString: GlobalObjectId_V1-2-0e0a7a819eb0afe46868d7ff5b6921dc-65220153-0
+        - globalObjectIdString: GlobalObjectId_V1-2-0e0a7a819eb0afe46868d7ff5b6921dc-1033550794-0
         values:
         - colorIndex: 0
           iconNameOrGuid: AudioReverbZone Icon
+        - colorIndex: 0
+          iconNameOrGuid: Settings Icon
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 0
+          iconNameOrGuid: EventSystem Icon

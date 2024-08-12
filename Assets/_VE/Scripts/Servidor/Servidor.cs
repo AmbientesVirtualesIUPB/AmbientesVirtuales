@@ -59,6 +59,7 @@ public class Servidor : MonoBehaviour
         Debug.Log("--->Anciado el PR00");
         webSocket.Send("AC00 ");
         Debug.Log("--->Anciado el AC00");
+        //VivoxPlayer.singleton.SignIntoVivox();
     }
 
     private void OnMessageReceived(WebSocket webSocket, string message)
