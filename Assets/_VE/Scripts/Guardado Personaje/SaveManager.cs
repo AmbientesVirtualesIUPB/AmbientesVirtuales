@@ -5,14 +5,17 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    //Objeto con la informacion de BASE_DEFINITIVA
+    //Objeto con la informacion de las personalizaciones
     public GameObject personalizacion;
+    public GameObject personalizacionFurtivos;
 
     //Referenciamos el archivo donde guardaremos la informacion
     [SerializeField]
     private SaveSplit split;
 
-    [ContextMenu("Save")]
+    /// <summary>
+    /// Metodo para el guardado de archivos JSON
+    /// </summary>
     public void Save()
     {
         //Conovertimos el objeto a formato Json
@@ -23,49 +26,86 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(path, splitJson);
     }
 
-    [ContextMenu("Load")]
+    /// <summary>
+    /// Metodo para la carga de archivos JSON
+    /// </summary>
     public void Load()
     {
         //Traemos la ruta del archivo
         string path = Path.Combine(Application.persistentDataPath, "splitData.data");
-        //leemos el archivo Json
-        string splitJson = File.ReadAllText(path);
-        //Convertimos el archivo Json a objeto unity
-        SaveSplit splitLoad = JsonUtility.FromJson<SaveSplit>(splitJson);
 
-        //Asignamos la informacion guardada
-        for (int i = 0; i < split.pos.Length; i++)
+        //Validamos si ya existe un archivo de guardado actual
+        if (File.Exists(path))
         {
-            split.pos[i] = splitLoad.pos[i];
+            //leemos el archivo Json
+            string splitJson = File.ReadAllText(path);
+            //Convertimos el archivo Json a objeto unity
+            SaveSplit splitLoad = JsonUtility.FromJson<SaveSplit>(splitJson);
+
+            split.posiciones = splitLoad.posiciones;
+            split.colores = splitLoad.colores;
+            split.furtivos = splitLoad.furtivos;
+        }
+        // Sino existe creamos uno por defecto
+        else
+        {
+            Save();
         }
     }
 
-
-    public void PesonalizacionPersonaje(int numero, int posicion)
+    /// <summary>
+    /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones
+    /// </summary>
+    /// <param name="texto"> Parametro de texto con las posiciones </param>
+    public void PesonalizacionPersonaje(string texto)
     {
-        //Dependiento del numero y la posicion, asignamos antes de guardar
-        for (int i = 0; i < split.pos.Length; i++)
-        {
-            //Si la posicion es la indicada, guardamos el dato
-            if (i == posicion)
-            {
-                split.pos[i] = numero;
-            }
-        }
-
-        //Grabamos
+        split.posiciones = texto;
+        //Guardamos
         Save();
     }
 
+    /// <summary>
+    /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones de los colores
+    /// </summary>
+    /// <param name="texto"> Parametro de texto con las posiciones </param>
+    public void PesonalizacionColores(string texto)
+    {
+        split.colores = texto;
+        //Guardamos
+        Save();
+    }
+
+    /// <summary>
+    /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones de los colores
+    /// </summary>
+    /// <param name="texto"> Parametro de texto con las posiciones </param>
+    public void PesonalizacionFurtivos(string texto)
+    {
+        split.furtivos = texto;
+        //Guardamos
+        Save();
+    }
+
+    /// <summary>
+    /// Metodo invocado desde el script de personalización, en el Awake
+    /// </summary>
     public void CargarDatos()
     {
         //Cargamos
         Load();
 
-        //Asignamos los datos al personaje
-        for (int i = 0; i < split.pos.Length; i++)
+        // Solo ejecuta el resto del código si objeto no es nulo
+        if (personalizacion != null)
         {
-            personalizacion.gameObject.GetComponent<Split>().pos[i] = split.pos[i];
-        }  
+            //Asignamos los datos al personaje
+            personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTexto(split.posiciones);
+            personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTextoColores(split.colores);
+        }
+        // Solo ejecuta el resto del código si objeto no es nulo
+        if (personalizacionFurtivos != null)
+        {
+            //Asignamos los datos al personaje
+            personalizacionFurtivos.gameObject.GetComponent<PersonalizacionFurtivo>().ConvertirDesdeTexto(split.furtivos);
+        }    
     }
 }
