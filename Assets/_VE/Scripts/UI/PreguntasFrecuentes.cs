@@ -65,6 +65,16 @@ public class PreguntasFrecuentes : MonoBehaviour
         orden = 2;
         StartCoroutine(carga(orden));
     }
+    public void Menu4()
+    {
+        orden = 3;
+        StartCoroutine(carga(orden));
+    }
+    public void Menu5()
+    {
+        orden = 4;
+        StartCoroutine(carga(orden));
+    }
 
     IEnumerator carga(int i)
     {
