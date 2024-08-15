@@ -4,19 +4,22 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 
+
 /// <summary>
 /// Utilizada para consumir una API, en este caso la api de SICAU para validar los usuarios activos en el periodo
 /// </summary>
 public class ConsumirAPI : MonoBehaviour
 {
     // Solicitamos una referencia a los InputField del login
-    public TMP_InputField       InputUsuario;
-    public TMP_InputField       InputPassword;
+    public TMP_InputField       inputUsuario;
+    public TMP_InputField       inputPassword;
+
+    // Variable para almacenar los datos del usuario
+    public GameObject           managerBD;
 
     // Establecemos las variables, con los datos de la url a consumir y su llave de autenticacion
-    private string apiUrl = "https://sicau.pascualbravo.edu.co/SICAU/API/ServicioLogin/LoginAmbientesVirtuales";
-    private string apiKey = "s1c4uc0ntr0ld34cc3s02019*";
-
+    private string              apiUrl = "https://sicau.pascualbravo.edu.co/SICAU/API/ServicioLogin/LoginAmbientesVirtuales";
+    private string              apiKey = "s1c4uc0ntr0ld34cc3s02019*";
 
     /// <summary>
     /// Metodo invocado desde el botón Iniciar en el Login para consumir el servicio
@@ -27,8 +30,8 @@ public class ConsumirAPI : MonoBehaviour
         // Crear un objeto con los datos que queremos enviar
         SolicitudLogin solicitudLogin = new SolicitudLogin
         {    
-            Email = InputUsuario.text + "@pascualbravo.edu.co",
-            Contraseña = InputPassword.text
+            Email = inputUsuario.text + "@pascualbravo.edu.co",
+            Contraseña = inputPassword.text
         };
 
         // Convertir el objeto a JSON
@@ -95,6 +98,31 @@ public class ConsumirAPI : MonoBehaviour
                 {
                     Debug.Log(datos[i]);
                 }
+            }
+
+            // Validamos que los datos sean correctos para guardar los datos de usuario
+            if (loginResponse.Mensaje != "El usuario y/o contraseña son inválidos")
+            {
+                // Guardamos la identificacion del usuario convertida a entero
+                managerBD.gameObject.GetComponent<EnvioDatosBD>().id_usuario = int.Parse(loginResponse.Datos.Identificacion);
+
+                // Guardamos el tipo de usuario, antes validando que tipo es para darle un valor
+                if (loginResponse.Datos.TipoDeUsuario == "Estudiante")
+                {
+                    managerBD.gameObject.GetComponent<EnvioDatosBD>().tipo_usuario = 2;
+                }
+                else if (loginResponse.Datos.TipoDeUsuario == "Docente")
+                {
+                    managerBD.gameObject.GetComponent<EnvioDatosBD>().tipo_usuario = 1;
+                }
+                else
+                {
+                    managerBD.gameObject.GetComponent<EnvioDatosBD>().tipo_usuario = 0;
+                }
+                // Guardamos los datos en la BD para la creacion del usuario
+                managerBD.gameObject.GetComponent<EnvioDatosBD>().EnviarDatosU();
+                // Cambiamos la escena
+                managerBD.gameObject.GetComponent<EnvioDatosBD>().CambioScena();
             }
         }
     }

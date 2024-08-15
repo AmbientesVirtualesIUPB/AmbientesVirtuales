@@ -21,7 +21,8 @@ public class Personalizacion : MonoBehaviour
     public Scrollbar                scrollbarTamaño;
 
     public int                      genero;
-    // Variables utilizadas para el guardado de archivos
+    // Variables utilizadas para el guardado de datos
+    public GameObject               managerBD;
     public GameObject               saveManager;
     public int[]                    pos = new int[14];
     public int[]                    colores = new int[5];
@@ -40,9 +41,55 @@ public class Personalizacion : MonoBehaviour
     void Start()
     {
         InicializarElementos();
-        TransicionDeGenero(0); 
+        TransicionDeGenero(0);
+
+        // Busca el objeto por nombre para buscar la referencia al objeto que administra la base de datos, ya que este pasará entre escenas
+        GameObject obj = GameObject.Find("EnvioBD");
+        // O por tag
+        // GameObject obj = GameObject.FindWithTag("TagDelObjeto");
+
+        if (obj != null)
+        {
+            managerBD = obj;
+        }
+        else
+        {
+            managerBD = null;
+        }
     }
 
+    public void PasarInformacionBD()
+    {
+        //Pasamos el genero
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[0] = genero;
+
+        //Pasamos los datos de la personalizacion, dependiendo del genero elegido           
+        for (int i = 0; i < 5; i++)
+        {
+            // Si es mujer
+            if (genero == 0)
+            {
+               managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 1] = pos[i + 5];
+            }
+            // Si es hombre
+            if (genero == 1)
+            {
+                managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 1] = pos[i];
+            }
+        }
+
+        // Pasamos datos generales
+        for (int i = 0; i < 3; i++)
+        {
+            managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 6] = pos[i + 10];
+        }
+
+        // Pasamos tamaño
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[9] = pos[13];
+
+        // Enviamos la informacion a la base de datos
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().EnviarDatosP();
+    }
 
     /// <summary>
     /// Metodo invocado desde el Scrollbar al momento de cambiar el valor del Scrollbar
