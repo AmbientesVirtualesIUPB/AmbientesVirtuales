@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class EnviarDatos : MonoBehaviour
 {
-    public string url = "http://localhost/apiweb/formulario.php"; // Cambia esto a la URL de tu archivo PHP
+    public string url = "http://localhost/apiweb/formulario_ejemplo.php"; // Cambia esto a la URL de tu archivo PHP
     public int[] datos = new int[14]; // Tu array de 14 posiciones
 
     // Llama a este método para enviar los datos
