@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Personalizacion : MonoBehaviour
 {
@@ -14,37 +15,104 @@ public class Personalizacion : MonoBehaviour
     public Color[]                  paletaPiel;
     public Material                 materialInicialPielHombre;
     public Material                 materialInicialPielMujer;
+    //Personalizacion
+    public Scrollbar                scrollbarTamaño;
+
     public int                      genero;
-    // Variables utilizadas para el guardado de archivos
+    // Variables utilizadas para el guardado de datos
+    public GameObject               managerBD;
     public GameObject               saveManager;
     public int[]                    pos = new int[14];
     public int[]                    colores = new int[5];
     public bool                     esColor;
 
-    //public SkinnedMeshRenderer obj; // Engordar
-
-    /*
+    /// <summary>
+    /// Metodo invocado antes de iniciar la scena
+    /// </summary>
     private void Awake()
     {
         // Cargamos los datos que se puedan tener guardados
         saveManager.gameObject.GetComponent<SaveManager>().CargarDatos();
     }
-    */
 
     // Start is called before the first frame update
     void Start()
     {
         InicializarElementos();
-        TransicionDeGenero(0); 
+        TransicionDeGenero(0);
+
+        // Busca el objeto por nombre para buscar la referencia al objeto que administra la base de datos, ya que este pasar� entre escenas
+        GameObject obj = GameObject.Find("EnvioBD");
+        // O por tag
+        // GameObject obj = GameObject.FindWithTag("TagDelObjeto");
+
+        if (obj != null)
+        {
+            managerBD = obj;
+        }
+        else
+        {
+            managerBD = null;
+        }
     }
 
-    /*
-    [ContextMenu("Engordar")]
+    public void PasarInformacionBD()
+    {
+        //Pasamos el genero
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[0] = genero;
+
+        //Pasamos los datos de la personalizacion, dependiendo del genero elegido           
+        for (int i = 0; i < 5; i++)
+        {
+            // Si es mujer
+            if (genero == 0)
+            {
+               managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 1] = pos[i + 5];
+            }
+            // Si es hombre
+            if (genero == 1)
+            {
+                managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 1] = pos[i];
+            }
+        }
+
+        // Pasamos datos generales
+        for (int i = 0; i < 3; i++)
+        {
+            managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 6] = pos[i + 10];
+        }
+
+        // Pasamos Tamaño
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[9] = pos[13];
+
+        // Enviamos la informacion a la base de datos
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().EnviarDatosP();
+    }
+
+    /// <summary>
+    /// Metodo invocado desde el Scrollbar al momento de cambiar el valor del Scrollbar
+    /// </summary>
     public void Engordar()
     {
-        obj.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(1, 5);
+        // Redondeamos para que solo tenga un decimal y multiplicamos por 100 para darle un valor entre 0 y 100 para el SetBlendShapeWeight
+        float valorRedondeado = (Mathf.Round(scrollbarTamaño.value * 10f) / 10f) * 100;
+
+        for (int i = 0; i < partesHombre.Length; i++)
+        {
+            partesHombre[i].CambiarTamaño(valorRedondeado);
+            partesMujer[i].CambiarTamaño(valorRedondeado);
+        }
+
+        for (int i = 0; i < partesOtros.Length; i++)
+        {
+            partesOtros[i].CambiarTamaño(valorRedondeado);
+        }
+        
+        // Convertimos el valor a entero y lo guardamos en la posicion para su posterior guardado de datos
+        pos[13] = (int)valorRedondeado;
+        ConvertirATexto();
     }
-    */
+    
 
     /// <summary>
     /// Pasar elemento a elemento las caracteristicas unicamente pertenecientes al genero Masculino
@@ -127,7 +195,6 @@ public class Personalizacion : MonoBehaviour
     /// <returns></returns>
     public string ConvertirATexto()
     {
-
         string texto = "";
         // Validamos si lo que estamos personalizando es el color
         if (esColor == true)
@@ -230,6 +297,25 @@ public class Personalizacion : MonoBehaviour
     /// </summary>
     public void PersonalizacionSave()
     {
+        //Se cargar tambien los valores de la variable activo para que continue desde el elemento de personalizacion anteriormente seleccionado
+        for (int i = 0; i < pos.Length; i++)
+        {
+            // Hacemos una validacion para asignar correctamente a cada objeto sus posiciones
+            if (i <= 4)
+            {
+                partesHombre[i].activo = pos[i];
+            }
+            else if (i <= 9)
+            {
+                partesMujer[i - 5].activo = pos[i];
+            }
+            else if (i <= 12)
+            {
+                partesOtros[i - 10].activo = pos[i];
+            }
+        }
+        
+
         // Si es mujer
         if (genero == 0)
         {
@@ -260,6 +346,20 @@ public class Personalizacion : MonoBehaviour
                 partesOtros[i].elementos[j].SetActive(pos[i + 10] == j);
             }
         }
+        // Engordamos con el valor de la posicion guardada convertida a flotante
+        for (int i = 0; i < partesHombre.Length; i++)
+        {
+            partesHombre[i].CambiarTamaño((float)pos[13]);
+            partesMujer[i].CambiarTamaño((float)pos[13]);
+        }
+
+        for (int i = 0; i < partesOtros.Length; i++)
+        {
+            partesOtros[i].CambiarTamaño((float)pos[13]);
+        }
+        // Establecemos el valor del scrollbar segun el valor guardado, lo dividimos por 100 para darle un valor entre 0 y 1
+        scrollbarTamaño.value = (float)pos[13] / 100;
+
         // Establecemos los colores
         partesOtros[3].EstablecerColorGeneral(colores[0]);
         partesHombre[4].EstablecerColorGeneral(colores[1]);
@@ -488,6 +588,18 @@ public class ElementoPersonalizable
     int                     iColor2;
 
 
+    public void CambiarTamaño(float valor)
+    {
+        for (int i = 0; i < elementos.Length; i++)
+        {
+            // Validamos que el objeto SkinnedMeshRenderer si cuente con la propiedad BlendShapes
+            if (elementos[i].gameObject.GetComponent<SkinnedMeshRenderer>().sharedMesh != null && elementos[i].gameObject.GetComponent<SkinnedMeshRenderer>().sharedMesh.blendShapeCount > 0)
+            {
+                // Aumentamos o disminuimos el valor de BlendShapes
+                elementos[i].gameObject.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, valor);
+            }
+        }
+    }
 
     /// <summary>
     /// Establecemos el elemento activo en personalizacion

@@ -12,7 +12,7 @@ public class Cambioboton : MonoBehaviour
     public RectTransform[]  Posiciones;
 
     //Variables para el control del Zoom
-    int enfoqueActual = 0;
+    int                     enfoqueActual = 0;
     public GameObject       panelZoom;
     public GameObject       canvasZoom;
 
@@ -24,7 +24,7 @@ public class Cambioboton : MonoBehaviour
     public bool             enZoom = false;
     public Transform[]      camsPositions;
     public GameObject[]     panelesColor;
-
+    
     private void Awake()
     {
         posicionInicial = camPrincipal.transform.position;
