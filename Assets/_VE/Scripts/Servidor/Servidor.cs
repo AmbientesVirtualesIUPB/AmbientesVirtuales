@@ -27,6 +27,10 @@ public class Servidor : MonoBehaviour
         EventoConectado += Vacio;
     }
 
+    public void CambairURL(string n_url)
+	{
+        url = n_url;
+	}
     
     public void Conectar()
     {

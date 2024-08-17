@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PersonalizacionFurtivo : MonoBehaviour
 {

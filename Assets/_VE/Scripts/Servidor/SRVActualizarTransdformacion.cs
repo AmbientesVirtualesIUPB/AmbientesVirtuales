@@ -42,6 +42,8 @@ public class SRVActualizarTransdformacion : MonoBehaviour
         transform.eulerAngles = rotacion;
         posAnterior = transform.position;
         rotAnterior = transform.eulerAngles;
+        posicionObjetivo = posicion;
+        rotacionObjetivo = rotacion;
     }
     public void Inicializar(Vector3 _posicion, Vector3 _rotacion, Plataforma _plataforma)
     {
@@ -51,16 +53,18 @@ public class SRVActualizarTransdformacion : MonoBehaviour
 
     IEnumerator UpdateLento()
     {
-		while (true)
+        yield return new WaitForSeconds(periodoEsperas);
+
+        while (true)
 		{
-			if ((posAnterior - transform.position).sqrMagnitude > _toleranciaPosicion ||
-                (rotAnterior - transform.eulerAngles).sqrMagnitude > _toleranciaPosicion*50)
+			if (isOwner && ((posAnterior - transform.position).sqrMagnitude > _toleranciaPosicion ||
+                (rotAnterior - transform.eulerAngles).sqrMagnitude > _toleranciaPosicion*50))
 			{
                 // ********************************* OJO CON ESTE QUE SOLO MANDA MOVIL! ***********************
                 GestionMensajesServidor.singeton.EnviarActualizacionTransform(id_conn, transform, Plataformas.Movil);
-			}
-            posAnterior = transform.position;
-            rotAnterior = transform.eulerAngles;
+                posAnterior = transform.position;
+                rotAnterior = transform.eulerAngles;
+            }
             yield return new WaitForSeconds(periodoEsperas);
 		}
     }
@@ -69,7 +73,7 @@ public class SRVActualizarTransdformacion : MonoBehaviour
 	{
 		if (!isOwner)
 		{
-            transform.position = Vector3.Lerp(transform.position, posicionObjetivo, Time.deltaTime * 5);
+            transform.position = Vector3.Lerp(transform.position, posicionObjetivo, Time.deltaTime * 1);
             transform.rotation = Quaternion.Lerp(Quaternion.Euler(transform.eulerAngles), Quaternion.Euler(rotacionObjetivo), Time.deltaTime * 5);
         }
 	}
