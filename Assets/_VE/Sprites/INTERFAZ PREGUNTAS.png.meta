@@ -1,0 +1,464 @@
+fileFormatVersion: 2
+guid: 70ae2d6356d2c204b98161c19758dfaf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2816
+        height: 4096
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c3d127199b213f4d8de41552b8ca0cd
+      internalID: -427861028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_1
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 158
+        width: 72
+        height: 3584
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983805e4e8311b64a90e3e0e63032d4d
+      internalID: -2134411049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_2
+      rect:
+        serializedVersion: 2
+        x: 3078
+        y: 1515
+        width: 1140
+        height: 758
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03ba66b7673a5649bfacd5dface7f57
+      internalID: -1648986373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_5
+      rect:
+        serializedVersion: 2
+        x: 3085
+        y: 2470
+        width: 426
+        height: 1449
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 674, z: 0, w: 680}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e31d1efa13814b243a03c89e0b2edfa1
+      internalID: -236285224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_10
+      rect:
+        serializedVersion: 2
+        x: 3627
+        y: 2967
+        width: 371
+        height: 295
+      alignment: 9
+      pivot: {x: 0.5, y: 0.50859374}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbabe0d238606a9409e57ca9c0a6df26
+      internalID: 2005998934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_11
+      rect:
+        serializedVersion: 2
+        x: 3634
+        y: 3527
+        width: 371
+        height: 295
+      alignment: 9
+      pivot: {x: 0.5171793, y: 0.48765558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bce1ea5429a3a941967ec041603b473
+      internalID: 748326117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_12
+      rect:
+        serializedVersion: 2
+        x: 3651
+        y: 2474
+        width: 267
+        height: 264
+      alignment: 9
+      pivot: {x: 0.5842431, y: 0.4370265}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f41492d1cfab7f34dbb3ea1170ce5c61
+      internalID: -1167947023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_13
+      rect:
+        serializedVersion: 2
+        x: 4052
+        y: 3420
+        width: 492
+        height: 496
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c08006a3518e6541a9559dc7fcc5a6b
+      internalID: -254739060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_14
+      rect:
+        serializedVersion: 2
+        x: 4063
+        y: 2880
+        width: 488
+        height: 492
+      alignment: 9
+      pivot: {x: 0.46415335, y: 0.47597647}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956c32e60e4aaa940b3223e17607071b
+      internalID: -1395471174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_15
+      rect:
+        serializedVersion: 2
+        x: 4081
+        y: 2392
+        width: 424
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00f9d12b8f46664fbb30562bcfc1af0
+      internalID: 1214408143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_18
+      rect:
+        serializedVersion: 2
+        x: 6226
+        y: 1473
+        width: 1652
+        height: 2269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab756b91343e7b24cbf82b29d3573569
+      internalID: -1244781072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_20
+      rect:
+        serializedVersion: 2
+        x: 4322
+        y: 1906
+        width: 163
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003d6ca99881925478256744e1d39341
+      internalID: 2085791060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_21
+      rect:
+        serializedVersion: 2
+        x: 4271
+        y: 1542
+        width: 267
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 127, y: 122, z: 122, w: 128}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048127656fa68ed479274ad03a7c9982
+      internalID: 1248338102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_25
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 362
+        width: 56
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd84c8258ee29f458adb9c51fb19704
+      internalID: -391858283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: INTERFAZ PREGUNTAS_26
+      rect:
+        serializedVersion: 2
+        x: 3078
+        y: 90
+        width: 2768
+        height: 1308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b568ffd83507b44900d120085a108b
+      internalID: -1078260351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 23bbf27d2c7d8194ca469fbecacb8a97
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      INTERFAZ PREGUNTAS_3: 93847377
+      INTERFAZ PREGUNTAS_25: -391858283
+      INTERFAZ PREGUNTAS_17: -1588287530
+      INTERFAZ PREGUNTAS_11: 748326117
+      INTERFAZ PREGUNTAS_1: -2134411049
+      INTERFAZ PREGUNTAS_5: -236285224
+      INTERFAZ PREGUNTAS_16: -1277212391
+      INTERFAZ PREGUNTAS_21: 1248338102
+      INTERFAZ PREGUNTAS_4: 372156693
+      INTERFAZ PREGUNTAS_8: 917740283
+      INTERFAZ PREGUNTAS_20: 2085791060
+      INTERFAZ PREGUNTAS_7: -1465991454
+      INTERFAZ PREGUNTAS_15: 1214408143
+      INTERFAZ PREGUNTAS_18: -1244781072
+      INTERFAZ PREGUNTAS_10: 2005998934
+      INTERFAZ PREGUNTAS_9: 2112368116
+      INTERFAZ PREGUNTAS_14: -1395471174
+      INTERFAZ PREGUNTAS_19: -54334713
+      INTERFAZ PREGUNTAS_23: -676970582
+      INTERFAZ PREGUNTAS_13: -254739060
+      INTERFAZ PREGUNTAS_24: -1280021308
+      INTERFAZ PREGUNTAS_22: -1869432797
+      INTERFAZ PREGUNTAS_12: -1167947023
+      INTERFAZ PREGUNTAS_26: -1078260351
+      INTERFAZ PREGUNTAS_6: -1550936591
+      INTERFAZ PREGUNTAS_0: -427861028
+      INTERFAZ PREGUNTAS_2: -1648986373
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
