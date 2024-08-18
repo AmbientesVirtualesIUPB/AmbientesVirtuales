@@ -40,6 +40,7 @@ public class Servidor : MonoBehaviour
         webSocket.OnMessage += OnMessageReceived;
         webSocket.OnClosed += OnWebSocketClosed;
         webSocket.Open();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LP_CIS", UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
 
     private void OnWebSocketOpen(WebSocket webSocket)
