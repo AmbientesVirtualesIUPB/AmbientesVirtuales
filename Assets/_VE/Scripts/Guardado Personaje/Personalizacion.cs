@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class Personalizacion : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class Personalizacion : MonoBehaviour
     public Material                 materialInicialPielHombre;
     public Material                 materialInicialPielMujer;
     //Personalizacion
-    public Scrollbar                scrollbarTamaño;
+    public Scrollbar                scrollbarTamaÃ±o;
 
     public int                      genero;
     // Variables utilizadas para el guardado de datos
@@ -43,7 +41,7 @@ public class Personalizacion : MonoBehaviour
         InicializarElementos();
         TransicionDeGenero(0);
 
-        // Busca el objeto por nombre para buscar la referencia al objeto que administra la base de datos, ya que este pasará entre escenas
+        // Busca el objeto por nombre para buscar la referencia al objeto que administra la base de datos, ya que este pasarï¿½ entre escenas
         GameObject obj = GameObject.Find("EnvioBD");
         // O por tag
         // GameObject obj = GameObject.FindWithTag("TagDelObjeto");
@@ -84,7 +82,7 @@ public class Personalizacion : MonoBehaviour
             managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 6] = pos[i + 10];
         }
 
-        // Pasamos tamaño
+        // Pasamos TamaÃ±o
         managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[9] = pos[13];
 
         // Enviamos la informacion a la base de datos
@@ -97,17 +95,17 @@ public class Personalizacion : MonoBehaviour
     public void Engordar()
     {
         // Redondeamos para que solo tenga un decimal y multiplicamos por 100 para darle un valor entre 0 y 100 para el SetBlendShapeWeight
-        float valorRedondeado = (Mathf.Round(scrollbarTamaño.value * 10f) / 10f) * 100;
+        float valorRedondeado = (Mathf.Round(scrollbarTamaÃ±o.value * 10f) / 10f) * 100;
 
         for (int i = 0; i < partesHombre.Length; i++)
         {
-            partesHombre[i].Cambiartamaño(valorRedondeado);
-            partesMujer[i].Cambiartamaño(valorRedondeado);
+            partesHombre[i].CambiarTamaÃ±o(valorRedondeado);
+            partesMujer[i].CambiarTamaÃ±o(valorRedondeado);
         }
 
         for (int i = 0; i < partesOtros.Length; i++)
         {
-            partesOtros[i].Cambiartamaño(valorRedondeado);
+            partesOtros[i].CambiarTamaÃ±o(valorRedondeado);
         }
         
         // Convertimos el valor a entero y lo guardamos en la posicion para su posterior guardado de datos
@@ -351,16 +349,16 @@ public class Personalizacion : MonoBehaviour
         // Engordamos con el valor de la posicion guardada convertida a flotante
         for (int i = 0; i < partesHombre.Length; i++)
         {
-            partesHombre[i].Cambiartamaño((float)pos[13]);
-            partesMujer[i].Cambiartamaño((float)pos[13]);
+            partesHombre[i].CambiarTamaÃ±o((float)pos[13]);
+            partesMujer[i].CambiarTamaÃ±o((float)pos[13]);
         }
 
         for (int i = 0; i < partesOtros.Length; i++)
         {
-            partesOtros[i].Cambiartamaño((float)pos[13]);
+            partesOtros[i].CambiarTamaÃ±o((float)pos[13]);
         }
         // Establecemos el valor del scrollbar segun el valor guardado, lo dividimos por 100 para darle un valor entre 0 y 1
-        scrollbarTamaño.value = (float)pos[13] / 100;
+        scrollbarTamaÃ±o.value = (float)pos[13] / 100;
 
         // Establecemos los colores
         partesOtros[3].EstablecerColorGeneral(colores[0]);
@@ -590,7 +588,7 @@ public class ElementoPersonalizable
     int                     iColor2;
 
 
-    public void Cambiartamaño(float valor)
+    public void CambiarTamaÃ±o(float valor)
     {
         for (int i = 0; i < elementos.Length; i++)
         {
@@ -652,7 +650,8 @@ public class ElementoPersonalizable
         iColor1 = num;
         for (int i = 0; i < materialesPiel.Count; i++)
         {
-            materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColor(tipo, iColor1));
+            materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColorPiel(iColor1));
+            Debug.Log("Cambiando el color segï¿½n el tipo: " + tipo.ToString());
         }
     }
 

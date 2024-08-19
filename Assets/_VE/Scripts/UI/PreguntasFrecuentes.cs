@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class PreguntasFrecuentes : MonoBehaviour
 {
+    public bool botonActivo = true;
+
     public float pos;
     public RectTransform contenedor;
 
@@ -47,28 +48,54 @@ public class PreguntasFrecuentes : MonoBehaviour
         contenedor.anchoredPosition += new Vector2(0, pos);
         float proces = pos * 0.05f;
         pos += proces;
+       
 
     }
-    public void Menu1() 
+    public void Menu1()
     {
-        orden = 0;
-        StartCoroutine(carga(orden));
+        if (botonActivo)
+        {
+            orden = 0;
+            StartCoroutine(carga(orden));
+        }
 
     } 
     public void Menu2()
     {
-        orden = 1;
-        StartCoroutine(carga(orden));
+        if (botonActivo)
+        {
+            orden = 1;
+            StartCoroutine(carga(orden));
+        }
     }
     public void Menu3()
     {
-        orden = 2;
-        StartCoroutine(carga(orden));
+        if (botonActivo)
+        {
+            orden = 2;
+            StartCoroutine(carga(orden));
+        }
+    }
+    public void Menu4()
+    {
+        if (botonActivo)
+        {
+            orden = 3;
+            StartCoroutine(carga(orden));
+        }
+    }
+    public void Menu5()
+    {
+        if (botonActivo)
+        {
+            orden = 4;
+            StartCoroutine(carga(orden));
+        }
     }
 
     IEnumerator carga(int i)
     {
-
+        botonActivo = false;
         cargando.transform.SetAsLastSibling();
         Descender();
         cargando.SetActive(true);
@@ -76,6 +103,8 @@ public class PreguntasFrecuentes : MonoBehaviour
         cargando.SetActive(false);
         Instantiate(Instancias[i], contenedor);
         Descender();
+        botonActivo = true;
+
 
     }
 }

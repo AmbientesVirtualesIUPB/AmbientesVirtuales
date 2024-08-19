@@ -19,7 +19,9 @@ namespace FIMSpace.FProceduralAnimation
             [Tooltip("Casting ray starting from current hips height position of the character. Can be bad for insect creatures!")]
             Hips,
             [Tooltip("Good for spiders! Casting raycast on defined height of the character")]
-            StaticScaleReference
+            StaticScaleReference,
+            [Tooltip("Casting ray starting from first bone of the leg (it's affecting height + start raycast position).")]
+            FirstBone
         }
 
         public ERaycastStartHeight RaycastStartHeight = ERaycastStartHeight.Hips;

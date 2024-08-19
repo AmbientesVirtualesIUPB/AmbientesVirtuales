@@ -21,6 +21,9 @@ public class ConsumirAPI : MonoBehaviour
     private string              apiUrl = "https://sicau.pascualbravo.edu.co/SICAU/API/ServicioLogin/LoginAmbientesVirtuales";
     private string              apiKey = "s1c4uc0ntr0ld34cc3s02019*";
 
+    // Objeto en el que se mostrará en pantalla el error
+    public GameObject           gmError;
+
     /// <summary>
     /// Metodo invocado desde el botón Iniciar en el Login para consumir el servicio
     /// </summary>
@@ -123,7 +126,12 @@ public class ConsumirAPI : MonoBehaviour
                 managerBD.gameObject.GetComponent<EnvioDatosBD>().EnviarDatosU();
                 // Cambiamos la escena
                 managerBD.gameObject.GetComponent<EnvioDatosBD>().CambioScena();
-            }
+			}
+			else
+			{
+                gmError.SetActive(true);
+                inputPassword.text = "";
+			}
         }
     }
 }

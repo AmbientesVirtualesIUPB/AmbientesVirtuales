@@ -132,32 +132,6 @@ namespace FIMSpace.FProceduralAnimation
                         GUILayout.Space(-5);
                     }
 
-                //if (!Application.isPlaying)
-                //    if (!ensured)
-                //        if (!Get.LegsInitialized)
-                //            if (Get.Legs.Count > 1)
-                //            {
-                //                if (Get._Editor_EnsureCount < 3)
-                //                {
-                //                    Event evb = Event.current; bool rmb = false;
-                //                    if (evb != null) if (evb.button == 1) rmb = true;
-                //                    GUILayout.Space(4);
-                //                    if (GUILayout.Button("Bones Setup is Ready?\nHit to quickly complete the IK settings refresh", FGUI_Resources.ButtonStyle))
-                //                    {
-                //                        for (int l = 0; l < Get.Legs.Count; l++)
-                //                        {
-                //                            var leg = Get.Legs[l];
-                //                            leg.RefreshLegAnkleToHeelAndFeetAndAxes(Get.BaseTransform); OnChange();
-                //                        }
-
-                //                        ensured = true;
-                //                        Get._Editor_EnsureCount += 1;
-                //                        if (rmb) Get._Editor_EnsureCount += 3;
-                //                    }
-
-                //                }
-                //            }
-
 
                 GUILayout.Space(8);
 
@@ -168,7 +142,7 @@ namespace FIMSpace.FProceduralAnimation
                 else
                     GUI.backgroundColor = new Color(0.7f, 0.7f, 0.7f, 1f);
 
-                if (GUILayout.Button(new GUIContent("Apply Humanoid Preset", "Setting foot animating settings, raycast mode, leg stretch limit, push settings, stability and hips use."), GUILayout.Height(17)))
+                if (GUILayout.Button(new GUIContent("Humanoid Preset", "Setting foot animating settings, raycast mode, leg stretch limit, push settings, stability and hips use."), GUILayout.Height(17)))
                 {
                     _appliedPreset = EPres.Humanoid;
                     Get.AnimateFeet = true;
@@ -195,7 +169,7 @@ namespace FIMSpace.FProceduralAnimation
                     Get.LegAnimatingSettings.StepMoveDuration = 0.35f;
                     Get.LegAnimatingSettings.MinFootRaise = 0.1f;
                     Get.LegAnimatingSettings.MaxFootRaise = 0.4f;
-                    Get.LegAnimatingSettings.SpherizePower = 1f;
+                    Get.LegAnimatingSettings.SpherizePower = 0.4f;
                     Get.LegAnimatingSettings.AllowDetachBefore = 1f;
                     Get.LegAnimatingSettings.Curves_RefreshRaiseYAxisCurve();
                     Get.LegAnimatingSettings.Curves_RefreshPushHipsOnMoveCurve();
@@ -230,7 +204,7 @@ namespace FIMSpace.FProceduralAnimation
                 else
                     GUI.backgroundColor = new Color(0.7f, 0.7f, 0.7f, 1f);
 
-                if (GUILayout.Button(new GUIContent("Apply Insect Preset", "Disabling foot animating, diabling foot adjusters, raycast mode along bones, leg stretch limit, normalize push an universal stability. Gluing animtion settings like move duration, step height, allow detach before, raise Y curve etc."), GUILayout.Height(17)))
+                if (GUILayout.Button(new GUIContent("Insect Preset", "Disabling foot animating, diabling foot adjusters, raycast mode along bones, leg stretch limit, normalize push an universal stability. Gluing animtion settings like move duration, step height, allow detach before, raise Y curve etc. Randomizing each leg slightly."), GUILayout.Height(17)))
                 {
                     _appliedPreset = EPres.Insect;
                     Get.AnimateFeet = false;
@@ -292,12 +266,82 @@ namespace FIMSpace.FProceduralAnimation
 
                 GUI.backgroundColor = Color.white;
 
+
+
+
+
+
+                if (_appliedPreset == EPres.Animal)
+                    GUI.backgroundColor = Color.white;
+                else
+                    GUI.backgroundColor = new Color(0.7f, 0.7f, 0.7f, 1f);
+
+                if (GUILayout.Button(new GUIContent("Animal Preset", "Not much difference in comparison to insect preset.\nRaycast mode straigt down, leg stretch limit, normalize push an universal stability. Gluing animtion settings like move duration, step height, allow detach before, raise Y curve etc."), GUILayout.Height(17)))
+                {
+                    _appliedPreset = EPres.Animal;
+                    Get.AnimateFeet = false;
+                    Get.SmoothSuddenSteps = 0.0f;
+                    Get.LegElevateBlend = 0.0f;
+                    Get.RaycastStyle = LegsAnimator.ERaycastStyle.StraightDown;
+                    if (Get.LimitLegStretch >= 1f) Get.LimitLegStretch = 0.99f;
+                    Get.SwingHelper = 0f;
+
+                    Get.LegAnimatingSettings.StepMoveDuration = 0.45f;
+                    Get.LegAnimatingSettings.MinFootRaise = 0.1f;
+                    Get.LegAnimatingSettings.MaxFootRaise = 0.4f;
+                    Get.LegAnimatingSettings.SpherizePower = 0.175f;
+                    Get.LegAnimatingSettings.AllowDetachBefore = 0.9f;
+
+                    Get.NormalizePush = true;
+                    Get.UseHips = true;
+                    Get.StabilityAlgorithm = LegsAnimator.EStabilityMode.Universal;
+                    Get.LegAnimatingSettings.Curves_RefreshRaiseYAxisCurveSpiderPreset();
+                    Get.LegAnimatingSettings.Curves_RefreshPushHipsOnMoveCurveSpiderPreset();
+
+
+                    Get.GlueRangeThreshold = 0.25f;
+                    Get.PushHipsOnLegMove = 0.11f;
+                    Get.AllowGlueDrag = 0.9f;
+                    Get.StabilizeCenterOfMass = 0.8f;
+
+                    var rotStab = Get.GetModuleHelper<LAM_RotationStability>();
+                    if (rotStab != null) rotStab.RequestVariable("Rotation Power", 0.5f).SetValue(-0.25f);
+
+                    if (Get._Editor_LegHelperModule)
+                    {
+                        if (Get.GetModuleHelper<LAM_InsectLegsHelper>() == null)
+                        {
+                            LegsAnimator.LegsAnimatorCustomModuleHelper helper = new LegsAnimator.LegsAnimatorCustomModuleHelper(Get);
+                            helper.ModuleReference = Get._Editor_LegHelperModule;
+                            Get.CustomModules.Add(helper);
+                        }
+                    }
+
+                    if (Get.LegAnimatingSettings.SpherizeTrack.keys.Length == 3)
+                    {
+                        var spherizeKeyVal = Get.LegAnimatingSettings.SpherizeTrack.keys[1];
+                        spherizeKeyVal.value = -0.25f;
+                        Get.LegAnimatingSettings.SpherizeTrack.RemoveKey(1);
+                        Get.LegAnimatingSettings.SpherizeTrack.AddKey(spherizeKeyVal);
+                        Get.LegAnimatingSettings.SpherizeTrack.SmoothTangents(0, 1f);
+                        Get.LegAnimatingSettings.SpherizeTrack.SmoothTangents(1, 1f);
+                        Get.LegAnimatingSettings.SpherizeTrack.SmoothTangents(2, 1f);
+                    }
+
+                    OnChange();
+                }
+
+                GUI.backgroundColor = Color.white;
+
+
+
+
                 EditorGUILayout.EndHorizontal();
 
-                if (_appliedPreset == EPres.Insect)
+                if (_appliedPreset == EPres.Insect || _appliedPreset == EPres.Animal)
                 {
                     if (Get.GetModuleHelper<LAM_InsectLegsHelper>() == null)
-                        EditorGUILayout.HelpBox("When animating Spider Creature, consider adding 'Multi Leg/Leg Helper' module!\nYou can add module under Motion/Modules.", MessageType.Info);
+                        EditorGUILayout.HelpBox("When animating Spider/Animal Creature, consider adding 'Multi Leg/Leg Helper' module!\nYou can add module under Motion/Modules.", MessageType.Info);
                 }
                 else
                 {
@@ -321,7 +365,7 @@ namespace FIMSpace.FProceduralAnimation
 
         }
 
-        enum EPres { None, Humanoid, Insect }
+        enum EPres { None, Humanoid, Insect, Animal }
         EPres _appliedPreset = EPres.None;
 
         //bool ensured = false;

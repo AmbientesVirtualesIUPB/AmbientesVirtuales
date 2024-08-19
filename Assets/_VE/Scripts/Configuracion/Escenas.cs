@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Escenas : MonoBehaviour
 {
-    public static GraficsConfig configuracionGraficos 
+    public static ConfiguracionGeneral configuracionGraficos 
     {
 		get
 		{
-            return Resources.Load<GraficsConfig>("ConfiguracionGraficosGeneral");
+            return Resources.Load<ConfiguracionGeneral>("ConfiguracionGeneral");
 		}
 
 		set

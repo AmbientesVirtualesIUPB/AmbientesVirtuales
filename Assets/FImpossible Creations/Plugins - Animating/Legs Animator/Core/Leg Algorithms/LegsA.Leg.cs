@@ -271,6 +271,9 @@ namespace FIMSpace.FProceduralAnimation
 
             #region Calculation Helpers
 
+            [Tooltip("Apply IK hint inversion, in case leg is bending in wrong direction.")]
+            public bool InverseHint = false;
+
             /// <summary> Bone End's Local Space</summary>
             public Vector3 AnkleToHeel = Vector3.zero;
             /// <summary> Bone End's Local Space</summary>

@@ -287,17 +287,26 @@ namespace FIMSpace.FProceduralAnimation
                 Vector3 castStartPointLocal = AnkleH.LastKeyframeRootPos;
 
                 Vector3 origin = ParentHub.LastRootLocalPos;
+                float toGround;
 
-                origin.x = castStartPointLocal.x;
-                //origin.x = Ankle.LastKeyframeRootPos.x;
-                origin.z = castStartPointLocal.z;
+                if (Owner.RaycastStartHeight == ERaycastStartHeight.FirstBone)
+                {
+                    origin = BoneStart.position;
+                    toGround = IKProcessor.fullLength;
+                }
+                else 
+                {
+                    origin.x = castStartPointLocal.x;
+                    //origin.x = Ankle.LastKeyframeRootPos.x;
+                    origin.z = castStartPointLocal.z;
 
-                float toGround = Owner.ScaleReference * (Owner.RaycastStartHeightMul / Root.lossyScale.y);
+                    toGround = Owner.ScaleReference * (Owner.RaycastStartHeightMul / Root.lossyScale.y);
 
-                if (Owner.RaycastStartHeight == ERaycastStartHeight.StaticScaleReference)
-                    origin.y = toGround;
+                    if (Owner.RaycastStartHeight == ERaycastStartHeight.StaticScaleReference)
+                        origin.y = toGround;
 
-                origin = RootSpaceToWorld(origin);
+                    origin = RootSpaceToWorld(origin);
+                }
 
                 lastRaycastingOrigin = origin;
 
