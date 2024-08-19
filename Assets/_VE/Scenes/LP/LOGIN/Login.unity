@@ -2555,8 +2555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3e6982a06e5a447934550329b543b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url_personalizacion: http://localhost/apiweb/CRUD/Create/insertar_datos_personalizacion.php
-  url_usuario: http://localhost/apiweb/CRUD/Create/insertar_datos_usuario.php
+  url_personalizacion: https://amvi.pascualbravo.edu.co/apiwebm/CRUD/Create/insertar_datos_personalizacion.php
+  url_usuario: https://amvi.pascualbravo.edu.co/apiwebm/CRUD/Create/insertar_datos_usuario.php
   id_usuario: 0
   tipo_usuario: 0
   datos: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
