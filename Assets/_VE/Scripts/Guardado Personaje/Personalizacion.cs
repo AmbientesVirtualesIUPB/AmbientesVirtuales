@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class Personalizacion : MonoBehaviour
 {
@@ -15,14 +15,12 @@ public class Personalizacion : MonoBehaviour
     public Color[]                  paletaPiel;
     public Material                 materialInicialPielHombre;
     public Material                 materialInicialPielMujer;
-    //Personalizacion
-    public Scrollbar                scrollbarTamaño;
-
+    
     public int                      genero;
     // Variables utilizadas para el guardado de datos
     public GameObject               managerBD;
     public GameObject               saveManager;
-    public int[]                    pos = new int[14];
+    public int[]                    pos = new int[15];
     public int[]                    colores = new int[5];
     public bool                     esColor;
 
@@ -38,6 +36,7 @@ public class Personalizacion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         InicializarElementos();
         TransicionDeGenero(0);
 
@@ -56,6 +55,28 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
+    // Metodo iinvocado provisionalmente desde un boton en la escena
+    public void TraerInformacionPersonalizacion(int id)
+    {
+        // Hacemos la consulta a la BD
+        managerBD.gameObject.GetComponent<EnvioDatosBD>().Consultardatos(id);
+        // Llamar al método y obtener el array
+        int[] resultado = managerBD.gameObject.GetComponent<ProcesadorDeDatos>().Devolver();
+
+        pos[0] = resultado[0];
+        // Mostrar los valores en la consola
+        for (int i = 1; i < pos.Length; i++)
+        {
+            pos[i] = resultado[i];
+            //split.posiciones = splitLoad.posiciones;
+            //split.colores = splitLoad.colores;
+            //split.furtivos = splitLoad.furtivos;
+        }
+        Debug.Log("Valores del array: " + string.Join(", ", pos));
+        // Cargamos la personalizacion que tenga guardada con anterioridad
+        //PersonalizacionSave();
+    }
+    
     public void PasarInformacionBD()
     {
         //Pasamos el genero
@@ -90,26 +111,24 @@ public class Personalizacion : MonoBehaviour
     }
 
     /// <summary>
-    /// Metodo invocado desde el Scrollbar al momento de cambiar el valor del Scrollbar
+    /// Metodo invocado desde el script de Cambioboton
     /// </summary>
-    public void Engordar()
+    public void Engordar(float valor)
     {
-        // Redondeamos para que solo tenga un decimal y multiplicamos por 100 para darle un valor entre 0 y 100 para el SetBlendShapeWeight
-        float valorRedondeado = (Mathf.Round(scrollbarTamaño.value * 10f) / 10f) * 100;
-
+        //Asignamos el tamaño a cada elemento
         for (int i = 0; i < partesHombre.Length; i++)
         {
-            partesHombre[i].CambiarTamaño(valorRedondeado);
-            partesMujer[i].CambiarTamaño(valorRedondeado);
+            partesHombre[i].CambiarTamaño(valor);
+            partesMujer[i].CambiarTamaño(valor);
         }
 
         for (int i = 0; i < partesOtros.Length; i++)
         {
-            partesOtros[i].CambiarTamaño(valorRedondeado);
+            partesOtros[i].CambiarTamaño(valor);
         }
         
         // Convertimos el valor a entero y lo guardamos en la posicion para su posterior guardado de datos
-        pos[13] = (int)valorRedondeado;
+        pos[13] = (int)valor;
         ConvertirATexto();
     }
     
@@ -263,6 +282,10 @@ public class Personalizacion : MonoBehaviour
     /// <param name="cual"> Nos indica el genero </param>
     public void TransicionDeGenero(int cual)
     {
+        // Guardamos el genero
+        pos[14] = cual;
+        ConvertirATexto();
+
         genero = cual;
         // Si es cero, es femenino, establecemos los elementos de dicho genero y desactivamos los masculinos
         if (genero==0)
@@ -357,8 +380,7 @@ public class Personalizacion : MonoBehaviour
         {
             partesOtros[i].CambiarTamaño((float)pos[13]);
         }
-        // Establecemos el valor del scrollbar segun el valor guardado, lo dividimos por 100 para darle un valor entre 0 y 1
-        scrollbarTamaño.value = (float)pos[13] / 100;
+        
 
         // Establecemos los colores
         partesOtros[3].EstablecerColorGeneral(colores[0]);

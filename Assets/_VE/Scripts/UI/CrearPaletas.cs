@@ -11,7 +11,7 @@ public class CrearPaletas : MonoBehaviour
     public Transform        panelPrimario;
     public Transform        panelSecundario;
     public Transform        panelPiel;
-
+    
     [Header("Botones Zoom")]
     public Transform        panelOjosZ;
     public Transform        panelCabelloZ;

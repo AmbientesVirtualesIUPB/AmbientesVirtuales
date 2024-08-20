@@ -11,6 +11,10 @@ public class Cambioboton : MonoBehaviour
     public int              conteo = 0;
     public RectTransform[]  Posiciones;
 
+    //Personalizar
+    public Scrollbar        scrollbarTamaño;
+    public GameObject       personalizacion;
+
     //Variables para el control del Zoom
     int                     enfoqueActual = 0;
     public GameObject       panelZoom;
@@ -34,6 +38,9 @@ public class Cambioboton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Establecemos el valor del scrollbar segun el valor guardado, lo dividimos por 100 para darle un valor entre 0 y 1
+        scrollbarTamaño.value = (float)personalizacion.gameObject.GetComponent<Personalizacion>().pos[13] / 100;
+
         Actualizar();
         Zoom();
     }
@@ -196,5 +203,16 @@ public class Cambioboton : MonoBehaviour
         }
         camPrincipal.transform.position = Vector3.Lerp(camPrincipal.transform.position, camsPositions[enfoqueActual].position,velocidad*Time.deltaTime);
         camPrincipal.transform.rotation = Quaternion.Lerp(camPrincipal.transform.rotation, camsPositions[enfoqueActual].rotation,velocidad*Time.deltaTime);
+    }
+
+
+    /// <summary>
+    /// Metodo invocado desde el Scrollbar al momento de cambiar el valor del Scrollbar
+    /// </summary>
+    public void Engorda()
+    {
+        // Redondeamos para que solo tenga un decimal y multiplicamos por 100 para darle un valor entre 0 y 100 para el SetBlendShapeWeight
+        float valorRedondeado = (Mathf.Round(scrollbarTamaño.value * 10f) / 10f) * 100;
+        personalizacion.gameObject.GetComponent<Personalizacion>().Engordar(valorRedondeado);
     }
 }
