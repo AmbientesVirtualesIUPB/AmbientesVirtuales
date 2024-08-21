@@ -38,7 +38,7 @@ public class ProcesadorDeDatos : MonoBehaviour
     }
 
     // Método para procesar la respuesta JSON
-    public void RespuestaProcesada(string jsonResponse)
+    public int[] RespuestaProcesada(string jsonResponse)
     {
         //Convertimos la informacion de json a entero y pasamos a personalizar
         PersonalizacionData data = JsonUtility.FromJson<PersonalizacionData>(jsonResponse);
@@ -48,19 +48,7 @@ public class ProcesadorDeDatos : MonoBehaviour
             data.color5, data.carroceria, data.aleron, data.silla, data.volante, data.llanta, data.bateria
         };
 
-        pos[0] = valores[0];
-        // Aquí puedes usar el array 'valores' como necesites en tu aplicación
-        for (int i = 1; i < 15; i++)
-        {
-            pos[i] = valores[i];
-            //split.posiciones = splitLoad.posiciones;
-            //split.colores = splitLoad.colores;
-            //split.furtivos = splitLoad.furtivos;
-        }       
+        return valores;
     }
 
-    public int[] Devolver()
-    {
-        return pos;
-    }
 }

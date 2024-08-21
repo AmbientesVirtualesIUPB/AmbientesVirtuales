@@ -12,8 +12,6 @@ public class EnvioDatosBD : MonoBehaviour
     private string url_personalizacion = "http://localhost/apiwebm/CRUD/Create/insertar_datos_personalizacion.php"; // URL que guardla la informacion de  personalizacion al momento de ser guardada
     [SerializeField]
     private string url_usuario = "http://localhost/apiwebm/CRUD/Create/insertar_datos_usuario.php"; // URL para guardar la informacion de los usuarios
-    [SerializeField]
-    private string url_consulta_p = "http://localhost/apiwebm/CRUD/Read/leer_datos_personalizacion.php";   // URL para consultar la informacion de la personalizacion
 
     // Datos de usuario, extraidos del script ConsumirApi
     public int id_usuario; // id del usuario
@@ -21,9 +19,7 @@ public class EnvioDatosBD : MonoBehaviour
 
     public int[] datos = new int[21]; // Array de datos enteros (genero, maleta, cuerpo, cabeza, cejas, cabello, reloj, sombrero, zapatos, tamaño, color1, color2, color3, color4, color5, carroceria, aleron, silla, volante, llanta, bateria)
 
-    
-    private ProcesadorDeDatos procesador;
-
+ 
     private static EnvioDatosBD instancia;
     void Awake()
     {
@@ -40,11 +36,6 @@ public class EnvioDatosBD : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        procesador = gameObject.AddComponent<ProcesadorDeDatos>();
-    }
-
     // Metodo invocado desde el script de personalizacion
     public void EnviarDatosP()
     {
@@ -55,12 +46,6 @@ public class EnvioDatosBD : MonoBehaviour
     public void EnviarDatosU()
     {
         StartCoroutine(EnviarDatosUsuario());
-    }
-
-    // Metodo invocado desde el script de personalizacion
-    public void Consultardatos(int id_user)
-    {
-        StartCoroutine(ObtenerPersonalizacion(id_user, procesador));
     }
 
     private IEnumerator EnviarDatosPersonalizacion()
@@ -157,34 +142,6 @@ public class EnvioDatosBD : MonoBehaviour
             else
             {
                 Debug.LogError("Respuesta Unity: " + "Error al enviar los datos: " + www.error);
-            }
-        }
-    }
-
-    public IEnumerator ObtenerPersonalizacion(int idUsuario, ProcesadorDeDatos procesador)
-    {
-        // Creación del formulario
-        WWWForm form = new WWWForm();
-        // Enviamos la cedula que este logueada
-        form.AddField("id_usuario", idUsuario);
-
-        //Enviamos la solicitud Post
-        using (UnityWebRequest www = UnityWebRequest.Post(url_consulta_p, form))
-        {
-            yield return www.SendWebRequest();
-
-            //Si la solicitud es correcta y exitosa
-            if (www.result == UnityWebRequest.Result.Success)
-            {
-                // Acciones a realizar
-                Debug.Log("Respuesta recibida: " + www.downloadHandler.text);
-                procesador.RespuestaProcesada(www.downloadHandler.text);
-                // Parsear la respuesta
-            }
-            else
-            {
-                // Acciones a realizar
-                Debug.LogError("Error al realizar la solicitud: " + www.error);
             }
         }
     }

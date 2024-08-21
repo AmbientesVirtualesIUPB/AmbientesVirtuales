@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Networking;
 
 public class Personalizacion : MonoBehaviour
 {
@@ -24,6 +24,10 @@ public class Personalizacion : MonoBehaviour
     public int[]                    colores = new int[5];
     public bool                     esColor;
 
+    [SerializeField]
+    private string url_consulta_p = "http://localhost/apiwebm/CRUD/Read/leer_datos_personalizacion.php";   // URL para consultar la informacion de la personalizacion
+    private ProcesadorDeDatos procesador;
+
     /// <summary>
     /// Metodo invocado antes de iniciar la scena
     /// </summary>
@@ -36,9 +40,9 @@ public class Personalizacion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        procesador = gameObject.AddComponent<ProcesadorDeDatos>();
         InicializarElementos();
-        TransicionDeGenero(0);
+        TransicionDeGenero(pos[14]);
 
         // Busca el objeto por nombre para buscar la referencia al objeto que administra la base de datos, ya que este pasar� entre escenas
         GameObject obj = GameObject.Find("EnvioBD");
@@ -55,28 +59,82 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
-    // Metodo iinvocado provisionalmente desde un boton en la escena
+    /// <summary>
+    ///  Metodo que puede ser invocado para traer la personalizacion que se tenga guardada en la base de datos, pasandole el numero de cedula
+    /// </summary>
+    /// <param name="id"></param>
     public void TraerInformacionPersonalizacion(int id)
     {
-        // Hacemos la consulta a la BD
-        managerBD.gameObject.GetComponent<EnvioDatosBD>().Consultardatos(id);
-        // Llamar al método y obtener el array
-        int[] resultado = managerBD.gameObject.GetComponent<ProcesadorDeDatos>().Devolver();
-
-        pos[0] = resultado[0];
-        // Mostrar los valores en la consola
-        for (int i = 1; i < pos.Length; i++)
-        {
-            pos[i] = resultado[i];
-            //split.posiciones = splitLoad.posiciones;
-            //split.colores = splitLoad.colores;
-            //split.furtivos = splitLoad.furtivos;
-        }
-        Debug.Log("Valores del array: " + string.Join(", ", pos));
-        // Cargamos la personalizacion que tenga guardada con anterioridad
-        //PersonalizacionSave();
+        // Llamamos la currutina
+        StartCoroutine(ObtenerPersonalizacion(id, procesador));
     }
-    
+
+    // Currutina encargada de consultar la base de datos y traer la informacion del usuario especificado
+    public IEnumerator ObtenerPersonalizacion(int idUsuario, ProcesadorDeDatos procesador)
+    {
+        // Creación del formulario
+        WWWForm form = new WWWForm();
+        // Enviamos la cedula que este logueada
+        form.AddField("id_usuario", idUsuario);
+
+        //Enviamos la solicitud Post
+        using (UnityWebRequest www = UnityWebRequest.Post(url_consulta_p, form))
+        {
+            yield return www.SendWebRequest();
+
+            //Si la solicitud es correcta y exitosa
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                // Acciones a realizar
+                Debug.Log("Respuesta recibida: " + www.downloadHandler.text);
+                // Parsear la respuesta
+                int[] resultado = procesador.RespuestaProcesada(www.downloadHandler.text);
+
+                //Asignamos el valor de genero
+                pos[0] = resultado[0];
+
+                //Asignamos la nueva respuesta del servidor a nuestras posiciones
+                for (int i = 1; i < 5; i++)
+                {    
+                    //Si es masculino
+                    if (pos[0] == 1)
+                    {
+                        pos[i] = resultado[i + 1];
+                    }
+                    //Si es femenina
+                    else if (pos[0] == 0)
+                    {
+                        pos[i + 4] = resultado[i];
+                    }
+                }
+                
+                for (int i = 0; i < 4; i++)
+                {
+                    //Si es masculino
+                    if (pos[0] == 1)
+                    {
+                        pos[10 + i] = resultado[6 + i];
+                    }
+                    //Si es femenina
+                    else if (pos[0] == 0)
+                    {
+                        pos[10 + i] = resultado[6 + i];
+                    }
+                }
+                
+                Debug.Log("Valores del array: " + string.Join(", ", pos));
+                // Cargamos la personalizacion que tenga guardada con anterioridad
+                //PersonalizacionSave();
+                TransicionDeGenero(pos[0]);
+            }
+            else
+            {
+                // Acciones a realizar
+                Debug.LogError("Error al realizar la solicitud: " + www.error);
+            }
+        }
+    }
+
     public void PasarInformacionBD()
     {
         //Pasamos el genero
