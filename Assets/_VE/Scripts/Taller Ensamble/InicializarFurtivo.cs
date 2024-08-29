@@ -7,22 +7,23 @@ using UnityEngine.UIElements;
 
 public class InicializarFurtivo : MonoBehaviour
 {
-    public Transform[]  camsPositions; // Posiciones de las camaras
-    public GameObject[] botonesCanvas; // Botones de rotar para poder desactivarlos cuando deseemos
-    public Transform    camPrincipal; // Referencia de la camara principal
-    public GameObject   plataforma; // Referencia a la plataforma en general
-    public GameObject   brazo; // Referencia al brazo giratorio para poderlo detener
-    public GameObject   canvas; // Canvas principal
-    public GameObject   canvasPantalla; // Canvas pantalla que se visualiza al cambiar las baterias
-    private Collider    collider; // Referencia al collider para que no se pueda ejecutar repetidas veces
+    public Transform[]              camsPositions; // Posiciones de las camaras
+    public GameObject[]             botonesCanvas; // Botones de rotar para poder desactivarlos cuando deseemos
+    public Transform                camPrincipal; // Referencia de la camara principal
+    public IniciarPlataforma        plataforma; // Referencia al script de la plataforma
+    public PersonalizacionFurtivo   furtivo; // Referencia al script de la personalizacion del furtivo
+    public BrazoGiratorio           brazo; // Referencia al brazo giratorio para poderlo detener
+    public GameObject               canvas; // Canvas principal
+    public GameObject               canvasPantalla; // Canvas pantalla que se visualiza al cambiar las baterias
+    private Collider                collider; // Referencia al collider para que no se pueda ejecutar repetidas veces
 
     // Variables provisionales para el manejo de particulas
     public GameObject   particulas;
     public GameObject[] lucesLamparas;
 
     //Variables para el manejo de camaras
-    private float       tiempoTranscurrido = 5.0f; // Variable para controlar el tiempo en transiciones
-    private float       tiempoTotal = 0.0f; // Variable para controlar el tiempo en transiciones
+    private float       tiempoTranscurrido; // Variable para controlar el tiempo en transiciones
+    private float       tiempoTotal; // Variable para controlar el tiempo en transiciones
     private float       velocidad = 3;           // Velocidad de interpolación
     private float       lerpTime = 0.0f;        // Tiempo de interpolación
     private float       lerpDuration = 2.0f;    // Duración de la interpolación
@@ -41,6 +42,10 @@ public class InicializarFurtivo : MonoBehaviour
     private void Awake()
     {
         collider = GetComponent<Collider>();
+        if (brazo == null || furtivo == null || plataforma == null)
+        {
+            Debug.LogError("Falta inicializar componenetes del script InicializarFurtivo");
+        }
     }
     
 
@@ -114,9 +119,9 @@ public class InicializarFurtivo : MonoBehaviour
         // Deshabilitamos el collider para evitar que no se siga oprimiendo
         collider.enabled = false;
         // Inicializamos la animacion para la plataforma
-        plataforma.gameObject.GetComponent<IniciarPlataforma>().MoverArriba();
+        plataforma.MoverArriba();
         // Activamos las baterias para que se vean en escena
-        plataforma.gameObject.GetComponent<PersonalizacionFurtivo>().baterias.gameObject.SetActive(true);
+        furtivo.baterias.gameObject.SetActive(true);
         // Iniciamos currutinas para cambios de camara e inicio de interfaz
         StartCoroutine(InicializarPlataforma());
     }
@@ -149,9 +154,9 @@ public class InicializarFurtivo : MonoBehaviour
 
         tiempoTranscurrido = 0.0f; // Reiniciamos el flujo de tiempo
 
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(1.5f);
 
-        tiempoTotal = 7.0f; // Duración total del ciclo en segundos
+        tiempoTotal = 3.5f; // Duración total del ciclo en segundos
 
         // Mientras que el tiempo transcurrido sea menor al total indicado
         while (tiempoTranscurrido < tiempoTotal)
@@ -195,10 +200,9 @@ public class InicializarFurtivo : MonoBehaviour
         // Deshabilitamos canvas
         canvas.gameObject.SetActive(false);
         // Detenemos el brazo y se posiciona en la parte inicial
-        brazo.gameObject.GetComponent<BrazoGiratorio>().Detener();
+        brazo.Detener();
         // Desactivamos las baterias para que no se vean en escena
-        plataforma.gameObject.GetComponent<PersonalizacionFurtivo>().baterias.gameObject.SetActive(false);
-
+        furtivo.baterias.gameObject.SetActive(false);
 
         tiempoTotal = 2.5f; // Duración total del ciclo en segundos
         tiempoTranscurrido = 0.0f; // Reiniciamos el flujo de tiempo
@@ -217,7 +221,7 @@ public class InicializarFurtivo : MonoBehaviour
         particulas.gameObject.SetActive(false);
 
         // Iniciamos la animacion de esconder del brazo de la plataforma
-        plataforma.gameObject.GetComponent<IniciarPlataforma>().MoverAbajo();
+        plataforma.MoverAbajo();
 
         // Apagamos las luces
         StartCoroutine(ApagarLuces());

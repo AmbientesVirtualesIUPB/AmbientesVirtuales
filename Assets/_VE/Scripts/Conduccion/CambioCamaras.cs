@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CambioCamaras : MonoBehaviour
 {
-    public GameObject[] camaras; // Camaras entre las que queremos cambiar vistas
+    public Camera[]     camaras; // Camaras entre las que queremos cambiar vistas
     private int         activo; // Para activar una a una las camaras
 
     // Update is called once per frame
@@ -32,12 +32,12 @@ public class CambioCamaras : MonoBehaviour
             if (activo == i)
             {
                 // Le damos prioridad 1 para que se renderice sobre las demas
-                camaras[i].gameObject.GetComponent<Camera>().depth = 1;
+                camaras[i].depth = 1;
             }
             else
             {
                 // A las demas camaras le dejamos la prioridad en cero
-                camaras[i].gameObject.GetComponent<Camera>().depth = 0;
+                camaras[i].depth = 0;
             }
         }
     }

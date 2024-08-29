@@ -6,8 +6,8 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
     //Objeto con la informacion de las personalizaciones
-    public GameObject personalizacion;
-    public GameObject personalizacionFurtivos;
+    public Personalizacion              personalizacion;
+    public PersonalizacionFurtivo       personalizacionFurtivos;
 
     //Referenciamos el archivo donde guardaremos la informacion
     [SerializeField]
@@ -57,7 +57,7 @@ public class SaveManager : MonoBehaviour
     /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones
     /// </summary>
     /// <param name="texto"> Parametro de texto con las posiciones </param>
-    public void PesonalizacionPersonaje(string texto)
+    public void PersonalizacionPersonaje(string texto)
     {
         split.posiciones = texto;
         //Guardamos
@@ -68,7 +68,7 @@ public class SaveManager : MonoBehaviour
     /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones de los colores
     /// </summary>
     /// <param name="texto"> Parametro de texto con las posiciones </param>
-    public void PesonalizacionColores(string texto)
+    public void PersonalizacionColores(string texto)
     {
         split.colores = texto;
         //Guardamos
@@ -79,7 +79,7 @@ public class SaveManager : MonoBehaviour
     /// Metodo invocado desde el scrip de personalización, para grabar los datos de las posiciones de los colores
     /// </summary>
     /// <param name="texto"> Parametro de texto con las posiciones </param>
-    public void PesonalizacionFurtivos(string texto)
+    public void PersonalizacionFurtivos(string texto)
     {
         split.furtivos = texto;
         //Guardamos
@@ -98,14 +98,14 @@ public class SaveManager : MonoBehaviour
         if (personalizacion != null)
         {
             //Asignamos los datos al personaje
-            personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTexto(split.posiciones);
-            personalizacion.gameObject.GetComponent<Personalizacion>().ConvertirDesdeTextoColores(split.colores);
+            personalizacion.ConvertirDesdeTexto(split.posiciones); 
+            personalizacion.ConvertirDesdeTextoColores(split.colores); 
         }
         // Solo ejecuta el resto del código si objeto no es nulo
         if (personalizacionFurtivos != null)
         {
             //Asignamos los datos al personaje
-            personalizacionFurtivos.gameObject.GetComponent<PersonalizacionFurtivo>().ConvertirDesdeTexto(split.furtivos);
+            personalizacionFurtivos.ConvertirDesdeTexto(split.furtivos);
         }    
     }
 }

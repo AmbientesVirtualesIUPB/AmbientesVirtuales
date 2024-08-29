@@ -15,7 +15,7 @@ public class ConsumirAPI : MonoBehaviour
     public TMP_InputField       inputPassword;
 
     // Variable para almacenar los datos del usuario
-    public GameObject           managerBD;
+    public EnvioDatosBD         managerBD;
 
     // Establecemos las variables, con los datos de la url a consumir y su llave de autenticacion
     private string              apiUrl = "https://sicau.pascualbravo.edu.co/SICAU/API/ServicioLogin/LoginAmbientesVirtuales";
@@ -23,6 +23,15 @@ public class ConsumirAPI : MonoBehaviour
 
     // Objeto en el que se mostrará en pantalla el error
     public GameObject           gmError;
+
+    private void Awake()
+    {
+        if (managerBD == null)
+        {
+            Debug.LogError("Falta inicializar componente managerBD");
+        }
+    }
+
 
     /// <summary>
     /// Metodo invocado desde el botón Iniciar en el Login para consumir el servicio
@@ -107,25 +116,25 @@ public class ConsumirAPI : MonoBehaviour
             if (loginResponse.Mensaje != "El usuario y/o contraseña son inválidos")
             {
                 // Guardamos la identificacion del usuario convertida a entero
-                managerBD.gameObject.GetComponent<EnvioDatosBD>().id_usuario = int.Parse(loginResponse.Datos.Identificacion);
+                managerBD.id_usuario = int.Parse(loginResponse.Datos.Identificacion);
 
                 // Guardamos el tipo de usuario, antes validando que tipo es para darle un valor
                 if (loginResponse.Datos.TipoDeUsuario == "Estudiante")
                 {
-                    managerBD.gameObject.GetComponent<EnvioDatosBD>().tipo_usuario = 2;
+                    managerBD.tipo_usuario = 2;
                 }
                 else if (loginResponse.Datos.TipoDeUsuario == "Docente")
                 {
-                    managerBD.gameObject.GetComponent<EnvioDatosBD>().tipo_usuario = 1;
+                    managerBD.tipo_usuario = 1; 
                 }
                 else
                 {
-                    managerBD.gameObject.GetComponent<EnvioDatosBD>().tipo_usuario = 0;
+                    managerBD.tipo_usuario = 0;
                 }
                 // Guardamos los datos en la BD para la creacion del usuario
-                managerBD.gameObject.GetComponent<EnvioDatosBD>().EnviarDatosU();
+                managerBD.EnviarDatosU();
                 // Cambiamos la escena
-                managerBD.gameObject.GetComponent<EnvioDatosBD>().CambioScena();
+                managerBD.CambioScena();
 			}
 			else
 			{

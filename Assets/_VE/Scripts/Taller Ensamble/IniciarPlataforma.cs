@@ -7,12 +7,22 @@ using static UnityEngine.GraphicsBuffer;
 public class IniciarPlataforma : MonoBehaviour
 {
     public GameObject   brazo; // El objeto a desplazar
-    public GameObject   plataforma; // Referencia a las puertas de la plataforma para utilizar su componenete animator
+    public Animator     plataforma; // Referencia a las puertas de la plataforma para utilizar su componenete animator
     public Transform[]  posiciones; // Los objetivos a los que queremos movernos
-    public float        tiempoSuavizado = 0.3f; // Tiempo de suavizado
-    private Vector3     velocidad = Vector3.zero; // Vector de velocidad
-    private float       tiempoTranscurrido = 5.0f; // Variable para controlar el tiempo en transiciones
+    public float        tiempoSuavizado = 1f; // Tiempo de suavizado para la interpolacion
+    private Vector3     velocidad;           // Velocidad de interpolación
+    private float       tiempoTranscurrido; // Variable para controlar el tiempo en transiciones
     private float       tiempoTotal = 0.0f; // Variable para controlar el tiempo en transiciones
+
+    private void Awake()
+    {
+        if (brazo == null || plataforma == null || posiciones == null)
+        {
+            Debug.LogError("Falta inicializar componenetes del script IniciarPlataforma");
+        }
+
+    }
+
 
     /// <summary>
     /// Metodo invocado frame a frame
@@ -57,8 +67,8 @@ public class IniciarPlataforma : MonoBehaviour
             tiempoTotal = 10.0f; // Duración total del ciclo en segundos
 
             // Activamos la animación deseada
-            plataforma.gameObject.GetComponent<Animator>().SetBool("open", true);
-            plataforma.gameObject.GetComponent<Animator>().SetBool("close", false);
+            plataforma.SetBool("open", true);
+            plataforma.SetBool("close", false);
             // Damos una pequeña espera despues de abrir la compuerta
             yield return new WaitForSeconds(2f);
 
@@ -81,8 +91,8 @@ public class IniciarPlataforma : MonoBehaviour
             // Validamos si se esta cerrando la compuerta y si el tiempo transcurrido son 4 segundos
             if (posicion == 1 && tiempoTranscurrido > 3.0f)
             {
-                plataforma.gameObject.GetComponent<Animator>().SetBool("open", false);
-                plataforma.gameObject.GetComponent<Animator>().SetBool("close", true);
+                plataforma.SetBool("open", false);
+                plataforma.SetBool("close", true);
             }
         }
         // Una vez que se alcanza la posición objetivo, nos aseguramos de que el objeto esté exactamente en la posición objetivo

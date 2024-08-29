@@ -3758,7 +3758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181b82ad28f886542aca429a2b853fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalizacion: {fileID: 763957750}
+  personalizacion: {fileID: 2126161627}
   personalizacionFurtivos: {fileID: 0}
   split:
     posiciones: 
@@ -21887,7 +21887,7 @@ PrefabInstance:
     - target: {fileID: 2126161627, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
       propertyPath: saveManager
       value: 
-      objectReference: {fileID: 826943520}
+      objectReference: {fileID: 826943522}
     - target: {fileID: 2126161627, guid: f7049d1bd08befd499853a3147e331f3, type: 3}
       propertyPath: pos.Array.size
       value: 15

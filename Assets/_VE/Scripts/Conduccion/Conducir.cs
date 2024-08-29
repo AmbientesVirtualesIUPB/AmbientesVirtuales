@@ -89,6 +89,9 @@ public class Conducir : MonoBehaviour
     PrometeoTouchInput      turnLeftPTI;
     public GameObject       handbrakeButton;
     PrometeoTouchInput      handbrakePTI;
+    //
+    public bool             acelerando;
+    public bool             descargado = false;
 
     //DATOS COCHE
     [HideInInspector]
@@ -235,6 +238,7 @@ public class Conducir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        acelerando = false;
         //DATOS DEL COCHE
 
         // Determinamos la velocidad del coche.
@@ -368,7 +372,7 @@ public class Conducir : MonoBehaviour
         {      
             try
             {
-                float absoluteCarSpeed = Mathf.Abs(carSpeed);
+                float absoluteCarSpeed = Mathf.Abs(carSpeed); // math.abs retorna el valor absoluto de un numero
                 carSpeedText.text = Mathf.RoundToInt(absoluteCarSpeed * 100).ToString();
             }
             catch (Exception ex)
@@ -510,6 +514,13 @@ public class Conducir : MonoBehaviour
     // Este método aplica un torque positivo a las ruedas para poder avanzar
     public void GoForward()
     {
+        acelerando = true;
+        if (descargado) 
+        {
+            Brakes();
+            return;
+        }
+
         //Si las fuerzas aplicadas al cuerpo rígido en el eje 'x' son mayores que
         //3f, significa que el coche está perdiendo tracción, entonces el coche empezará a emitir sistemas de partículas.
         if (Mathf.Abs(localVelocityX) > 2.5f)
@@ -560,6 +571,13 @@ public class Conducir : MonoBehaviour
     // Este método aplica un torque negativo a las ruedas para poder retroceder.
     public void GoReverse()
     {
+        acelerando = true;
+        if (descargado)
+        {
+            Brakes();
+            return;
+        }
+
         //Si las fuerzas aplicadas al cuerpo rígido en el eje 'x' son mayores que 3f, significa que el automóvil está perdiendo tracción,
         //entonces el automóvil comenzará a emitir sistemas de partículas.
 

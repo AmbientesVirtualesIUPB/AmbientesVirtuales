@@ -18,8 +18,8 @@ public class Personalizacion : MonoBehaviour
     
     public int                      genero;
     // Variables utilizadas para el guardado de datos
-    public GameObject               managerBD;
-    public GameObject               saveManager;
+    public EnvioDatosBD             managerBD;
+    public SaveManager              saveManager;
     public int[]                    pos = new int[15];
     public int[]                    colores = new int[5];
     public bool                     esColor;
@@ -34,7 +34,7 @@ public class Personalizacion : MonoBehaviour
     private void Awake()
     {
         // Cargamos los datos que se puedan tener guardados
-        saveManager.gameObject.GetComponent<SaveManager>().CargarDatos();
+        saveManager.CargarDatos();
     }
 
     // Start is called before the first frame update
@@ -51,7 +51,7 @@ public class Personalizacion : MonoBehaviour
 
         if (obj != null)
         {
-            managerBD = obj;
+            managerBD = obj.GetComponent<EnvioDatosBD>();
         }
         else
         {
@@ -69,7 +69,12 @@ public class Personalizacion : MonoBehaviour
         StartCoroutine(ObtenerPersonalizacion(id, procesador));
     }
 
-    // Currutina encargada de consultar la base de datos y traer la informacion del usuario especificado
+    /// <summary>
+    /// Currutina encargada de consultar la base de datos y traer la informacion del usuario especificado
+    /// </summary>
+    /// <param name="idUsuario"> Cedula del usuario </param>
+    /// <param name="procesador"> Referencia al scrip procesador de informacion </param>
+    /// <returns></returns>
     public IEnumerator ObtenerPersonalizacion(int idUsuario, ProcesadorDeDatos procesador)
     {
         // Creación del formulario
@@ -135,10 +140,13 @@ public class Personalizacion : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Metodo invocado desde el boton GuardarPersonalizacion en la escena
+    /// </summary>
     public void PasarInformacionBD()
     {
         //Pasamos el genero
-        managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[0] = genero;
+        managerBD.datos[0] = genero;
 
         //Pasamos los datos de la personalizacion, dependiendo del genero elegido           
         for (int i = 0; i < 5; i++)
@@ -146,26 +154,26 @@ public class Personalizacion : MonoBehaviour
             // Si es mujer
             if (genero == 0)
             {
-               managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 1] = pos[i + 5];
+               managerBD.datos[i + 1] = pos[i + 5];
             }
             // Si es hombre
             if (genero == 1)
             {
-                managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 1] = pos[i];
+                managerBD.datos[i + 1] = pos[i];
             }
         }
 
         // Pasamos datos generales
         for (int i = 0; i < 3; i++)
         {
-            managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[i + 6] = pos[i + 10];
+            managerBD.datos[i + 6] = pos[i + 10];
         }
 
         // Pasamos Tamaño
-        managerBD.gameObject.GetComponent<EnvioDatosBD>().datos[9] = pos[13];
+        managerBD.datos[9] = pos[13];
 
         // Enviamos la informacion a la base de datos
-        managerBD.gameObject.GetComponent<EnvioDatosBD>().EnviarDatosP();
+        managerBD.EnviarDatosP(); 
     }
 
     /// <summary>
@@ -283,7 +291,7 @@ public class Personalizacion : MonoBehaviour
             }
 
             // Enviamos los datos que queremos guardar
-            saveManager.gameObject.GetComponent<SaveManager>().PesonalizacionColores(texto);
+            saveManager.PersonalizacionColores(texto);
         }
         // Si lo que estamos personalizando son los elementos, entonces
         else
@@ -295,7 +303,7 @@ public class Personalizacion : MonoBehaviour
             }
 
             // Enviamos los datos que queremos guardar
-            saveManager.gameObject.GetComponent<SaveManager>().PesonalizacionPersonaje(texto);
+            saveManager.PersonalizacionPersonaje(texto);
         }
 
         esColor = false;

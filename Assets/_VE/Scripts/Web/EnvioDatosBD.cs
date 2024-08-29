@@ -9,15 +9,15 @@ public class EnvioDatosBD : MonoBehaviour
 {
     //URL's
     [SerializeField]
-    private string url_personalizacion = "http://localhost/apiwebm/CRUD/Create/insertar_datos_personalizacion.php"; // URL que guardla la informacion de  personalizacion al momento de ser guardada
+    private string  url_personalizacion = "http://localhost/apiwebm/CRUD/Create/insertar_datos_personalizacion.php"; // URL que guardla la informacion de  personalizacion al momento de ser guardada
     [SerializeField]
-    private string url_usuario = "http://localhost/apiwebm/CRUD/Create/insertar_datos_usuario.php"; // URL para guardar la informacion de los usuarios
+    private string  url_usuario = "http://localhost/apiwebm/CRUD/Create/insertar_datos_usuario.php"; // URL para guardar la informacion de los usuarios
 
     // Datos de usuario, extraidos del script ConsumirApi
-    public int id_usuario; // id del usuario
-    public int tipo_usuario; // Si es docente o estudiante
+    public int      id_usuario; // id del usuario
+    public int      tipo_usuario; // Si es docente o estudiante
 
-    public int[] datos = new int[21]; // Array de datos enteros (genero, maleta, cuerpo, cabeza, cejas, cabello, reloj, sombrero, zapatos, tamaño, color1, color2, color3, color4, color5, carroceria, aleron, silla, volante, llanta, bateria)
+    public int[]    datos = new int[21]; // Array de datos enteros (genero, maleta, cuerpo, cabeza, cejas, cabello, reloj, sombrero, zapatos, tamaño, color1, color2, color3, color4, color5, carroceria, aleron, silla, volante, llanta, bateria)
 
  
     private static EnvioDatosBD instancia;

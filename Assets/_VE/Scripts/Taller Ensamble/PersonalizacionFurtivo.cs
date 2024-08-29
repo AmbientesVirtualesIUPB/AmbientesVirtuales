@@ -10,7 +10,7 @@ public class PersonalizacionFurtivo : MonoBehaviour
 {
     public GameObject[] furtivos; // Referencia para almacenar todos los furtivos
     public GameObject   baterias; // Referencia a las baterias para su personalizacion
-    public GameObject   saveManager; // Objeto de guardado
+    public SaveManager  saveManager; // Objeto de guardado
     public int[]        activo; // Para validar que objetos estan actrivos en cada item de personalizacion
     private int         numBat = 0; // Para validar que bateria esta activa
 
@@ -20,7 +20,15 @@ public class PersonalizacionFurtivo : MonoBehaviour
     private void Awake()
     {
         // Cargamos los datos que se puedan tener guardados
-        saveManager.gameObject.GetComponent<SaveManager>().CargarDatos();
+        if (saveManager != null)
+        {
+            saveManager.CargarDatos();
+        }
+        else
+        {
+            Debug.LogError("Falta asignar referencia del saveData al script personalizacionFurtivo");
+        }
+        
     }
 
 
@@ -301,7 +309,7 @@ public class PersonalizacionFurtivo : MonoBehaviour
             texto += activo[i].ToString();
         }
         // Enviamos los datos que queremos guardar
-        saveManager.gameObject.GetComponent<SaveManager>().PesonalizacionFurtivos(texto);
+        saveManager.PersonalizacionFurtivos(texto);
         return texto;
     }
 
