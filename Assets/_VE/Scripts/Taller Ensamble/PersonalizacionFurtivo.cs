@@ -334,7 +334,7 @@ public class PersonalizacionFurtivo : MonoBehaviour
 
 
     /// <summary>
-    /// Metodo utilizado para la asignacion de los valores guardaods en el script SaveManager
+    /// Metodo utilizado para la asignacion de los valores guardados en el script SaveManager
     /// </summary>
     public void AsignarDatosGuardados()
     {
