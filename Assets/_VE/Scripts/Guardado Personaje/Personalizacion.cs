@@ -51,7 +51,8 @@ public class Personalizacion : MonoBehaviour
 
         if (obj != null)
         {
-            managerBD = obj.GetComponent<EnvioDatosBD>();
+            managerBD = obj.GetComponent<EnvioDatosBD>(); // Si encuentra el objeto lo almacenamos en la variable
+            TraerInformacionPersonalizacion(managerBD.AsignarDatosGuardados()); // Ejecutamos el metodo para traer la informacion de la personalizacion guardada
         }
         else
         {
@@ -112,7 +113,7 @@ public class Personalizacion : MonoBehaviour
                         pos[i + 4] = resultado[i];
                     }
                 }
-                
+                // Asignamos los datos generales
                 for (int i = 0; i < 4; i++)
                 {
                     //Si es masculino
@@ -126,10 +127,12 @@ public class Personalizacion : MonoBehaviour
                         pos[10 + i] = resultado[6 + i];
                     }
                 }
-                
-                Debug.Log("Valores del array: " + string.Join(", ", pos));
+                //Asignamos los colores
+                for (int i = 0; i < 5; i++)
+                {
+                    colores[i] = resultado[10 + i];
+                }
                 // Cargamos la personalizacion que tenga guardada con anterioridad
-                //PersonalizacionSave();
                 TransicionDeGenero(pos[0]);
             }
             else
@@ -171,6 +174,12 @@ public class Personalizacion : MonoBehaviour
 
         // Pasamos Tamaño
         managerBD.datos[9] = pos[13];
+
+        //Pasamos Colores
+        for (int i = 0; i < 5; i++)
+        {
+            managerBD.datos[10 + i] = colores[i];
+        }
 
         // Enviamos la informacion a la base de datos
         managerBD.EnviarDatosP(); 
@@ -739,7 +748,6 @@ public class ElementoPersonalizable
         for (int i = 0; i < materialesPiel.Count; i++)
         {
             materialesPiel[i].SetColor("_ColorPrincipal", padre.GetColorPiel(iColor1));
-            Debug.Log("Cambiando el color seg�n el tipo: " + tipo.ToString());
         }
     }
 

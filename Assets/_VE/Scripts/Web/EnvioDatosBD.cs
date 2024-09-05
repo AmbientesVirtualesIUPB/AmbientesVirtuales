@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -17,10 +17,11 @@ public class EnvioDatosBD : MonoBehaviour
     public int      id_usuario; // id del usuario
     public int      tipo_usuario; // Si es docente o estudiante
 
-    public int[]    datos = new int[21]; // Array de datos enteros (genero, maleta, cuerpo, cabeza, cejas, cabello, reloj, sombrero, zapatos, tamaño, color1, color2, color3, color4, color5, carroceria, aleron, silla, volante, llanta, bateria)
+    public int[]    datos = new int[21]; // Array de datos enteros (genero, maleta, cuerpo, cabeza, cejas, cabello, reloj, sombrero, zapatos, tamaÃ±o, color1, color2, color3, color4, color5, carroceria, aleron, silla, volante, llanta, bateria)
 
  
     private static EnvioDatosBD instancia;
+
     void Awake()
     {
         // Si la instancia ya existe y no es esta, destruir la nueva
@@ -50,18 +51,18 @@ public class EnvioDatosBD : MonoBehaviour
 
     private IEnumerator EnviarDatosPersonalizacion()
     {
-        // Creación del formulario
+        // CreaciÃ³n del formulario
         WWWForm form = new WWWForm();
         form.AddField("id_usuario", id_usuario);
 
-        // Asegúrate de que el array de datos tenga el tamaño correcto
+        // AsegÃºrate de que el array de datos tenga el tamaÃ±o correcto
         if (datos.Length != 21)
         {
             Debug.LogError("El array de datos debe tener exactamente 21 elementos.");
-            yield break; // Detiene la ejecución si el tamaño del array no es el correcto
+            yield break; // Detiene la ejecuciÃ³n si el tamaÃ±o del array no es el correcto
         }
 
-        // Añadir los datos al formulario
+        // AÃ±adir los datos al formulario
         for (int i = 0; i < datos.Length; i++)
         {
             form.AddField($"dato{i}", datos[i]);
@@ -91,7 +92,7 @@ public class EnvioDatosBD : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Respuesta Unity: " + "Datos enviados con éxito.");
+                    Debug.Log("Respuesta Unity: " + "Datos enviados con Ã©xito.");
                 }
             }
             else
@@ -103,7 +104,7 @@ public class EnvioDatosBD : MonoBehaviour
 
     private IEnumerator EnviarDatosUsuario()
     {
-        // Creación del formulario
+        // CreaciÃ³n del formulario
         WWWForm form = new WWWForm();
         form.AddField("id_usuario", id_usuario);
         form.AddField($"personalizacion", "personalizacion");
@@ -136,7 +137,7 @@ public class EnvioDatosBD : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Respuesta Unity: " + "Datos enviados con éxito.");
+                    Debug.Log("Respuesta Unity: " + "Datos enviados con Ã©xito.");
                 }
             }
             else
@@ -144,6 +145,15 @@ public class EnvioDatosBD : MonoBehaviour
                 Debug.LogError("Respuesta Unity: " + "Error al enviar los datos: " + www.error);
             }
         }
+    }
+
+    /// <summary>
+    /// Metodo invocado desde el script de personalizacion para traer la informacion almacenada en la base de datos
+    /// </summary>
+    /// <returns> Regresa la cedula del usuario logueado </returns>
+    public int AsignarDatosGuardados()
+    {
+        return id_usuario;
     }
 
     public void CambioScena()

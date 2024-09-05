@@ -10,9 +10,9 @@ public class Conducir : MonoBehaviour
     [Header("CONFIGURACION COCHE")]
     [Space(10)]
     [Range(20, 190)]
-    public int              maxSpeed = 90; // La velocidad máxima que puede alcanzar el coche en km/h.
+    public int              maxSpeed = 20; // La velocidad máxima que puede alcanzar el coche en km/h.
     [Range(10, 120)]
-    public int              maxReverseSpeed = 45; // La velocidad máxima que puede alcanzar el coche en reversa dada en km/h
+    public int              maxReverseSpeed = 20; // La velocidad máxima que puede alcanzar el coche en reversa dada en km/h
     [Range(1, 10)]
     public int              accelerationMultiplier = 2; // Qué tan rápido puede acelerar el auto. 1 es una aceleración lenta y 10 es la más rápida
     [Space(10)]
@@ -69,6 +69,7 @@ public class Conducir : MonoBehaviour
     [Space(10)]
     // Variables para configurar el sonido del auto o derrape de los neumaticos
     public bool             useSounds = false;
+    public AudioSource      carEngineEnd; // Sonido de apagado del motor
     public AudioSource      carEngineSound; // Sonido del motor
     public AudioSource      tireScreechSound; // Sonido de los neumaticos al derrapar
     float                   initialCarEngineSoundPitch; // Para almacenar el tono inicial del sonido carEngineSound y poderlo modificar
@@ -90,7 +91,9 @@ public class Conducir : MonoBehaviour
     public GameObject       handbrakeButton;
     PrometeoTouchInput      handbrakePTI;
     //
-    public bool             acelerando;
+    [HideInInspector]
+    public bool             acelerando; // Para validar que solo descargar la bateria mientras este acelerando o reversando
+    [HideInInspector]
     public bool             descargado = false;
 
     //DATOS COCHE
@@ -124,12 +127,15 @@ public class Conducir : MonoBehaviour
     float                   FRWextremumSlip;
     WheelFrictionCurve      RLwheelFriction;
     float                   RLWextremumSlip;
-    WheelFrictionCurve      RRwheelFriction;
-    float                   RRWextremumSlip;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //Nos aseguramos de que estos dos audios inicien desactivados
+        carEngineSound.enabled = false; // Desactivamos el sonido del apagado del motor
+        carEngineEnd.enabled = false; // Damos play al sonido de detener el motor
+
         //En esta parte, configuramos el valor 'carRigidbody' con el Rigidbody adjunto a este
         //Además, definimos el centro de masa del coche con el Vector3 dado en el inspector
         carRigidbody = gameObject.GetComponent<Rigidbody>();
@@ -138,21 +144,21 @@ public class Conducir : MonoBehaviour
         // Configuración inicial para calcular el valor de derrape del coche. Esta parte podría parecer un poco
         // complicado, pero lo unico que se realiza es guardar el valor predeterminado de friccion del coche
         // para que podamos establecer un valor de derrape apropiado más adelante.
-        FLwheelFriction = new WheelFrictionCurve();
+      FLwheelFriction = new WheelFrictionCurve();
         FLwheelFriction.extremumSlip = frontLeftCollider.sidewaysFriction.extremumSlip;
         FLWextremumSlip = frontLeftCollider.sidewaysFriction.extremumSlip;
         FLwheelFriction.extremumValue = frontLeftCollider.sidewaysFriction.extremumValue;
         FLwheelFriction.asymptoteSlip = frontLeftCollider.sidewaysFriction.asymptoteSlip;
         FLwheelFriction.asymptoteValue = frontLeftCollider.sidewaysFriction.asymptoteValue;
         FLwheelFriction.stiffness = frontLeftCollider.sidewaysFriction.stiffness;
-        FRwheelFriction = new WheelFrictionCurve();
+      FRwheelFriction = new WheelFrictionCurve();
         FRwheelFriction.extremumSlip = frontRightCollider.sidewaysFriction.extremumSlip;
         FRWextremumSlip = frontRightCollider.sidewaysFriction.extremumSlip;
         FRwheelFriction.extremumValue = frontRightCollider.sidewaysFriction.extremumValue;
         FRwheelFriction.asymptoteSlip = frontRightCollider.sidewaysFriction.asymptoteSlip;
         FRwheelFriction.asymptoteValue = frontRightCollider.sidewaysFriction.asymptoteValue;
         FRwheelFriction.stiffness = frontRightCollider.sidewaysFriction.stiffness;
-        RLwheelFriction = new WheelFrictionCurve();
+      RLwheelFriction = new WheelFrictionCurve();
         RLwheelFriction.extremumSlip = rearCollider.sidewaysFriction.extremumSlip;
         RLWextremumSlip = rearCollider.sidewaysFriction.extremumSlip;
         RLwheelFriction.extremumValue = rearCollider.sidewaysFriction.extremumValue;
@@ -242,14 +248,13 @@ public class Conducir : MonoBehaviour
         //DATOS DEL COCHE
 
         // Determinamos la velocidad del coche.
-        carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
+        carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 10;
         // Guarde la velocidad local del automóvil en el eje x. Se utiliza para saber si el coche se está derrapando.
         localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
         // Guarde la velocidad local del automóvil en el eje z. Se utiliza para saber si el coche va hacia adelante o hacia atrás.
         localVelocityZ = transform.InverseTransformDirection(carRigidbody.velocity).z;
 
         //FISICAS DEL COCHE
-
         /*      
         La siguiente parte trata sobre el controlador del automóvil. Primero, verifica si el usuario desea usar controles táctiles 
         (por ejemplo dispositivos móviles) o controles de entrada analógica (WASD + Space)
@@ -311,13 +316,13 @@ public class Conducir : MonoBehaviour
         }
         else
         {
-
             if (Input.GetKey(KeyCode.W))
             {
                 CancelInvoke("DecelerateCar");
                 deceleratingCar = false;
                 GoForward();
             }
+
             if (Input.GetKey(KeyCode.S))
             {
                 CancelInvoke("DecelerateCar");
@@ -333,6 +338,12 @@ public class Conducir : MonoBehaviour
             {
                 TurnRight();
             }
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                Brakes();
+            }
+
             if (Input.GetKey(KeyCode.Space))
             {
                 CancelInvoke("DecelerateCar");
@@ -356,13 +367,9 @@ public class Conducir : MonoBehaviour
             {
                 ResetSteeringAngle();
             }
-
         }
-
-
         // Llamamos al metodo AnimateWheelMeshes() para hacer coincidir los movimientos del colisionador de ruedas con las mallas 3D de las ruedas.
         AnimateWheelMeshes();
-
     }
 
     // Este método convierte los datos de velocidad del automóvil de flotante a cadena y luego establece el texto de la interfaz de usuario carSpeedText con este valor
@@ -373,7 +380,7 @@ public class Conducir : MonoBehaviour
             try
             {
                 float absoluteCarSpeed = Mathf.Abs(carSpeed); // math.abs retorna el valor absoluto de un numero
-                carSpeedText.text = Mathf.RoundToInt(absoluteCarSpeed * 100).ToString();
+                carSpeedText.text = Mathf.RoundToInt(absoluteCarSpeed).ToString();
             }
             catch (Exception ex)
             {
@@ -513,14 +520,15 @@ public class Conducir : MonoBehaviour
 
     // Este método aplica un torque positivo a las ruedas para poder avanzar
     public void GoForward()
-    {
+    {   
         acelerando = true;
+        
         if (descargado) 
         {
             Brakes();
             return;
         }
-
+        
         //Si las fuerzas aplicadas al cuerpo rígido en el eje 'x' son mayores que
         //3f, significa que el coche está perdiendo tracción, entonces el coche empezará a emitir sistemas de partículas.
         if (Mathf.Abs(localVelocityX) > 2.5f)
@@ -540,7 +548,7 @@ public class Conducir : MonoBehaviour
             throttleAxis = 1f;
         }
         //Si el automóvil va hacia atrás, aplique los frenos para evitar comportamientos extraños.
-        //behaviours. Si la velocidad local en el eje 'z' es menor que -1f, entonces Es seguro aplicar torsión positiva para avanzar.
+        //Si la velocidad local en el eje 'z' es menor que -1f, entonces Es seguro aplicar torsión positiva para avanzar.
         if (localVelocityZ < -1f)
         {
             Brakes();

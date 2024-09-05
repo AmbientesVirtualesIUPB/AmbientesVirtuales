@@ -25,7 +25,7 @@ public class Tacometro : MonoBehaviour
         if (conducir != null && aguja != null)
         {
             //float t = Mathf.Abs(conducir.carSpeed);
-            t = Mathf.Lerp(t, Mathf.Abs(conducir.carSpeed), 0.05f);
+            t = Mathf.Lerp(t, Mathf.Abs(conducir.carSpeed / 100), 0.05f);
             pdt = (1 - t) * 220 + t * 76;
             aguja.localEulerAngles = Vector3.forward * pdt;
         }else

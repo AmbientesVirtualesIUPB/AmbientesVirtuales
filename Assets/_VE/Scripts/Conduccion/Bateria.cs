@@ -12,7 +12,7 @@ public class Bateria : MonoBehaviour
     public float    cargaActual;
     public float    capacidadMaxima;
     public float    tasaDescarga;
-    public bool     funcionar;
+    public bool     encendida;
 
 
     // Start is called before the first frame update
@@ -29,9 +29,9 @@ public class Bateria : MonoBehaviour
         if (conducir != null && capacidadMaxima != 0) 
         {
             // Validamos que este encendida la interfaz del vehiculo desde el script IniciarInterfazVehiculo
-            if (funcionar)
+            if (encendida)
             {
-                // Validamos si estamos acelerando
+                // Validamos si estamos acelerando para solo reducir la carga cuando acelere
                 if (conducir.acelerando)
                 {
                     // Asignamos a la carga actual el valor dependiendo del tiempo de manejo transcurrido
@@ -42,8 +42,10 @@ public class Bateria : MonoBehaviour
                     // Si la carga actual llega a cero
                     if (cargaActual <= 0)
                     {
-                        // Ya no se puede manejar
+                        // Ya no se puede manejar          
                         conducir.descargado = true;
+                        conducir.carEngineSound.Stop();
+                        conducir.carEngineEnd.enabled = true;
                     }
                 }
 
@@ -54,7 +56,6 @@ public class Bateria : MonoBehaviour
                     slCarga.value = cargaActual / capacidadMaxima;
                 }
             }
-
         }
         else
         {

@@ -13,7 +13,7 @@ public class Cambioboton : MonoBehaviour
 
     //Personalizar
     public Scrollbar        scrollbarTamaño;
-    public GameObject       personalizacion;
+    public Personalizacion  personalizacion;
 
     //Variables para el control del Zoom
     int                     enfoqueActual = 0;
@@ -38,15 +38,14 @@ public class Cambioboton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Establecemos el valor del scrollbar segun el valor guardado, lo dividimos por 100 para darle un valor entre 0 y 1
-        scrollbarTamaño.value = (float)personalizacion.gameObject.GetComponent<Personalizacion>().pos[13] / 100;
-
         Actualizar();
         Zoom();
     }
 
     private void Update()
     {
+        // Establecemos el valor del scrollbar segun el valor guardado, lo dividimos por 100 para darle un valor entre 0 y 1
+        scrollbarTamaño.value = (float)personalizacion.pos[13] / 100;
         Zoom2();
     }
 
@@ -213,6 +212,6 @@ public class Cambioboton : MonoBehaviour
     {
         // Redondeamos para que solo tenga un decimal y multiplicamos por 100 para darle un valor entre 0 y 100 para el SetBlendShapeWeight
         float valorRedondeado = (Mathf.Round(scrollbarTamaño.value * 10f) / 10f) * 100;
-        personalizacion.gameObject.GetComponent<Personalizacion>().Engordar(valorRedondeado);
+        personalizacion.Engordar(valorRedondeado);
     }
 }

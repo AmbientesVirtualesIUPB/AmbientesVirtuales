@@ -23,7 +23,7 @@ public class PrometeoCarController : MonoBehaviour
       //[Header("CAR SETUP")]
       [Space(10)]
       [Range(20, 190)]
-      public int maxSpeed = 90; //The maximum speed that the car can reach in km/h.
+      public int maxSpeed = 10; //The maximum speed that the car can reach in km/h.
       [Range(10, 120)]
       public int maxReverseSpeed = 45; //The maximum speed that the car can reach while going on reverse in km/h.
       [Range(1, 10)]
@@ -496,9 +496,10 @@ public class PrometeoCarController : MonoBehaviour
 
     // This method apply positive torque to the wheels in order to go forward.
     public void GoForward(){
-      //If the forces aplied to the rigidbody in the 'x' asis are greater than
-      //3f, it means that the car is losing traction, then the car will start emitting particle systems.
-      if(Mathf.Abs(localVelocityX) > 2.5f){
+        Debug.Log(carSpeed);
+        //If the forces aplied to the rigidbody in the 'x' asis are greater than
+        //3f, it means that the car is losing traction, then the car will start emitting particle systems.
+        if (Mathf.Abs(localVelocityX) > 2.5f){
         isDrifting = true;
         DriftCarPS();
       }else{
@@ -526,13 +527,15 @@ public class PrometeoCarController : MonoBehaviour
           rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
           rearRightCollider.brakeTorque = 0;
           rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
-        }else {
-          // If the maxSpeed has been reached, then stop applying torque to the wheels.
-          // IMPORTANT: The maxSpeed variable should be considered as an approximation; the speed of the car
-          // could be a bit higher than expected.
-    			frontLeftCollider.motorTorque = 0;
+        }else 
+            {
+                Debug.Log("f "+ carSpeed);
+                // If the maxSpeed has been reached, then stop applying torque to the wheels.
+                // IMPORTANT: The maxSpeed variable should be considered as an approximation; the speed of the car
+                // could be a bit higher than expected.
+                frontLeftCollider.motorTorque = 0;
     			frontRightCollider.motorTorque = 0;
-          rearLeftCollider.motorTorque = 0;
+                rearLeftCollider.motorTorque = 0;
     			rearRightCollider.motorTorque = 0;
     		}
       }
